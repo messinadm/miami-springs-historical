@@ -1,0 +1,49 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# For local editing on the office machine, swap the backend above for:
+# backend:
+#   name: local
+
+publish_mode: editorial_workflow
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "General"
+        name: "general"
+        file: "src/data/general.json"
+        fields:
+          - { label: "Centennial Tagline", name: "tagline", widget: "string" }
+          - { label: "About Text", name: "about", widget: "text" }
+          - { label: "Museum Hours", name: "hours", widget: "string" }
+          - { label: "Contact Email", name: "email", widget: "string" }
+          - { label: "Contact Phone", name: "phone", widget: "string" }
+          - { label: "Facebook Page URL", name: "facebook_url", widget: "string" }
+
+  - name: "events"
+    label: "Events"
+    folder: "src/content/events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Location", name: "location", widget: "string" }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "board"
+    label: "Board Members"
+    folder: "src/content/board"
+    create: true
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Role / Title", name: "role", widget: "string" }
+      - { label: "Photo", name: "photo", widget: "image", required: false }
+      - { label: "Bio", name: "bio", widget: "markdown", required: false }
+      - { label: "Sort Order", name: "order", widget: "number", default: 99 }

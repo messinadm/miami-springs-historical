@@ -1,0 +1,91 @@
+---
+import generalSettings from '../data/general.json';
+---
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-name">Miami Springs Historical Society</p>
+    <p class="footer-address">501 East Drive, Miami Springs, FL 33166</p>
+    <p class="footer-hours">{generalSettings.hours}</p>
+    <div class="footer-links">
+      <a href={generalSettings.facebook_url} target="_blank" rel="noopener noreferrer">
+        Facebook
+      </a>
+      <span class="sep">&middot;</span>
+      <a href={`mailto:${generalSettings.email}`}>{generalSettings.email}</a>
+    </div>
+    <p class="footer-attribution">
+      Hero photo: Wikimedia Commons, CC BY 2.0. Historical photo: Fishbaugh, W.A., State Archives of Florida. Public Domain.
+    </p>
+    <p class="footer-copy">&copy; {new Date().getFullYear()} Miami Springs Historical Society</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-text);
+    color: var(--color-secondary);
+    padding: 3.5rem 2rem;
+    text-align: center;
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .footer-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-address,
+  .footer-hours {
+    font-size: 0.875rem;
+    color: var(--color-secondary);
+    margin-bottom: 0.2rem;
+  }
+
+  .footer-links {
+    margin: 1.25rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .footer-links a {
+    color: var(--color-secondary);
+    font-size: 0.875rem;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(210, 180, 140, 0.5);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
+    border-color: #fff;
+  }
+
+  .sep {
+    color: rgba(210, 180, 140, 0.4);
+  }
+
+  .footer-attribution {
+    font-size: 0.725rem;
+    font-style: italic;
+    color: rgba(210, 180, 140, 0.5);
+    margin-top: 1.75rem;
+    margin-bottom: 0.4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .footer-copy {
+    font-size: 0.725rem;
+    color: rgba(210, 180, 140, 0.45);
+  }
+</style>

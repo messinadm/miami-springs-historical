@@ -1,0 +1,142 @@
+---
+---
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">MSHS</a>
+    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#connect">Connect</a></li>
+      <li><a href="#board">Board</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  const btn = document.querySelector('.hamburger') as HTMLButtonElement;
+  const links = document.querySelector('.nav-links') as HTMLElement;
+
+  btn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+  });
+
+  // Close menu when a link is clicked
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: rgba(42, 26, 14, 0.93);
+    backdrop-filter: blur(4px);
+  }
+
+  .nav-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3.5rem;
+  }
+
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--color-secondary);
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+
+  .nav-logo:hover {
+    color: #fff;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: var(--font-body);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: #fff;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transition: background-color 0.2s;
+  }
+
+  .hamburger:hover span {
+    background-color: #fff;
+  }
+
+  @media (max-width: 560px) {
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 3.5rem;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background-color: rgba(42, 26, 14, 0.97);
+      padding: 0.5rem 0;
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+
+    .nav-links li a {
+      display: block;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.875rem;
+      letter-spacing: 0.08em;
+    }
+  }
+</style>

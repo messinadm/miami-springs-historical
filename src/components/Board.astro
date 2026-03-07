@@ -1,0 +1,117 @@
+---
+import { getCollection } from 'astro:content';
+
+const members = await getCollection('board');
+const sorted = members.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+---
+
+<section id="board" class="board-section">
+  <div class="container">
+    <h2 class="section-title">Board of Directors</h2>
+    <div class="divider"></div>
+    <p class="election-notice">
+      Board elections are held each April. New officers will be seated following the
+      <strong>April 2026 election</strong>.
+    </p>
+    <ul class="board-list">
+      {sorted.map((member) => (
+        <li class="board-member">
+          {member.data.photo && (
+            <img
+              src={member.data.photo}
+              alt={member.data.name}
+              class="board-photo"
+              width="64"
+              height="64"
+            />
+          )}
+          <div class="board-info">
+            <h3 class="board-name">{member.data.name}</h3>
+            <p class="board-role">{member.data.role}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .board-section {
+    padding: 5rem 0;
+    background-color: var(--color-bg-alt);
+  }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-secondary);
+    margin: 0 auto 3rem;
+  }
+
+  .board-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .board-member {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background-color: var(--color-bg);
+    border-top: 3px solid var(--color-primary);
+  }
+
+  .board-photo {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 2px solid var(--color-secondary);
+  }
+
+  .board-name {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    color: var(--color-text);
+    margin-bottom: 0.2rem;
+  }
+
+  .board-role {
+    font-size: 0.875rem;
+    color: var(--color-primary);
+    font-style: italic;
+  }
+
+  .election-notice {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-style: italic;
+    font-size: 0.9375rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .election-notice strong {
+    color: var(--color-primary);
+    font-style: normal;
+  }
+</style>
