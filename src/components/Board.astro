@@ -2,7 +2,9 @@
 import { getCollection } from 'astro:content';
 
 const members = await getCollection('board');
-const sorted = members.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+const sorted = members
+  .filter(m => m.data.name !== 'TBD')
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
 ---
 
 <section id="board" class="board-section">
