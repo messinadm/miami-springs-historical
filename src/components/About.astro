@@ -1,5 +1,60 @@
 ---
 import generalSettings from '../data/general.json';
+
+const slides = [
+  {
+    id: 'founding',
+    title: 'A City Born from Vision',
+    image: '/curtiss-mansion-1927.jpg',
+    imageAlt: 'The Curtiss Mansion, circa 1927',
+    credit: 'Fishbaugh, W.A. (William Arthur). State Archives of Florida, Florida Memory. Public Domain.',
+    paragraphs: [
+      'Miami Springs owes its existence to <strong>Glenn Hammond Curtiss</strong> and <strong>James Bright</strong>, who during the 1920s Florida land boom developed what was then called Country Club Estates — one of Florida\'s first planned communities, alongside Coral Gables and Opa-locka.',
+      'Curtiss laid out the city\'s distinctive circular streets and signature Pueblo Revival architecture, incorporating a golf course and country club that still anchors the community today.',
+      'Country Club Estates was officially incorporated in <strong>1926</strong> and later renamed Miami Springs in 1930.',
+    ],
+  },
+  {
+    id: 'architecture',
+    title: 'Architecture of the Southwest',
+    // TODO: Replace with a Florida Memory public domain image of Miami Springs Pueblo Revival homes
+    // Browse: https://www.floridamemory.com/collections/photographic/?q=miami+springs+pueblo
+    image: '/curtiss-mansion-entrance.jpg',
+    imageAlt: 'Curtiss Mansion entrance — Pueblo Revival architecture',
+    credit: '',
+    paragraphs: [
+      'Curtiss chose the <strong>Pueblo Revival style</strong> as the architectural theme for Miami Springs — a novelty in 1920s South Florida, drawing on the hand-crafted adobe traditions of the American Southwest.',
+      'The style\'s hallmarks — thick stucco walls, flat roofs, rounded corners, and decorative vigas — gave the city a look unlike anywhere else in Miami-Dade County.',
+      'Several original Pueblo Revival homes remain standing today, and the city maintains a historic preservation guide to protect them. The Glenn Curtiss Mansion is a <strong>Smithsonian-recognized National Historic Site</strong>.',
+    ],
+  },
+  {
+    id: 'aviation',
+    title: 'The Father of Naval Aviation',
+    // TODO: Replace with a Library of Congress public domain photo of Glenn Curtiss
+    // Browse: https://www.loc.gov/photos/?q=glenn+curtiss
+    image: '/curtiss-mansion-1927.jpg',
+    imageAlt: 'The Curtiss Mansion, home of aviation pioneer Glenn Curtiss',
+    credit: 'Fishbaugh, W.A. (William Arthur). State Archives of Florida, Florida Memory. Public Domain.',
+    paragraphs: [
+      '<strong>Glenn Hammond Curtiss</strong> (1878–1930) was one of the most consequential figures in early aviation — rival of the Wright Brothers, holder of hundreds of patents, and the man credited as the "Father of Naval Aviation."',
+      'On July 4, 1908, he piloted the June Bug to the first publicly witnessed flight in North America. His later work on seaplanes and flying boats transformed naval warfare and transatlantic aviation.',
+      'Beyond flight, Curtiss shaped South Florida: he founded <strong>Miami Springs</strong>, Hialeah, and Opa-locka, built the Hialeah Racetrack, and developed the first Miami airport — leaving a legacy that stretches far beyond the cockpit.',
+    ],
+  },
+  {
+    id: 'centennial',
+    title: 'One Hundred Years — 1926 to 2026',
+    image: '/curtiss-mansion-entrance.jpg',
+    imageAlt: 'The open entrance doors of the Curtiss Mansion, Miami Springs',
+    credit: '',
+    paragraphs: [
+      'In 2026, Miami Springs marks <strong>one hundred years</strong> since its incorporation as Country Club Estates — a century of growth, resilience, and community in one of Florida\'s most distinctive cities.',
+      'The Miami Springs Historical Society is proud to steward this legacy, preserving photographs, documents, and stories that connect residents to the remarkable vision that gave their city life.',
+      '<strong>We invite you to be part of the centennial.</strong> Visit our museum at 501 East Drive, follow us on Facebook, and help us celebrate a hundred years of Miami Springs.',
+    ],
+  },
+];
 ---
 
 <section id="about" class="about-section">
@@ -27,40 +82,62 @@ import generalSettings from '../data/general.json';
       </div>
     </div>
 
-    <div class="history-section">
-      <div class="history-image-wrap">
-        <img
-          src="/curtiss-mansion-1927.jpg"
-          alt="The Curtiss Mansion, circa 1927"
-          class="history-image"
-        />
-        <p class="photo-credit">
-          Fishbaugh, W.A. (William Arthur). State Archives of Florida, Florida Memory. Public Domain.
-        </p>
+    <div class="history-slider-wrap">
+      <div class="slider-border-top"></div>
+
+      <div class="slider-viewport">
+        <div class="slider-track" id="sliderTrack">
+          {slides.map((slide) => (
+            <div class="slide">
+              <div class="slide-image-wrap">
+                <img src={slide.image} alt={slide.imageAlt} class="slide-image" />
+                {slide.credit && <p class="photo-credit">{slide.credit}</p>}
+              </div>
+              <div class="slide-text">
+                <h2 class="slide-title">{slide.title}</h2>
+                <div class="slide-divider"></div>
+                {slide.paragraphs.map(p => <p set:html={p} />)}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div class="history-text">
-        <h2 class="section-title left">A City Born from Vision</h2>
-        <div class="divider left"></div>
-        <p>
-          Miami Springs owes its existence to <strong>Glenn Hammond Curtiss</strong> (1878–1930),
-          aviation pioneer, rival of the Wright Brothers, and holder of hundreds of patents. During
-          the 1920s Florida land boom, Curtiss developed what was then called Country Club Estates,
-          laying out the city's distinctive circular streets and Pueblo Revival architecture.
-        </p>
-        <p>
-          His mansion at 500 Deer Run — designed by Martin Luther Hampton in 1925 — stands on the
-          National Register of Historic Places. Curtiss, known as the "Father of Naval Aviation,"
-          lived there until his death in 1930.
-        </p>
-        <p>
-          The Curtiss Mansion remains a gathering place for the community a century later.
-          <strong>We are proud to celebrate 100 years of Miami Springs.</strong>
-        </p>
+
+      <div class="slider-controls">
+        <button class="slider-btn" id="prevBtn" aria-label="Previous slide">&#8592;</button>
+        <div class="slider-dots" id="sliderDots">
+          {slides.map((_, i) => (
+            <button
+              class={i === 0 ? 'dot dot--active' : 'dot'}
+              data-index={String(i)}
+              aria-label={`Go to slide ${i + 1}`}
+            />
+          ))}
+        </div>
+        <button class="slider-btn" id="nextBtn" aria-label="Next slide">&#8594;</button>
       </div>
     </div>
 
   </div>
 </section>
+
+<script>
+  const track = document.getElementById('sliderTrack') as HTMLElement;
+  const dots = Array.from(document.querySelectorAll('#sliderDots .dot')) as HTMLElement[];
+  const total = track.children.length;
+  let current = 0;
+
+  function goTo(index: number) {
+    dots[current].classList.remove('dot--active');
+    current = ((index % total) + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots[current].classList.add('dot--active');
+  }
+
+  document.getElementById('prevBtn')!.addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nextBtn')!.addEventListener('click', () => goTo(current + 1));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+</script>
 
 <style>
   .about-section {
@@ -82,19 +159,11 @@ import generalSettings from '../data/general.json';
     text-align: center;
   }
 
-  .section-title.left {
-    text-align: left;
-  }
-
   .divider {
     width: 60px;
     height: 3px;
     background-color: var(--color-secondary);
     margin: 0 auto 2.25rem;
-  }
-
-  .divider.left {
-    margin-left: 0;
   }
 
   .about-body {
@@ -135,17 +204,38 @@ import generalSettings from '../data/general.json';
     word-break: break-all;
   }
 
-  .history-section {
+  /* Slider */
+
+  .history-slider-wrap {
+    margin-top: 5rem;
+  }
+
+  .slider-border-top {
+    border-top: 1px solid var(--color-secondary);
+    margin-bottom: 4rem;
+  }
+
+  .slider-viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .slider-track {
+    display: flex;
+    transition: transform 0.45s ease;
+    will-change: transform;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
-    margin-top: 5rem;
-    padding-top: 5rem;
-    border-top: 1px solid var(--color-secondary);
   }
 
-  .history-image {
+  .slide-image {
     width: 100%;
     filter: sepia(35%) contrast(0.9);
     border: 4px solid var(--color-secondary);
@@ -158,19 +248,88 @@ import generalSettings from '../data/general.json';
     font-style: italic;
   }
 
-  .history-text p {
+  .slide-title {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .slide-divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-secondary);
+    margin-bottom: 1.75rem;
+  }
+
+  .slide-text p {
     margin-bottom: 1.25rem;
     color: var(--color-text);
   }
 
-  .history-text strong {
+  .slide-text strong {
     color: var(--color-primary);
   }
 
+  /* Controls */
+
+  .slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  .slider-btn {
+    background: none;
+    border: 2px solid var(--color-secondary);
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+
+  .slider-btn:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-bg-alt);
+  }
+
+  .slider-dots {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--color-secondary);
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  .dot--active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .dot:hover {
+    border-color: var(--color-primary);
+  }
+
   @media (max-width: 760px) {
-    .history-section {
+    .slide {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 2rem;
     }
   }
 </style>
