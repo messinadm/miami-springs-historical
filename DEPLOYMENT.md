@@ -1,6 +1,6 @@
 # Deployment Guide
 
-This site is an [Astro](https://astro.build) static site deployed to **Cloudflare Pages**
+This site is an [Astro](https://astro.build) static site deployed to **Cloudflare Workers**
 via a direct GitHub integration. Every push to the `main` branch triggers an automatic
 build and deploy — no manual steps required after initial setup.
 
@@ -9,11 +9,11 @@ build and deploy — no manual steps required after initial setup.
 ## How it works
 
 ```
-Edit files → git commit → git push to GitHub → Cloudflare Pages builds → site is live
+Edit files → git commit → git push to GitHub → Cloudflare builds → site is live
 ```
 
-Cloudflare Pages pulls the code from GitHub, runs `npm run build`, and publishes the
-contents of the `dist/` folder as a static website.
+Cloudflare pulls the code from GitHub, runs `npm run build`, then deploys the
+contents of the `dist/` folder as a static Worker using `wrangler.jsonc`.
 
 ---
 
@@ -24,7 +24,7 @@ contents of the `dist/` folder as a static website.
 
 ---
 
-## One-time Cloudflare Pages setup
+## One-time Cloudflare setup
 
 These steps only need to be done once. After that, deploys are fully automatic.
 
@@ -32,13 +32,16 @@ These steps only need to be done once. After that, deploys are fully automatic.
 
 Go to https://dash.cloudflare.com and log in.
 
-### 2. Create a new Pages project
+### 2. Create a new Workers application
 
 1. In the left sidebar, click **Workers & Pages**
-2. Click **Create** → **Pages** → **Connect to Git**
+2. Click **Create** → **Workers** → **Connect to Git**
 3. Authorize Cloudflare to access your GitHub account if prompted
 4. Select the repository: `messinadm/miami-springs-historical`
 5. Click **Begin setup**
+
+> **Note:** Choose **Workers**, not Pages. The repo includes a `wrangler.jsonc` that
+> configures static asset serving via the Workers platform (the current recommended approach).
 
 ### 3. Configure the build
 
@@ -46,20 +49,17 @@ On the build configuration screen, set:
 
 | Setting | Value |
 |---|---|
-| Framework preset | `Astro` |
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler pages deploy dist` |
-| Non-production branch deploy command | `npx wrangler pages deploy dist` |
+| Deploy command | `npx wrangler deploy` |
+| Non-production branch deploy command | `npx wrangler versions upload` |
 | Build output directory | `dist` |
 | Root directory | *(leave blank)* |
 
-> **Note:** The deploy command fields are required — the dashboard will error if they are left blank.
-> Use `npx wrangler pages deploy dist` (the Pages-specific command) rather than `npx wrangler deploy`
-> (which is for Workers and will break the build).
+> **Note:** The deploy command fields are required — the dashboard will error if left blank.
 
 ### 4. Set Node version (required for Astro 5)
 
-Still on the same screen, expand **Environment variables** and add:
+Expand **Environment variables** and add:
 
 | Variable | Value |
 |---|---|
@@ -68,7 +68,12 @@ Still on the same screen, expand **Environment variables** and add:
 > The `.node-version` file in the repo also signals this, but setting it as an
 > environment variable ensures compatibility with all Cloudflare build environments.
 
-### 5. Deploy
+### 5. API token
+
+Cloudflare automatically creates an API token for the build environment — no manual
+token creation is needed.
+
+### 6. Deploy
 
 Click **Save and Deploy**. Cloudflare will run the first build. It takes about a minute.
 
@@ -78,8 +83,8 @@ Click **Save and Deploy**. Cloudflare will run the first build. It takes about a
 
 After the initial deploy succeeds:
 
-1. In your Pages project, go to **Custom domains**
-2. Click **Set up a custom domain**
+1. In your Workers application, go to **Settings → Domains & Routes**
+2. Click **Add** → **Custom domain**
 3. Enter your domain (e.g. `miamispringshistoricalsociety.org`)
 4. Follow the DNS instructions — if your domain is also on Cloudflare, it will be
    configured automatically
@@ -102,7 +107,7 @@ To update content:
 1. Edit the relevant file
 2. `git add` and `git commit`
 3. `git push origin main`
-4. Cloudflare Pages automatically rebuilds and deploys (takes ~1 minute)
+4. Cloudflare automatically rebuilds and deploys (takes ~1 minute)
 
 ### Event file format
 
@@ -169,8 +174,9 @@ miami-springs-historical/
 │   └── pages/
 │       └── index.astro      # Main page
 ├── astro.config.mjs         # Astro configuration
+├── wrangler.jsonc           # Cloudflare Workers configuration
 ├── package.json
-└── .node-version            # Pins Node 20 for Cloudflare Pages builds
+└── .node-version            # Pins Node 22 for Cloudflare builds
 ```
 
 ---
@@ -180,6 +186,6 @@ miami-springs-historical/
 | Tool | Purpose |
 |---|---|
 | [Astro 5](https://astro.build) | Static site framework |
-| [Cloudflare Pages](https://pages.cloudflare.com) | Hosting and CDN |
+| [Cloudflare Workers](https://workers.cloudflare.com) | Hosting and CDN |
 | GitHub | Source code and version control |
 | Markdown | Content authoring (events, board members) |
