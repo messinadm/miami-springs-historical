@@ -71,7 +71,7 @@ const formatDateRange = (start: Date, end: Date) => {
         {rendered.map(({ data, Content }) => (
           <li
             class="event-card"
-            data-recurring={data.recurring ? 'true' : 'false'}
+            data-recurring={data.recurring ?? 'false'}
             data-expiry={(data.endDate ?? data.date)!.toLocaleDateString('en-CA', { timeZone: 'America/New_York' })}
           >
             <div class="event-date">
@@ -104,15 +104,50 @@ const formatDateRange = (start: Date, end: Date) => {
 </section>
 
 <script>
+  function nextSecondTuesday(): Date {
+    const now = new Date();
+    for (let offset = 0; offset <= 2; offset++) {
+      const year = now.getFullYear() + Math.floor((now.getMonth() + offset) / 12);
+      const month = (now.getMonth() + offset) % 12;
+      const first = new Date(year, month, 1);
+      const daysUntilTuesday = (2 - first.getDay() + 7) % 7;
+      const secondTuesday = new Date(year, month, 1 + daysUntilTuesday + 7, 16, 0, 0);
+      if (secondTuesday > now) return secondTuesday;
+    }
+    const next = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    const daysUntilTuesday = (2 - next.getDay() + 7) % 7;
+    return new Date(next.getFullYear(), next.getMonth(), 1 + daysUntilTuesday + 7, 16, 0, 0);
+  }
+
   // Today's date in Eastern time as YYYY-MM-DD (en-CA locale gives this format)
   const todayET = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
   const cards = document.querySelectorAll<HTMLElement>('.event-card');
   let visible = 0;
 
   cards.forEach(card => {
-    const isRecurring = card.dataset.recurring === 'true';
+    const recurring = card.dataset.recurring ?? 'false';
     const expiry = card.dataset.expiry ?? '';
-    if (!isRecurring && todayET > expiry) {
+
+    if (recurring === 'second-tuesday') {
+      // Recalculate the next occurrence client-side so stale build dates auto-update
+      const next = nextSecondTuesday();
+      const monthEl = card.querySelector('.event-month');
+      const dayEl = card.querySelector('.event-day');
+      const timeEl = card.querySelector('time');
+      if (monthEl) monthEl.textContent = next.toLocaleDateString('en-US', { month: 'short', timeZone: 'America/New_York' });
+      if (dayEl) dayEl.textContent = next.toLocaleDateString('en-US', { day: '2-digit', timeZone: 'America/New_York' });
+      if (timeEl) {
+        timeEl.dateTime = next.toISOString();
+        timeEl.textContent = next.toLocaleDateString('en-US', {
+          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+          timeZone: 'America/New_York',
+        });
+      }
+      visible++;
+    } else if (recurring !== 'false') {
+      // Unknown recurring type — always show
+      visible++;
+    } else if (todayET > expiry) {
       card.style.display = 'none';
     } else {
       visible++;
