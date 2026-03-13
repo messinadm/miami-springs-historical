@@ -48,8 +48,14 @@ On the build configuration screen, set:
 |---|---|
 | Framework preset | `Astro` |
 | Build command | `npm run build` |
+| Deploy command | `npx wrangler pages deploy dist` |
+| Non-production branch deploy command | `npx wrangler pages deploy dist` |
 | Build output directory | `dist` |
 | Root directory | *(leave blank)* |
+
+> **Note:** The deploy command fields are required — the dashboard will error if they are left blank.
+> Use `npx wrangler pages deploy dist` (the Pages-specific command) rather than `npx wrangler deploy`
+> (which is for Workers and will break the build).
 
 ### 4. Set Node version (required for Astro 5)
 
