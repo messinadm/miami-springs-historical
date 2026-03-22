@@ -71,6 +71,7 @@ const formatDateRange = (start: Date, end: Date) => {
             class="event-card"
             data-recurring={data.recurring ?? 'false'}
             data-expiry={(data.endDate ?? data.date)!.toLocaleDateString('en-CA', { timeZone: 'America/New_York' })}
+            data-recurring-start-after={data.recurringStartAfter?.toLocaleDateString('en-CA', { timeZone: 'America/New_York' }) ?? ''}
           >
             <div class="event-date">
               <span class="event-month">{formatMonth(data.date)}</span>
@@ -102,17 +103,18 @@ const formatDateRange = (start: Date, end: Date) => {
 </section>
 
 <script>
-  function nextSecondTuesday(): Date {
+  function nextSecondTuesday(startAfter?: Date): Date {
     const now = new Date();
-    for (let offset = 0; offset <= 2; offset++) {
-      const year = now.getFullYear() + Math.floor((now.getMonth() + offset) / 12);
-      const month = (now.getMonth() + offset) % 12;
+    const after = startAfter && startAfter > now ? startAfter : now;
+    for (let offset = 0; offset <= 3; offset++) {
+      const year = after.getFullYear() + Math.floor((after.getMonth() + offset) / 12);
+      const month = (after.getMonth() + offset) % 12;
       const first = new Date(year, month, 1);
       const daysUntilTuesday = (2 - first.getDay() + 7) % 7;
       const secondTuesday = new Date(year, month, 1 + daysUntilTuesday + 7, 16, 0, 0);
-      if (secondTuesday > now) return secondTuesday;
+      if (secondTuesday > after) return secondTuesday;
     }
-    const next = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+    const next = new Date(after.getFullYear(), after.getMonth() + 1, 1);
     const daysUntilTuesday = (2 - next.getDay() + 7) % 7;
     return new Date(next.getFullYear(), next.getMonth(), 1 + daysUntilTuesday + 7, 16, 0, 0);
   }
@@ -128,7 +130,9 @@ const formatDateRange = (start: Date, end: Date) => {
 
     if (recurring === 'monthly-second-tuesday') {
       // Recalculate the next occurrence client-side so stale build dates auto-update
-      const next = nextSecondTuesday();
+      const startAfterStr = card.dataset.recurringStartAfter;
+      const startAfter = startAfterStr ? new Date(startAfterStr) : undefined;
+      const next = nextSecondTuesday(startAfter);
       const monthEl = card.querySelector('.event-month');
       const dayEl = card.querySelector('.event-day');
       const timeEl = card.querySelector('time');
