@@ -63,7 +63,7 @@ const encodedUrl = encodeURIComponent(fbUrl);
   .divider {
     width: 60px;
     height: 3px;
-    background-color: var(--color-secondary);
+    background-color: var(--color-accent);
     margin: 0 auto 1.5rem;
   }
 
@@ -75,9 +75,14 @@ const encodedUrl = encodeURIComponent(fbUrl);
     margin: 0 auto 3rem;
   }
 
+  .fb-embed-wrap {
+    overflow: hidden;
+    max-width: 100%;
+  }
+
   .fb-layout {
     display: grid;
-    grid-template-columns: 500px 1fr;
+    grid-template-columns: minmax(0, 500px) 1fr;
     gap: 4rem;
     align-items: start;
   }
