@@ -71,7 +71,7 @@ const formatDateRange = (start: Date, end: Date) => {
             class="event-card"
             data-recurring={data.recurring ?? 'false'}
             data-expiry={(data.endDate ?? data.date)!.toLocaleDateString('en-CA', { timeZone: 'America/New_York' })}
-            data-recurring-start-after={data.recurringStartAfter?.toLocaleDateString('en-CA', { timeZone: 'America/New_York' }) ?? ''}
+            data-recurring-start-after={data.recurringStartAfter?.toISOString().split('T')[0] ?? ''}
           >
             <div class="event-date">
               <span class="event-month">{formatMonth(data.date)}</span>
