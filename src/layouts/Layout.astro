@@ -21,12 +21,12 @@ const {
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#8b4513" />
-    <link rel="canonical" href="https://miamispringshistoricalsociety.com/" />
+    <link rel="canonical" href={Astro.url.href} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Miami Springs Historical Society" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content="https://miamispringshistoricalsociety.com/" />
+    <meta property="og:url" content={Astro.url.href} />
     <meta property="og:image" content="https://miamispringshistoricalsociety.com/curtiss-mansion-entrance.jpg" />
     <meta property="og:image:alt" content="The entrance of the Curtiss Mansion, Miami Springs" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -52,6 +52,7 @@ const {
     })} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://connect.facebook.net" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
