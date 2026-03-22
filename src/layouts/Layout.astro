@@ -19,7 +19,36 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#8b4513" />
+    <link rel="canonical" href="https://miamispringshistoricalsociety.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Miami Springs Historical Society" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://miamispringshistoricalsociety.com/" />
+    <meta property="og:image" content="https://miamispringshistoricalsociety.com/curtiss-mansion-entrance.jpg" />
+    <meta property="og:image:alt" content="The entrance of the Curtiss Mansion, Miami Springs" />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Miami Springs Historical Society",
+      "description": description,
+      "url": "https://miamispringshistoricalsociety.com",
+      "telephone": "(305) 884-4406",
+      "email": "info@miamispringshistoricalsociety.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "501 East Drive",
+        "addressLocality": "Miami Springs",
+        "addressRegion": "FL",
+        "postalCode": "33166",
+        "addressCountry": "US"
+      },
+      "openingHours": "Sa 12:00-16:00",
+      "sameAs": ["https://www.facebook.com/mspringshistory"]
+    })} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -86,6 +115,11 @@ const {
 
   a:hover {
     color: var(--color-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 3px;
   }
 
   .section-title a {
