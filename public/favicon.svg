@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <!-- Filled triangle, outside transparent -->
+  <!-- Filled triangle (city boundary) -->
   <polygon
     points="16,16 112,112 16,112"
     fill="#8b4513"
@@ -17,7 +17,19 @@
     stroke-linejoin="round"
   />
 
-  <!-- Circle Park touching the hypotenuse -->
+  <!-- Engine cowling (outer ring) -->
   <circle cx="62" cy="85" r="16" fill="none" stroke="#d2b48c" stroke-width="3"/>
-  <circle cx="62" cy="85" r="5" fill="#2c5f2d"/>
+
+  <!-- Radial engine spokes (6 cylinders) -->
+  <g stroke="#d2b48c" stroke-width="2" stroke-linecap="round">
+    <line x1="68" y1="85"  x2="75" y2="85"/>
+    <line x1="65" y1="90"  x2="69" y2="96"/>
+    <line x1="59" y1="90"  x2="56" y2="96"/>
+    <line x1="56" y1="85"  x2="49" y2="85"/>
+    <line x1="59" y1="80"  x2="56" y2="74"/>
+    <line x1="65" y1="80"  x2="69" y2="74"/>
+  </g>
+
+  <!-- Center hub -->
+  <circle cx="62" cy="85" r="4" fill="#2c5f2d"/>
 </svg>
