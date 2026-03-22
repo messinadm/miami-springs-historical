@@ -13,11 +13,11 @@
     points="16,16 112,112 16,112"
     fill="none"
     stroke="#d2b48c"
-    stroke-width="5"
+    stroke-width="3"
     stroke-linejoin="round"
   />
 
   <!-- Circle Park touching the hypotenuse -->
-  <circle cx="62" cy="85" r="16" fill="none" stroke="#d2b48c" stroke-width="5"/>
-  <circle cx="62" cy="85" r="6" fill="#2c5f2d"/>
+  <circle cx="62" cy="85" r="16" fill="none" stroke="#d2b48c" stroke-width="3"/>
+  <circle cx="62" cy="85" r="5" fill="#2c5f2d"/>
 </svg>
