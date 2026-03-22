@@ -87,4 +87,25 @@ const {
   a:hover {
     color: var(--color-accent);
   }
+
+  .section-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .section-title a::after {
+    content: ' #';
+    opacity: 0;
+    font-size: 0.65em;
+    color: var(--color-secondary);
+    transition: opacity 0.2s;
+  }
+
+  .section-title:hover a::after {
+    opacity: 1;
+  }
+
+  .section-title a:hover {
+    color: inherit;
+  }
 </style>
