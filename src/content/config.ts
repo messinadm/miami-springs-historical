@@ -10,6 +10,7 @@ const events = defineCollection({
     location: z.string(),
     price: z.string().optional(),
     recurring: z.enum(['second-tuesday']).optional(),
+    recurringStartAfter: z.coerce.date().optional(),
   }),
 });
 
