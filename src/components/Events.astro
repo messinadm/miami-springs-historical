@@ -20,7 +20,7 @@ const events = await getCollection('events');
 
 // Resolve recurring events to their next occurrence date
 const resolved = events.map(event => {
-  if (event.data.recurring === 'second-tuesday') {
+  if (event.data.recurring === 'monthly-second-tuesday') {
     return { ...event, data: { ...event.data, date: nextSecondTuesday(event.data.recurringStartAfter) } };
   }
   return event;
@@ -126,7 +126,7 @@ const formatDateRange = (start: Date, end: Date) => {
     const recurring = card.dataset.recurring ?? 'false';
     const expiry = card.dataset.expiry ?? '';
 
-    if (recurring === 'second-tuesday') {
+    if (recurring === 'monthly-second-tuesday') {
       // Recalculate the next occurrence client-side so stale build dates auto-update
       const next = nextSecondTuesday();
       const monthEl = card.querySelector('.event-month');

@@ -9,7 +9,7 @@ const events = defineCollection({
     time: z.string().optional(),
     location: z.string(),
     price: z.string().optional(),
-    recurring: z.enum(['second-tuesday']).optional(),
+    recurring: z.enum(['monthly-second-tuesday']).optional(),
     recurringStartAfter: z.coerce.date().optional(),
   }),
 });
