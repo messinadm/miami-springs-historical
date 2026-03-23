@@ -112,8 +112,9 @@ const {
   }
 
   section:not(.hero) {
-    background-image: radial-gradient(rgba(42, 26, 14, 0.05) 1px, transparent 1px);
-    background-size: 3px 3px;
+    background-image:
+      repeating-linear-gradient(45deg, rgba(42,26,14,0.04) 0px, rgba(42,26,14,0.04) 1px, transparent 1px, transparent 7px),
+      repeating-linear-gradient(-45deg, rgba(42,26,14,0.04) 0px, rgba(42,26,14,0.04) 1px, transparent 1px, transparent 7px);
   }
 
   a {
