@@ -4,7 +4,7 @@
     points="16,16 112,112 16,112"
     fill="#8b4513"
     stroke="#8b4513"
-    stroke-width="2"
+    stroke-width="1"
     stroke-linejoin="round"
   />
 
@@ -13,23 +13,25 @@
     points="16,16 112,112 16,112"
     fill="none"
     stroke="#d2b48c"
-    stroke-width="3"
+    stroke-width="2"
     stroke-linejoin="round"
   />
 
   <!-- Engine cowling (outer ring) -->
-  <circle cx="62" cy="85" r="16" fill="none" stroke="#d2b48c" stroke-width="3"/>
+  <circle cx="62" cy="85" r="16" fill="none" stroke="#d2b48c" stroke-width="2"/>
 
-  <!-- Radial engine spokes (6 cylinders) -->
+  <!-- Green hub (behind spokes) -->
+  <circle cx="62" cy="85" r="8" fill="#2c5f2d"/>
+
+  <!-- 5 radial engine spokes — all from center -->
   <g stroke="#d2b48c" stroke-width="2" stroke-linecap="round">
-    <line x1="68" y1="85"  x2="75" y2="85"/>
-    <line x1="65" y1="90"  x2="69" y2="96"/>
-    <line x1="59" y1="90"  x2="56" y2="96"/>
-    <line x1="56" y1="85"  x2="49" y2="85"/>
-    <line x1="59" y1="80"  x2="56" y2="74"/>
-    <line x1="65" y1="80"  x2="69" y2="74"/>
+    <line x1="62" y1="85"  x2="71" y2="76"/>  <!-- 315° → toward hypotenuse -->
+    <line x1="62" y1="85"  x2="74" y2="91"/>  <!-- 27°  -->
+    <line x1="62" y1="85"  x2="60" y2="98"/>  <!-- 99°  -->
+    <line x1="62" y1="85"  x2="49" y2="87"/>  <!-- 171° -->
+    <line x1="62" y1="85"  x2="56" y2="73"/>  <!-- 243° -->
   </g>
 
-  <!-- Center hub -->
-  <circle cx="62" cy="85" r="4" fill="#2c5f2d"/>
+  <!-- Center dot (on top of spokes) -->
+  <circle cx="62" cy="85" r="2" fill="#d2b48c"/>
 </svg>
