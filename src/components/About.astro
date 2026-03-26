@@ -5,9 +5,9 @@ const slides = [
   {
     id: 'founding',
     title: 'A City Born from Vision',
-    image: '/curtiss-mansion-1927.jpg',
-    imageAlt: 'The Curtiss Mansion, circa 1927',
-    credit: 'Fishbaugh, W.A. (William Arthur). State Archives of Florida, Florida Memory. Public Domain.',
+    image: '/glenn-curtiss-portrait.jpg',
+    imageAlt: 'Portrait of Glenn Hammond Curtiss, aviation pioneer and founder of Miami Springs',
+    credit: 'Harris & Ewing. Library of Congress, Prints & Photographs Division (LC-DIG-hec-18632). No known restrictions.',
     paragraphs: [
       'Miami Springs owes its existence to <strong>Glenn Hammond Curtiss</strong> and <strong>James Bright</strong>, who during the 1920s Florida land boom developed what was then called Country Club Estates — one of Florida\'s first planned communities, alongside Coral Gables and Opa-locka.',
       'Curtiss laid out the city\'s distinctive circular streets and signature Pueblo Revival architecture, incorporating a golf course and country club that still anchors the community today.',
@@ -91,34 +91,25 @@ const slides = [
         <div class="embla__viewport">
           <div class="embla__container">
             {slides.map((slide) => (
-              <div class="embla__slide slide">
-                <div class="slide-image-wrap">
-                  <img src={slide.image} alt={slide.imageAlt} class="slide-image" />
-                  {slide.credit && <p class="photo-credit">{slide.credit}</p>}
-                </div>
-                <div class="slide-text">
-                  <h2 class="slide-title">{slide.title}</h2>
-                  <div class="slide-divider"></div>
-                  {slide.paragraphs.map(p => <p set:html={p} />)}
+              <div class="embla__slide">
+                <div class="slide">
+                  <div class="slide-image-wrap">
+                    <img src={slide.image} alt={slide.imageAlt} class="slide-image" />
+                    {slide.credit && <p class="photo-credit">{slide.credit}</p>}
+                  </div>
+                  <div class="slide-text">
+                    <h2 class="slide-title">{slide.title}</h2>
+                    <div class="slide-divider"></div>
+                    {slide.paragraphs.map(p => <p set:html={p} />)}
+                  </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <div class="slider-controls">
-          <button class="slider-btn" id="prevBtn" aria-label="Previous slide">&#8592;</button>
-          <div class="slider-dots" id="sliderDots">
-            {slides.map((_, i) => (
-              <button
-                class={i === 0 ? 'dot dot--active' : 'dot'}
-                data-index={String(i)}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
-          <button class="slider-btn" id="nextBtn" aria-label="Next slide">&#8594;</button>
-        </div>
+        <button class="slider-btn slider-btn--prev" id="prevBtn" aria-label="Previous slide">&#8592;</button>
+        <button class="slider-btn slider-btn--next" id="nextBtn" aria-label="Next slide">&#8594;</button>
       </div>
     </div>
 
@@ -131,16 +122,8 @@ const slides = [
   const viewport = document.querySelector('.embla__viewport') as HTMLElement;
   const embla = EmblaCarousel(viewport, { loop: true });
 
-  const dots = Array.from(document.querySelectorAll('#sliderDots .dot')) as HTMLElement[];
-
-  function syncDots(index: number) {
-    dots.forEach((d, i) => d.classList.toggle('dot--active', i === index));
-  }
-
   document.getElementById('prevBtn')!.addEventListener('click', () => embla.scrollPrev());
   document.getElementById('nextBtn')!.addEventListener('click', () => embla.scrollNext());
-  dots.forEach((dot, i) => dot.addEventListener('click', () => embla.scrollTo(i)));
-  embla.on('select', () => syncDots(embla.selectedScrollSnap()));
 </script>
 
 <style>
@@ -211,6 +194,7 @@ const slides = [
 
   .history-slider-wrap {
     margin-top: 5rem;
+    background-color: var(--color-bg-alt);
   }
 
   .slider-border-top {
@@ -227,13 +211,17 @@ const slides = [
     display: flex;
   }
 
-  .slide {
+  .embla__slide {
     flex: 0 0 100%;
     min-width: 0;
+  }
+
+  .slide {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: start;
+    padding: 3rem 4rem;
   }
 
   .slide-image {
@@ -274,57 +262,34 @@ const slides = [
 
   /* Controls */
 
-  .slider-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-top: 2.5rem;
+  .embla {
+    position: relative;
   }
 
   .slider-btn {
-    background: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(250, 246, 240, 0.9);
     border: 2px solid var(--color-secondary);
     color: var(--color-primary);
-    font-size: 1.25rem;
-    width: 2.5rem;
-    height: 2.5rem;
+    font-size: 1.5rem;
+    width: 3rem;
+    height: 3rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: border-color 0.2s, background-color 0.2s;
+    z-index: 10;
   }
+
+  .slider-btn--prev { left: -1.5rem; }
+  .slider-btn--next { right: -1.5rem; }
 
   .slider-btn:hover {
     border-color: var(--color-primary);
     background-color: var(--color-bg-alt);
-  }
-
-  .slider-dots {
-    display: flex;
-    gap: 0.6rem;
-    align-items: center;
-  }
-
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid var(--color-secondary);
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background-color 0.2s, border-color 0.2s;
-  }
-
-  .dot--active {
-    background-color: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-
-  .dot:hover {
-    border-color: var(--color-primary);
   }
 
   @media (max-width: 760px) {
