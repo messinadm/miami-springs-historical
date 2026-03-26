@@ -29,5 +29,8 @@ pnpm-debug.log*
 *.swp
 *~
 
+# CMS media uploads
+public/images/uploads/
+
 # Claude Code
 .claude/
