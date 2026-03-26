@@ -29,6 +29,11 @@ import generalSettings from '../data/general.json';
     <p class="footer-attribution">
       Hero photo: Wikimedia Commons, CC BY 2.0. Historical photo: Fishbaugh, W.A., State Archives of Florida. Public Domain.
     </p>
+    <p class="footer-links">
+      <a href="https://www.miamisprings-fl.gov/" target="_blank" rel="noopener noreferrer">City of Miami Springs</a>
+      <span aria-hidden="true">·</span>
+      <a href="/resources">Resources & References</a>
+    </p>
     <p class="footer-copy">&copy; {new Date().getFullYear()} Miami Springs Historical Society</p>
   </div>
 </footer>
@@ -92,6 +97,25 @@ import generalSettings from '../data/general.json';
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .footer-links {
+    font-size: 0.725rem;
+    color: rgba(250, 246, 240, 0.6);
+    margin-bottom: 0.4rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .footer-links a {
+    color: rgba(250, 246, 240, 0.6);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .footer-links a:hover {
+    color: #fff;
   }
 
   .footer-copy {
