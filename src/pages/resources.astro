@@ -1,0 +1,158 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const sections = [
+  {
+    heading: 'The City',
+    links: [
+      { label: 'City of Miami Springs', url: 'https://www.miamisprings-fl.gov/', note: 'Official city government site' },
+      { label: '100 Miami Springs — Centennial Site', url: 'https://www.100miamisprings.com/', note: 'Official centennial celebration' },
+      { label: 'Miami Springs Pueblo Style Architecture', url: 'https://www.miamisprings-fl.gov/community/page/pueblo-style-architecture', note: 'City of Miami Springs overview of the Pueblo Revival style' },
+    ],
+  },
+  {
+    heading: 'Historic Sites',
+    links: [
+      { label: 'Curtiss Mansion', url: 'https://curtissmansion.com/', note: 'Glenn H. Curtiss Mansion and Gardens, Miami Springs' },
+      { label: 'Curtiss Mansion — National Register of Historic Places', url: 'https://npgallery.nps.gov/AssetDetail/NRIS/85003579', note: 'NPS NRHP record no. 85003579, listed December 21, 2001' },
+      { label: 'Glenn Curtiss House — National Park Service', url: 'https://www.nps.gov/articles/glenn-curtiss-house.htm', note: 'NPS article on the Curtiss House and its history' },
+    ],
+  },
+  {
+    heading: 'Archives & Research',
+    links: [
+      { label: 'Florida Memory — State Archives of Florida', url: 'https://www.floridamemory.com/', note: 'Public domain photographs and documents, including the Fishbaugh collection of Country Club Estates (1926–1927)' },
+      { label: 'Glenn H. Curtiss Collection — Smithsonian NASM', url: 'https://airandspace.si.edu/collection-archive/glenn-h-curtiss-collection/sova-nasm-xxxx-0053', note: 'Personal and corporate correspondence, photographs, and legal records (1905–1931)' },
+      { label: 'Glenn H. Curtiss Museum, Hammondsport NY', url: 'https://glennhcurtissmuseum.org/', note: 'Personal letters, blueprints, and corporate documents held in Curtiss\'s hometown' },
+      { label: 'Hialeah History Digital Collection', url: 'https://hialeahpubliclibraries.contentdm.oclc.org/', note: 'Holds a 1926 Curtiss-Bright letter to property owners and early aerial photographs' },
+      { label: 'Library of Congress — Glenn Curtiss Photographs', url: 'https://www.loc.gov/photos/?q=glenn+curtiss', note: 'Public domain photographs including Harris & Ewing portrait collection' },
+    ],
+  },
+  {
+    heading: 'Reading',
+    links: [
+      { label: 'WLRN — The untold story of the pioneering aviator who founded Miami Springs', url: 'https://www.wlrn.org/century/2025-12-23/glenn-curtiss-aviator-miami-springs-florida', note: 'WLRN, December 2025' },
+      { label: 'Wikipedia — Miami Springs, Florida', url: 'https://en.wikipedia.org/wiki/Miami_Springs,_Florida', note: '' },
+      { label: 'Wikipedia — Glenn Hammond Curtiss', url: 'https://en.wikipedia.org/wiki/Glenn_Curtiss', note: '' },
+      { label: 'Wikipedia — Glenn Curtiss Mansion', url: 'https://en.wikipedia.org/wiki/Glenn_Curtiss_Mansion', note: '' },
+      { label: 'Wikipedia — Pueblo Revival Architecture', url: 'https://en.wikipedia.org/wiki/Pueblo_Revival_architecture', note: '' },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Resources & References — Miami Springs Historical Society"
+  description="Curated external resources for researching the history of Miami Springs, Florida — archives, historic sites, and authoritative references."
+>
+  <div class="page-wrap">
+    <header class="page-header">
+      <a href="/" class="back-link">← Miami Springs Historical Society</a>
+      <h1 class="page-title">Resources & References</h1>
+      <p class="page-intro">A curated index of authoritative sources for researching the history of Miami Springs, Florida.</p>
+    </header>
+
+    <main class="page-main">
+      {sections.map(section => (
+        <section class="resource-section">
+          <h2 class="resource-heading">{section.heading}</h2>
+          <ul class="resource-list">
+            {section.links.map(link => (
+              <li class="resource-item">
+                <a href={link.url} target="_blank" rel="noopener noreferrer" class="resource-link">{link.label}</a>
+                {link.note && <p class="resource-note">{link.note}</p>}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </main>
+  </div>
+  <Footer />
+</Layout>
+
+<style>
+  .page-wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+  }
+
+  .page-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--color-secondary);
+    padding-bottom: 2.5rem;
+  }
+
+  .back-link {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  .back-link:hover {
+    color: var(--color-primary);
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .page-intro {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    max-width: 560px;
+  }
+
+  .resource-section {
+    margin-bottom: 3rem;
+  }
+
+  .resource-heading {
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  .resource-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .resource-item {
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-bg-alt);
+  }
+
+  .resource-link {
+    font-size: 1rem;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .resource-link:hover {
+    color: var(--color-accent);
+  }
+
+  .resource-note {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+    font-style: italic;
+  }
+</style>
