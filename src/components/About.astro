@@ -50,9 +50,10 @@ const slides = [
   {
     id: 'centennial',
     title: 'One Hundred Years — 1926 to 2026',
-    image: '/curtiss-mansion-entrance.jpg',
-    imageAlt: 'The open entrance doors of the Curtiss Mansion, Miami Springs',
-    credit: '',
+    image: '/curtiss-memorial-circle.jpg',
+    imageAlt: 'Glenn H. Curtiss Memorial Circle, Miami Springs, Florida',
+    credit: 'Eisenthesky Productions released to public domain per file information., CC BY-SA 4.0, via Wikimedia Commons',
+    sealBg: true,
     sepia: false,
     panel: 'right',
     theme: 'light',
@@ -124,7 +125,7 @@ const slides = [
               class={`panel-image${slide.sepia ? ' panel-image--sepia' : ''}`}
               style={slide.imagePosition ? `object-position: ${slide.imagePosition}` : undefined}
             />
-            <div class={`panel-text${slide.panelStyle ? ` panel-text--${slide.panelStyle}` : ''}`}>
+            <div class={`panel-text${slide.panelStyle ? ` panel-text--${slide.panelStyle}` : ''}${slide.sealBg ? ' panel-text--seal' : ''}`}>
               <h3 class="panel-title">{slide.title}</h3>
               <div class="panel-divider"></div>
               {slide.paragraphs.map(p => <p set:html={p} />)}
@@ -292,6 +293,22 @@ const slides = [
 
   .history-panel--dark  .panel-text { background: rgba(42, 26, 14, 0.82); }
   .history-panel--light .panel-text { background: rgba(250, 246, 240, 0.88); }
+
+  .panel-text--seal {
+    overflow: hidden;
+  }
+
+  .panel-text--seal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('/miami-springs-seal.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 65%;
+    opacity: 0.13;
+    pointer-events: none;
+  }
 
   /* Portrait layout */
 
