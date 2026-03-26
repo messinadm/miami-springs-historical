@@ -87,36 +87,38 @@ const slides = [
     <div class="history-slider-wrap">
       <div class="slider-border-top"></div>
 
-      <div class="slider-viewport">
-        <div class="slider-track" id="sliderTrack">
-          {slides.map((slide) => (
-            <div class="slide">
-              <div class="slide-image-wrap">
-                <img src={slide.image} alt={slide.imageAlt} class="slide-image" />
-                {slide.credit && <p class="photo-credit">{slide.credit}</p>}
+      <div class="embla">
+        <div class="embla__viewport">
+          <div class="embla__container">
+            {slides.map((slide) => (
+              <div class="embla__slide slide">
+                <div class="slide-image-wrap">
+                  <img src={slide.image} alt={slide.imageAlt} class="slide-image" />
+                  {slide.credit && <p class="photo-credit">{slide.credit}</p>}
+                </div>
+                <div class="slide-text">
+                  <h2 class="slide-title">{slide.title}</h2>
+                  <div class="slide-divider"></div>
+                  {slide.paragraphs.map(p => <p set:html={p} />)}
+                </div>
               </div>
-              <div class="slide-text">
-                <h2 class="slide-title">{slide.title}</h2>
-                <div class="slide-divider"></div>
-                {slide.paragraphs.map(p => <p set:html={p} />)}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      <div class="slider-controls">
-        <button class="slider-btn" id="prevBtn" aria-label="Previous slide">&#8592;</button>
-        <div class="slider-dots" id="sliderDots">
-          {slides.map((_, i) => (
-            <button
-              class={i === 0 ? 'dot dot--active' : 'dot'}
-              data-index={String(i)}
-              aria-label={`Go to slide ${i + 1}`}
-            />
-          ))}
+        <div class="slider-controls">
+          <button class="slider-btn" id="prevBtn" aria-label="Previous slide">&#8592;</button>
+          <div class="slider-dots" id="sliderDots">
+            {slides.map((_, i) => (
+              <button
+                class={i === 0 ? 'dot dot--active' : 'dot'}
+                data-index={String(i)}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
+          </div>
+          <button class="slider-btn" id="nextBtn" aria-label="Next slide">&#8594;</button>
         </div>
-        <button class="slider-btn" id="nextBtn" aria-label="Next slide">&#8594;</button>
       </div>
     </div>
 
@@ -124,21 +126,21 @@ const slides = [
 </section>
 
 <script>
-  const track = document.getElementById('sliderTrack') as HTMLElement;
-  const dots = Array.from(document.querySelectorAll('#sliderDots .dot')) as HTMLElement[];
-  const total = track.children.length;
-  let current = 0;
+  import EmblaCarousel from 'embla-carousel';
 
-  function goTo(index: number) {
-    dots[current].classList.remove('dot--active');
-    current = ((index % total) + total) % total;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    dots[current].classList.add('dot--active');
+  const viewport = document.querySelector('.embla__viewport') as HTMLElement;
+  const embla = EmblaCarousel(viewport, { loop: true });
+
+  const dots = Array.from(document.querySelectorAll('#sliderDots .dot')) as HTMLElement[];
+
+  function syncDots(index: number) {
+    dots.forEach((d, i) => d.classList.toggle('dot--active', i === index));
   }
 
-  document.getElementById('prevBtn')!.addEventListener('click', () => goTo(current - 1));
-  document.getElementById('nextBtn')!.addEventListener('click', () => goTo(current + 1));
-  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  document.getElementById('prevBtn')!.addEventListener('click', () => embla.scrollPrev());
+  document.getElementById('nextBtn')!.addEventListener('click', () => embla.scrollNext());
+  dots.forEach((dot, i) => dot.addEventListener('click', () => embla.scrollTo(i)));
+  embla.on('select', () => syncDots(embla.selectedScrollSnap()));
 </script>
 
 <style>
@@ -216,20 +218,18 @@ const slides = [
     margin-bottom: 4rem;
   }
 
-  .slider-viewport {
+  .embla__viewport {
     overflow: hidden;
     width: 100%;
   }
 
-  .slider-track {
+  .embla__container {
     display: flex;
-    transition: transform 0.45s ease;
-    will-change: transform;
   }
 
   .slide {
     flex: 0 0 100%;
-    width: 100%;
+    min-width: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
