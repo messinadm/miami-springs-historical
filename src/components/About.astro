@@ -7,39 +7,44 @@ const slides = [
     title: 'A City Born from Vision',
     image: '/glenn-curtiss-portrait.jpg',
     imageAlt: 'Portrait of Glenn Hammond Curtiss, aviation pioneer and founder of Miami Springs',
-    credit: 'Harris & Ewing. Library of Congress, Prints & Photographs Division (LC-DIG-hec-18632). No known restrictions.',
+    credit: 'Harris & Ewing. Library of Congress, Prints & Photographs Division. Public Domain.',
+    sepia: true,
+    panel: 'right',
+    theme: 'dark',
+    layout: 'portrait',
     paragraphs: [
-      'Miami Springs owes its existence to <strong>Glenn Hammond Curtiss</strong> and <strong>James Bright</strong>, who during the 1920s Florida land boom developed what was then called Country Club Estates — one of Florida\'s first planned communities, alongside Coral Gables and Opa-locka.',
-      'Curtiss laid out the city\'s distinctive circular streets and signature Pueblo Revival architecture, incorporating a golf course and country club that still anchors the community today.',
-      'Country Club Estates was officially incorporated in <strong>1926</strong> and later renamed Miami Springs in 1930.',
+      'Miami Springs owes its existence to <strong>Glenn Hammond Curtiss</strong> and <strong>James Bright</strong>, who during the 1920s Florida land boom developed Country Club Estates — one of Florida\'s first planned communities, alongside Coral Gables and Opa-locka.',
+      'Curtiss laid out the city\'s distinctive circular streets and Pueblo Revival architecture. Country Club Estates was incorporated in <strong>1926</strong> and later renamed Miami Springs.',
+    ],
+  },
+  {
+    id: 'eastern',
+    title: 'Home to Eastern Airlines',
+    image: '/eastern-airlines-constellation.jpg',
+    imageAlt: 'Eastern Airlines Super-C Constellation over Miami Beach',
+    credit: 'Wikimedia Commons. Public Domain.',
+    sepia: false,
+    panel: 'right',
+    theme: 'dark',
+    panelStyle: 'bottom-bar',
+    imagePosition: '50% 0%',
+    paragraphs: [
+      'When Eastern Air Lines relocated its operations to Miami\'s 36th Street Airport in 1935, it needed homes for hundreds of employees. <strong>Glenn Curtiss Properties responded</strong> by offering special pricing and financing on Miami Springs homes — making the city the intentional hometown of Eastern\'s workforce.',
+      'For decades, the circular streets of Miami Springs were home to the pilots, mechanics, and crew who built commercial aviation between New York and Florida. The city\'s identity was shaped as much by the airlines as by Curtiss himself.',
     ],
   },
   {
     id: 'architecture',
     title: 'Architecture of the Southwest',
-    // TODO: Replace with a Florida Memory public domain image of Miami Springs Pueblo Revival homes
-    // Browse: https://www.floridamemory.com/collections/photographic/?q=miami+springs+pueblo
-    image: '/curtiss-mansion-entrance.jpg',
-    imageAlt: 'Curtiss Mansion entrance — Pueblo Revival architecture',
-    credit: '',
-    paragraphs: [
-      'Curtiss chose the <strong>Pueblo Revival style</strong> as the architectural theme for Miami Springs — a novelty in 1920s South Florida, drawing on the hand-crafted adobe traditions of the American Southwest.',
-      'The style\'s hallmarks — thick stucco walls, flat roofs, rounded corners, and decorative vigas — gave the city a look unlike anywhere else in Miami-Dade County.',
-      'Several original Pueblo Revival homes remain standing today, and the city maintains a historic preservation guide to protect them. The Glenn Curtiss Mansion is a <strong>Smithsonian-recognized National Historic Site</strong>.',
-    ],
-  },
-  {
-    id: 'aviation',
-    title: 'The Father of Naval Aviation',
-    // TODO: Replace with a Library of Congress public domain photo of Glenn Curtiss
-    // Browse: https://www.loc.gov/photos/?q=glenn+curtiss
     image: '/curtiss-mansion-1927.jpg',
-    imageAlt: 'The Curtiss Mansion, home of aviation pioneer Glenn Curtiss',
+    imageAlt: 'The Curtiss Mansion, circa 1927',
     credit: 'Fishbaugh, W.A. (William Arthur). State Archives of Florida, Florida Memory. Public Domain.',
+    sepia: false,
+    panel: 'left',
+    theme: 'light',
     paragraphs: [
-      '<strong>Glenn Hammond Curtiss</strong> (1878–1930) was one of the most consequential figures in early aviation — rival of the Wright Brothers, holder of hundreds of patents, and the man credited as the "Father of Naval Aviation."',
-      'On July 4, 1908, he piloted the June Bug to the first publicly witnessed flight in North America. His later work on seaplanes and flying boats transformed naval warfare and transatlantic aviation.',
-      'Beyond flight, Curtiss shaped South Florida: he founded <strong>Miami Springs</strong>, Hialeah, and Opa-locka, built the Hialeah Racetrack, and developed the first Miami airport — leaving a legacy that stretches far beyond the cockpit.',
+      'Curtiss chose the <strong>Pueblo Revival style</strong> as the architectural theme for Miami Springs — a novelty in 1920s South Florida, drawing on the adobe traditions of the American Southwest.',
+      'Thick stucco walls, flat roofs, rounded corners, and decorative vigas gave the city a look unlike anywhere else in Miami-Dade County. The Curtiss Mansion is a <strong>Smithsonian-recognized National Historic Site</strong>.',
     ],
   },
   {
@@ -48,9 +53,11 @@ const slides = [
     image: '/curtiss-mansion-entrance.jpg',
     imageAlt: 'The open entrance doors of the Curtiss Mansion, Miami Springs',
     credit: '',
+    sepia: false,
+    panel: 'right',
+    theme: 'light',
     paragraphs: [
-      'In 2026, Miami Springs marks <strong>one hundred years</strong> since its incorporation as Country Club Estates — a century of growth, resilience, and community in one of Florida\'s most distinctive cities.',
-      'The Miami Springs Historical Society is proud to steward this legacy, preserving photographs, documents, and stories that connect residents to the remarkable vision that gave their city life.',
+      'In 2026, Miami Springs marks <strong>one hundred years</strong> since its incorporation — a century of growth, resilience, and community in one of Florida\'s most distinctive cities.',
       '<strong>We invite you to be part of the centennial.</strong> Visit our museum at 501 East Drive, follow us on Facebook, and help us celebrate a hundred years of Miami Springs.',
     ],
   },
@@ -84,51 +91,72 @@ const slides = [
       </div>
     </div>
 
-    <div class="history-slider-wrap">
-      <div class="slider-border-top"></div>
-
-      <div class="embla">
-        <div class="embla__viewport">
-          <div class="embla__container">
-            {slides.map((slide) => (
-              <div class="embla__slide">
-                <div class="slide">
-                  <div class="slide-image-wrap">
-                    <img src={slide.image} alt={slide.imageAlt} class="slide-image" />
-                    {slide.credit && <p class="photo-credit">{slide.credit}</p>}
-                  </div>
-                  <div class="slide-text">
-                    <h2 class="slide-title">{slide.title}</h2>
-                    <div class="slide-divider"></div>
-                    {slide.paragraphs.map(p => <p set:html={p} />)}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <button class="slider-btn slider-btn--prev" id="prevBtn" aria-label="Previous slide">&#8592;</button>
-        <button class="slider-btn slider-btn--next" id="nextBtn" aria-label="Next slide">&#8594;</button>
-      </div>
-    </div>
-
   </div>
+
+  <div class="history-wrap" id="history">
+    <div class="container">
+      <h2 class="history-heading section-title"><a href="#history">A History of Miami Springs</a></h2>
+      <div class="divider"></div>
+    </div>
+    {slides.map((slide, i) => (
+      <div class={`history-panel history-panel--${slide.theme}${slide.layout === 'portrait' ? ' history-panel--portrait' : ` history-panel--${slide.panel}`}`}>
+        {slide.layout === 'portrait' ? (
+          <>
+            <div class="portrait-text">
+              <h3 class="panel-title">{slide.title}</h3>
+              <div class="panel-divider"></div>
+              {slide.paragraphs.map(p => <p set:html={p} />)}
+              {slide.credit && <p class="photo-credit">{slide.credit}</p>}
+            </div>
+            <div class="portrait-image-wrap">
+              <img
+                src={slide.image}
+                alt={slide.imageAlt}
+                class={`portrait-img${slide.sepia ? ' panel-image--sepia' : ''}`}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <img
+              src={slide.image}
+              alt={slide.imageAlt}
+              class={`panel-image${slide.sepia ? ' panel-image--sepia' : ''}`}
+              style={slide.imagePosition ? `object-position: ${slide.imagePosition}` : undefined}
+            />
+            <div class={`panel-text${slide.panelStyle ? ` panel-text--${slide.panelStyle}` : ''}`}>
+              <h3 class="panel-title">{slide.title}</h3>
+              <div class="panel-divider"></div>
+              {slide.paragraphs.map(p => <p set:html={p} />)}
+              {slide.credit && <p class="photo-credit">{slide.credit}</p>}
+            </div>
+          </>
+        )}
+        <span class="panel-counter" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+      </div>
+    ))}
+  </div>
+
 </section>
 
 <script>
-  import EmblaCarousel from 'embla-carousel';
-
-  const viewport = document.querySelector('.embla__viewport') as HTMLElement;
-  const embla = EmblaCarousel(viewport, { loop: true });
-
-  document.getElementById('prevBtn')!.addEventListener('click', () => embla.scrollPrev());
-  document.getElementById('nextBtn')!.addEventListener('click', () => embla.scrollNext());
+  const panels = document.querySelectorAll('.history-panel');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+  panels.forEach(p => observer.observe(p));
 </script>
 
 <style>
   .about-section {
-    padding: 5rem 0;
+    padding: 5rem 0 0;
     background-color: var(--color-bg);
   }
 
@@ -190,112 +218,233 @@ const slides = [
     color: var(--color-primary);
   }
 
-  /* Slider */
+  /* ── History panels ─────────────────────────────────── */
 
-  .history-slider-wrap {
+  .history-wrap {
     margin-top: 5rem;
-    background-color: var(--color-bg-alt);
-  }
-
-  .slider-border-top {
     border-top: 1px solid var(--color-secondary);
-    margin-bottom: 4rem;
+    padding-top: 4rem;
   }
 
-  .embla__viewport {
-    overflow: hidden;
-    width: 100%;
-  }
-
-  .embla__container {
-    display: flex;
-  }
-
-  .embla__slide {
-    flex: 0 0 100%;
-    min-width: 0;
-  }
-
-  .slide {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-    padding: 3rem 4rem;
-  }
-
-  .slide-image {
-    width: 100%;
-    filter: sepia(35%) contrast(0.9);
-    border: 4px solid var(--color-secondary);
-  }
-
-  .photo-credit {
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
-    margin-top: 0.5rem;
-    font-style: italic;
-  }
-
-  .slide-title {
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    color: var(--color-primary);
+  .history-heading {
     margin-bottom: 1rem;
   }
 
-  .slide-divider {
-    width: 60px;
-    height: 3px;
-    background-color: var(--color-secondary);
-    margin-bottom: 1.75rem;
-  }
+  /* Panel base */
 
-  .slide-text p {
-    margin-bottom: 1.25rem;
-    color: var(--color-text);
-  }
-
-  .slide-text strong {
-    color: var(--color-primary);
-  }
-
-  /* Controls */
-
-  .embla {
+  .history-panel {
     position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: var(--color-text);
   }
 
-  .slider-btn {
+  /* Full-bleed image */
+
+  .panel-image {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(250, 246, 240, 0.9);
-    border: 2px solid var(--color-secondary);
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    width: 3rem;
-    height: 3rem;
-    cursor: pointer;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .panel-image--sepia {
+    filter: sepia(40%) contrast(0.9);
+  }
+
+  @keyframes kenburns {
+    from { transform: scale(1); }
+    to   { transform: scale(1.06); }
+  }
+
+  .history-panel.is-visible .panel-image {
+    animation: kenburns 15s ease-out forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .history-panel.is-visible .panel-image {
+      animation: none;
+    }
+  }
+
+  /* Text overlay */
+
+  .panel-text {
+    position: absolute;
+    bottom: 2.5rem;
+    width: 46%;
+    padding: 2rem 2.5rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .history-panel--left  .panel-text { left:  3rem; }
+  .history-panel--right .panel-text { right: 3rem; }
+
+  .panel-text--bottom-bar {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0;
+    width: 100%;
+    padding: 1.5rem 3rem;
+  }
+
+  .history-panel--dark  .panel-text { background: rgba(42, 26, 14, 0.82); }
+  .history-panel--light .panel-text { background: rgba(250, 246, 240, 0.88); }
+
+  /* Portrait layout */
+
+  .history-panel--portrait {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-text);
+    padding: 3rem 6rem;
+    gap: 4rem;
+  }
+
+  .portrait-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .history-panel--portrait .panel-title { color: var(--color-bg); }
+  .history-panel--portrait p { color: rgba(250, 246, 240, 0.92); font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.75rem; }
+  .history-panel--portrait p:last-child { margin-bottom: 0; }
+  .history-panel--portrait strong { color: var(--color-secondary); }
+  .history-panel--portrait .panel-counter { left: 4.5rem; right: unset; }
+
+  .portrait-image-wrap {
+    flex: 0 0 38%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.2s, background-color 0.2s;
-    z-index: 10;
   }
 
-  .slider-btn--prev { left: -1.5rem; }
-  .slider-btn--next { right: -1.5rem; }
-
-  .slider-btn:hover {
-    border-color: var(--color-primary);
-    background-color: var(--color-bg-alt);
+  .portrait-img {
+    max-height: calc(100% - 4rem);
+    width: 100%;
+    object-fit: contain;
+    border: 4px solid var(--color-secondary);
   }
 
-  @media (max-width: 760px) {
-    .slide {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+  /* Panel titles */
+
+  .panel-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 2.25vw, 1.75rem);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .history-panel--dark  .panel-title { color: var(--color-bg); }
+  .history-panel--light .panel-title { color: var(--color-primary); }
+
+  .panel-divider {
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-accent);
+    margin-bottom: 1.25rem;
+  }
+
+  .panel-text p {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .panel-text p:last-child { margin-bottom: 0; }
+
+  .history-panel--dark  .panel-text p { color: rgba(250, 246, 240, 0.92); }
+  .history-panel--light .panel-text p { color: var(--color-text); }
+
+  .history-panel--dark  .panel-text strong { color: var(--color-secondary); }
+  .history-panel--light .panel-text strong { color: var(--color-primary); }
+
+  .photo-credit {
+    font-size: 0.7rem !important;
+    font-style: italic;
+    opacity: 0.65;
+    margin-top: 1rem !important;
+  }
+
+  /* Chapter counter */
+
+  .panel-counter {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    font-family: var(--font-display);
+    font-size: 0.8125rem;
+    letter-spacing: 0.12em;
+  }
+
+  .history-panel--dark  .panel-counter { color: rgba(250, 246, 240, 0.7); }
+  .history-panel--light .panel-counter { color: rgba(42, 26, 14, 0.6); }
+
+  /* ── Mobile ─────────────────────────────────────────── */
+
+  @media (max-width: 768px) {
+    .history-panel {
+      aspect-ratio: unset;
+      overflow: visible;
+      display: flex;
+      flex-direction: column;
+      background: none;
     }
+
+    .panel-image {
+      position: relative;
+      inset: unset;
+      width: 100%;
+      height: 55vw;
+      object-fit: cover;
+      animation: none !important;
+    }
+
+    .panel-text,
+    .panel-text--bottom-bar {
+      position: relative !important;
+      inset: unset !important;
+      left: unset !important;
+      right: unset !important;
+      bottom: unset !important;
+      width: 100% !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      padding: 1.75rem 1.5rem !important;
+    }
+
+    .history-panel--dark  .panel-text { background: var(--color-text); }
+    .history-panel--light .panel-text { background: var(--color-bg-alt); }
+
+    .history-panel--portrait {
+      flex-direction: column;
+      padding: 0;
+      gap: 0;
+    }
+
+    .portrait-image-wrap {
+      flex: none;
+      width: 100%;
+      height: 60vw;
+      justify-content: unset;
+    }
+
+    .portrait-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      border: none;
+      max-height: unset;
+    }
+
+    .portrait-text {
+      padding: 1.75rem 1.5rem;
+      background: var(--color-text);
+    }
+
+    .panel-counter { display: none; }
   }
 </style>
