@@ -19,6 +19,8 @@ import generalSettings from '../data/general.json';
 
       <!-- Visit Info -->
       <section class="visit-section">
+        <h2 class="section-heading">Visit the Museum</h2>
+        <div class="divider"></div>
         <div class="visit-cards">
           <div class="visit-card">
             <h3>Hours</h3>
@@ -147,6 +149,7 @@ import generalSettings from '../data/general.json';
             </div>
           </div>
         </div>
+        <p class="satellite-closing">Questions about visiting? <a href={`mailto:${generalSettings.email}`}>Contact us.</a></p>
       </section>
 
     </main>
@@ -191,7 +194,6 @@ import generalSettings from '../data/general.json';
   .page-intro {
     font-size: 1rem;
     color: var(--color-text-muted);
-    max-width: 560px;
   }
 
   /* ── Visit cards ──────────────────────────────────────── */
@@ -342,6 +344,7 @@ import generalSettings from '../data/general.json';
     font-size: 1rem;
     color: var(--color-text-muted);
     line-height: 1.7;
+    max-width: 480px;
   }
 
   .donate-section a {
@@ -351,15 +354,24 @@ import generalSettings from '../data/general.json';
   /* ── Satellite locations ──────────────────────────────── */
 
   .satellite-section {
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
   }
 
   .satellite-intro {
     font-size: 1rem;
     color: var(--color-text-muted);
-    max-width: 600px;
     line-height: 1.7;
     margin-bottom: 2rem;
+  }
+
+  .satellite-closing {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    margin-top: 2rem;
+  }
+
+  .satellite-closing a {
+    color: var(--color-primary);
   }
 
   .satellite-cards {
