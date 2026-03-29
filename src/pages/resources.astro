@@ -188,12 +188,13 @@ const sections = [
   .resource-link {
     font-size: 1rem;
     color: var(--color-primary);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    border-bottom: 1px solid var(--color-secondary);
+    padding-bottom: 1px;
   }
 
   .resource-link:hover {
     color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
   }
 
   .resource-note {
