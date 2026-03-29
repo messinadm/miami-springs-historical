@@ -18,8 +18,8 @@ import generalSettings from '../data/general.json';
     <main id="main-content" class="page-main">
 
       <!-- Visit Info -->
-      <section class="visit-section">
-        <h2 class="section-heading">Visit the Museum</h2>
+      <section class="visit-section" aria-labelledby="visit-heading">
+        <h2 id="visit-heading" class="section-heading">Visit the Museum</h2>
         <div class="divider"></div>
         <div class="visit-cards">
           <div class="visit-card">
@@ -42,8 +42,8 @@ import generalSettings from '../data/general.json';
       </section>
 
       <!-- Exhibits -->
-      <section class="exhibits-section">
-        <h2 class="section-heading">Exhibits</h2>
+      <section class="exhibits-section" aria-labelledby="exhibits-heading">
+        <h2 id="exhibits-heading" class="section-heading">Exhibits</h2>
         <div class="divider"></div>
 
         <div class="exhibit">
@@ -111,22 +111,22 @@ import generalSettings from '../data/general.json';
 
       <!-- Gift Shop & Artifact Donations -->
       <div class="bottom-pair">
-        <section class="gift-section">
-          <h2 class="section-heading">Gift Shop</h2>
+        <section class="gift-section" aria-labelledby="gift-heading">
+          <h2 id="gift-heading" class="section-heading">Gift Shop</h2>
           <div class="divider"></div>
           <p>Browse our gift shop for unique historical gifts and keepsakes — all proceeds support the museum. The Miami Springs Historical Society is a 501(c)(3) nonprofit, so your purchases and donations are tax-deductible.</p>
         </section>
 
-        <section class="donate-section">
-          <h2 class="section-heading">Donate Artifacts</h2>
+        <section class="donate-section" aria-labelledby="donate-heading">
+          <h2 id="donate-heading" class="section-heading">Donate Artifacts</h2>
           <div class="divider"></div>
           <p>Interested in donating artifacts, photographs, or memorabilia to the museum? <a href={`mailto:${generalSettings.email}`}>Contact us</a> — we'd love to hear from you.</p>
         </section>
       </div>
 
       <!-- Satellite Locations -->
-      <section class="satellite-section">
-        <h2 class="section-heading">Also Find Us At</h2>
+      <section class="satellite-section" aria-labelledby="satellite-heading">
+        <h2 id="satellite-heading" class="section-heading">Also Find Us At</h2>
         <div class="divider"></div>
         <p class="satellite-intro">In addition to our main museum, the Historical Society maintains exhibits at several locations around Miami Springs.</p>
         <div class="satellite-cards">
