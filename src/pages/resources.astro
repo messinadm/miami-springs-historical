@@ -95,15 +95,15 @@ const sections = [
 >
   <div class="page-wrap">
     <header class="page-header">
-      <a href="/" class="back-link">← Miami Springs Historical Society</a>
+      <a href="/" class="back-link">← Back to Home</a>
       <h1 class="page-title">Resources & References</h1>
       <p class="page-intro">A curated index of authoritative sources for researching the history of Miami Springs, Florida.</p>
     </header>
 
     <main id="main-content" class="page-main">
-      {sections.map(section => (
-        <section class="resource-section">
-          <h2 class="section-heading">{section.heading}</h2>
+      {sections.map((section, i) => (
+        <section class="resource-section" aria-labelledby={`resource-heading-${i}`}>
+          <h2 id={`resource-heading-${i}`} class="section-heading">{section.heading}</h2>
           <ul class="resource-list">
             {section.links.map(link => (
               <li class="resource-item">
@@ -156,7 +156,6 @@ const sections = [
   .page-intro {
     font-size: 1rem;
     color: var(--color-text-muted);
-    max-width: 560px;
   }
 
   .resource-section {
