@@ -69,7 +69,7 @@ const slides = [
   <div class="container">
 
     <div class="about-top">
-      <h2 class="section-title"><a href="#about">About the Society</a></h2>
+      <h2 class="section-heading"><a href="#about">About the Society</a></h2>
       <div class="divider"></div>
       <p class="about-body">{generalSettings.about}</p>
       <div class="info-cards">
@@ -108,7 +108,7 @@ const slides = [
 
   <div class="history-wrap" id="history">
     <div class="container">
-      <h2 class="history-heading section-title"><a href="#history">A History of Miami Springs</a></h2>
+      <h2 class="history-heading section-heading"><a href="#history">A History of Miami Springs</a></h2>
       <div class="divider"></div>
     </div>
     {slides.map((slide, i) => (
@@ -179,9 +179,9 @@ const slides = [
     padding: 0 2rem;
   }
 
-  .section-title {
+  .section-heading {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 5vw, 2.25rem);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
     color: var(--color-primary);
     margin-bottom: 1rem;
     text-align: center;
