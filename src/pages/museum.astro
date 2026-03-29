@@ -107,19 +107,20 @@ import generalSettings from '../data/general.json';
         </div>
       </section>
 
-      <!-- Gift Shop -->
-      <section class="gift-section">
-        <h2 class="section-heading">Gift Shop</h2>
-        <div class="divider"></div>
-        <p>Browse our gift shop for unique historical gifts and keepsakes — all proceeds support the museum. The Miami Springs Historical Society is a 501(c)(3) nonprofit, so your purchases and donations are tax-deductible.</p>
-      </section>
+      <!-- Gift Shop & Artifact Donations -->
+      <div class="bottom-pair">
+        <section class="gift-section">
+          <h2 class="section-heading">Gift Shop</h2>
+          <div class="divider"></div>
+          <p>Browse our gift shop for unique historical gifts and keepsakes — all proceeds support the museum. The Miami Springs Historical Society is a 501(c)(3) nonprofit, so your purchases and donations are tax-deductible.</p>
+        </section>
 
-      <!-- Artifact Donations -->
-      <section class="donate-section">
-        <h2 class="section-heading">Donate Artifacts</h2>
-        <div class="divider"></div>
-        <p>Interested in donating artifacts, photographs, or memorabilia to the museum? <a href={`mailto:${generalSettings.email}`}>Contact us</a> — we'd love to hear from you.</p>
-      </section>
+        <section class="donate-section">
+          <h2 class="section-heading">Donate Artifacts</h2>
+          <div class="divider"></div>
+          <p>Interested in donating artifacts, photographs, or memorabilia to the museum? <a href={`mailto:${generalSettings.email}`}>Contact us</a> — we'd love to hear from you.</p>
+        </section>
+      </div>
 
       <!-- Satellite Locations -->
       <section class="satellite-section">
@@ -324,16 +325,22 @@ import generalSettings from '../data/general.json';
 
   /* ── Gift shop & donations ────────────────────────────── */
 
+  .bottom-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+  }
+
   .gift-section,
   .donate-section {
-    margin-bottom: 4rem;
+    margin-bottom: 0;
   }
 
   .gift-section p,
   .donate-section p {
     font-size: 1rem;
     color: var(--color-text-muted);
-    max-width: 600px;
     line-height: 1.7;
   }
 
@@ -399,6 +406,11 @@ import generalSettings from '../data/general.json';
     .exhibit-image,
     .exhibit-image--portrait {
       height: 240px;
+    }
+
+    .bottom-pair {
+      grid-template-columns: 1fr;
+      gap: 2rem;
     }
   }
 </style>
