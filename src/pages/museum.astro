@@ -72,7 +72,7 @@ import generalSettings from '../data/general.json';
             <p>Glenn Curtiss's flight schools trained some of aviation's most significant pioneers — including the first Japanese, Indian, Cuban, and Puerto Rican aviators. Among them: <strong>Agustín Parlá</strong>, the "Father of Cuban Aviation," who trained at Curtiss's Miami school in 1912. This exhibit tells the story of how Curtiss opened aviation to the world.</p>
           </div>
           <div class="exhibit-image-wrap">
-            <img src="/curtiss-school-1912.jpg" alt="Glenn Curtiss flight school students, 1912" class="exhibit-image exhibit-image--portrait" style="object-position: center 12.5%;" />
+            <img src="/curtiss-school-1912.jpg" alt="Glenn Curtiss flight school students, 1912" class="exhibit-image exhibit-image--portrait exhibit-image--offset" />
           </div>
         </div>
 
@@ -316,6 +316,10 @@ import generalSettings from '../data/general.json';
     height: 400px;
     object-fit: cover;
     object-position: center top;
+  }
+
+  .exhibit-image--offset {
+    object-position: center 12.5%;
   }
 
   .photo-credit {
