@@ -63,6 +63,7 @@ const {
     />
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <slot />
   </body>
 </html>
@@ -119,6 +120,23 @@ const {
     background-image:
       repeating-linear-gradient(45deg, rgba(42,26,14,0.04) 0px, rgba(42,26,14,0.04) 1px, transparent 1px, transparent 7px),
       repeating-linear-gradient(-45deg, rgba(42,26,14,0.04) 0px, rgba(42,26,14,0.04) 1px, transparent 1px, transparent 7px);
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    background: var(--color-primary);
+    color: var(--color-bg);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-family: var(--font-body);
+    z-index: 9999;
+    border-bottom: none;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
   }
 
   a {
