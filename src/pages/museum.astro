@@ -1,0 +1,440 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+import generalSettings from '../data/general.json';
+---
+
+<Layout
+  title="Museum — Miami Springs Historical Society"
+  description="Visit the Miami Springs Historical Society Museum at 501 East Drive. Free admission. Exhibits on aviation history, the city's founding, the Miami Battle Creek Sanitarium, and more."
+>
+  <div class="page-wrap">
+    <header class="page-header">
+      <a href="/" class="back-link">← Miami Springs Historical Society</a>
+      <h1 class="page-title">Our Museum</h1>
+      <p class="page-intro">Three rooms of exhibits exploring the history of Miami Springs — from its founding to its aviation legacy and beyond.</p>
+    </header>
+
+    <main class="page-main">
+
+      <!-- Visit Info -->
+      <section class="visit-section">
+        <div class="visit-cards">
+          <div class="visit-card">
+            <h3>Hours</h3>
+            <p>{generalSettings.hours}</p>
+          </div>
+          <div class="visit-card">
+            <h3>Location</h3>
+            <p>501 East Drive<br />Miami Springs, FL 33166</p>
+          </div>
+          <div class="visit-card">
+            <h3>Admission</h3>
+            <p>Free. Donations welcome and tax-deductible — we are a 501(c)(3) nonprofit.</p>
+          </div>
+          <div class="visit-card">
+            <h3>Parking & Transit</h3>
+            <p>Free parking on-site. Accessible by several nearby bus routes. Walking distance from hotels along NW 36th Street.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Exhibits -->
+      <section class="exhibits-section">
+        <h2 class="section-heading">Exhibits</h2>
+        <div class="divider"></div>
+
+        <div class="exhibit">
+          <div class="exhibit-text">
+            <h3>City of Miami Springs</h3>
+            <p>A comprehensive exhibit on the evolution of Miami Springs — from Glenn Curtiss and James Bright's 1920s vision through a century of community growth. Featuring photographs, maps, and detailed historical information tracing the city's remarkable story.</p>
+          </div>
+          <div class="exhibit-image-wrap">
+            <img src="/museum-homestead.jpg" alt="Historical exhibit on the City of Miami Springs" class="exhibit-image" />
+          </div>
+        </div>
+
+        <div class="exhibit exhibit--reverse">
+          <div class="exhibit-text">
+            <h3>Aviation & Airline History</h3>
+            <p>A significant collection of memorabilia, collectibles, artifacts, and ephemera from the myriad airlines that have served Miami over the years — including Eastern Air Lines, Pan American Airways, and beyond. Stewardess uniforms spanning decades bring the golden age of aviation to life.</p>
+          </div>
+          <div class="exhibit-image-wrap">
+            <img src="/museum-eastern.jpg" alt="Stewardess uniforms and airline memorabilia exhibit" class="exhibit-image exhibit-image--portrait" />
+          </div>
+        </div>
+
+        <div class="exhibit">
+          <div class="exhibit-text">
+            <h3>Glenn Curtiss Flight Schools</h3>
+            <p>Glenn Curtiss's network of flight schools trained some of the most historically significant aviators of the early 20th century. Among them: <strong>Motohisa Kondo</strong>, the first Japanese aviator; <strong>Mohan Singh</strong>, the first person from India to earn a pilot's license; <strong>Agustín Parlá</strong>, the first Cuban aviator — known as the "Father of Cuban Aviation" — who trained at Curtiss's Miami school in January 1912; and <strong>Rafael Martí</strong> of San Juan, Puerto Rico, who enrolled in January 1912, roomed with Parlá in Hammondsport, completed his qualifying flights in a Curtiss Model D, and was featured alongside Parlá in the June and July 1912 issues of <em>Aeronautics</em> magazine — Puerto Rico's first trained aviator. This exhibit documents Curtiss's outsized and often overlooked role in opening aviation to the world.</p>
+          </div>
+          <div class="exhibit-image-wrap">
+            <img src="/flight-school.jpg" alt="Glenn Curtiss flight schools in South Florida exhibit" class="exhibit-image exhibit-image--portrait" />
+          </div>
+        </div>
+
+        <div class="exhibit exhibit--reverse">
+          <div class="exhibit-text">
+            <h3>Pan American Airways — Dinner Key Diorama</h3>
+            <p>A new exhibit featuring a detailed diorama of the historic Pan American Airways Flying Clipper Seaplane Terminal at Dinner Key, circa 1935 — one of the most evocative landmarks of Miami's aviation golden age.</p>
+          </div>
+          <div class="exhibit-image-wrap">
+            <img src="/museum-panam.jpg" alt="Pan American Airways Dinner Key diorama exhibit" class="exhibit-image exhibit-image--portrait" />
+          </div>
+        </div>
+
+        <div class="exhibit">
+          <div class="exhibit-text">
+            <h3>Miami Battle Creek Sanitarium — Immersive Video</h3>
+            <p>An immersive video room exploring the Hotel Country Club — built by Glenn Curtiss in 1926 — and its transformation into the Miami Battle Creek Sanitarium under Dr. John Harvey Kellogg after the 1929 economic collapse. The building at 201 Curtiss Parkway, a Miami Springs Historic Site since 1984, later became a nursing home and continues in that role today.</p>
+            <a href="https://www.miamisprings-fl.gov/community/page/hotel-country-club-fairhavens" target="_blank" rel="noopener noreferrer" class="exhibit-link">City historic site record →</a>
+          </div>
+          <div class="exhibit-image-wrap">
+            <img src="/kellogg-sanitarium-1928.jpg" alt="Kellogg Southern Sanitarium, Miami Springs, 1928" class="exhibit-image" />
+            <p class="photo-credit">Jesse S. Wooley, 1928. Floyd and Marion Rinhart Photograph Collection, University of Miami Libraries. Public domain.</p>
+          </div>
+        </div>
+
+        <div class="exhibit exhibit--reverse">
+          <div class="exhibit-text">
+            <h3>The Flamingo Flamboyance</h3>
+            <p>A beloved exhibit on the surprising 2022 visits of a flock of flamingos from the Hialeah Race Track to Miami Springs — an unexpected natural spectacle that captured the community's imagination.</p>
+          </div>
+          <div class="exhibit-image-wrap">
+            <img src="/museum-flamingos.jpg" alt="Flamingo flamboyance exhibit" class="exhibit-image exhibit-image--portrait" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Gift Shop -->
+      <section class="gift-section">
+        <h2 class="section-heading">Gift Shop</h2>
+        <div class="divider"></div>
+        <p>The museum features a small gift shop. All proceeds support the museum fund. The Miami Springs Historical Society is a 501(c)(3) nonprofit — donations are tax-deductible.</p>
+      </section>
+
+      <!-- Artifact Donations -->
+      <section class="donate-section">
+        <h2 class="section-heading">Donate Artifacts</h2>
+        <div class="divider"></div>
+        <p>Interested in donating artifacts, photographs, or memorabilia to the museum? <a href={`mailto:${generalSettings.email}`}>Contact us</a> — we'd love to hear from you.</p>
+      </section>
+
+      <!-- Satellite Locations -->
+      <section class="satellite-section">
+        <h2 class="section-heading">Also Find Us At</h2>
+        <div class="divider"></div>
+        <p class="satellite-intro">In addition to our main museum, the Historical Society maintains small satellite installations at several locations around Miami Springs.</p>
+        <div class="satellite-cards">
+          <div class="satellite-card">
+            <div class="satellite-card-text">
+              <h3>Adult Community Center</h3>
+              <p>101 Apache Street, Miami Springs<br />Monday – Friday, 8:00 AM – 4:00 PM<br />Free admission</p>
+            </div>
+          </div>
+          <div class="satellite-card">
+            <div class="satellite-card-text">
+              <h3>Miami Springs High School</h3>
+              <p>A satellite museum in the school lobby, open during school hours.</p>
+            </div>
+          </div>
+          <div class="satellite-card">
+            <div class="satellite-card-text">
+              <h3>Miami Springs City Hall</h3>
+              <p>Large model vintage aircraft on display in City Hall.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <Footer />
+</Layout>
+
+<style>
+  .page-wrap {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 5rem 2rem 4rem;
+  }
+
+  .page-header {
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid var(--color-secondary);
+    padding-bottom: 2.5rem;
+  }
+
+  .back-link {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+  }
+
+  .back-link:hover {
+    color: var(--color-primary);
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .page-intro {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    max-width: 560px;
+  }
+
+  /* ── Visit cards ──────────────────────────────────────── */
+
+  .visit-section {
+    margin-bottom: 3rem;
+  }
+
+  .visit-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .visit-card {
+    background-color: var(--color-bg-alt);
+    border-left: 3px solid var(--color-primary);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .visit-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.4rem;
+  }
+
+  .visit-card p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── Hero photo ───────────────────────────────────────── */
+
+  .photo-section {
+    margin-bottom: 4rem;
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ── Section headings ─────────────────────────────────── */
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Exhibits ─────────────────────────────────────────── */
+
+  .exhibits-section {
+    margin-bottom: 4rem;
+  }
+
+  .exhibit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--color-secondary);
+  }
+
+  .exhibit:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .exhibit--reverse {
+    direction: rtl;
+  }
+
+  .exhibit--reverse > * {
+    direction: ltr;
+  }
+
+  .exhibit-text h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .exhibit-text p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .exhibit-link {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 2px;
+  }
+
+  .exhibit-link:hover {
+    color: var(--color-accent);
+  }
+
+  .exhibit-image-wrap {
+    overflow: hidden;
+  }
+
+  .exhibit-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .exhibit-image--portrait {
+    height: 400px;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .photo-credit {
+    font-size: 0.725rem;
+    font-style: italic;
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
+  }
+
+  /* ── Gift shop & donations ────────────────────────────── */
+
+  .gift-section,
+  .donate-section {
+    margin-bottom: 4rem;
+  }
+
+  .gift-section p,
+  .donate-section p {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    line-height: 1.7;
+  }
+
+  .donate-section a {
+    color: var(--color-primary);
+  }
+
+  /* ── Satellite locations ──────────────────────────────── */
+
+  .satellite-section {
+    margin-bottom: 2rem;
+  }
+
+  .satellite-intro {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .satellite-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .satellite-card {
+    background-color: var(--color-bg-alt);
+    border-left: 3px solid var(--color-accent);
+    overflow: hidden;
+  }
+
+  .satellite-card-image-wrap {
+    overflow: hidden;
+  }
+
+  .satellite-card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .satellite-card-text {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .satellite-card-text--solo {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 120px;
+  }
+
+  .satellite-card h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 0.4rem;
+  }
+
+  .satellite-card p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── Mobile ───────────────────────────────────────────── */
+
+  @media (max-width: 768px) {
+    .exhibit {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .exhibit--reverse {
+      direction: ltr;
+    }
+
+    .hero-photo {
+      height: 250px;
+    }
+
+    .exhibit-image,
+    .exhibit-image--portrait {
+      height: 240px;
+    }
+  }
+</style>

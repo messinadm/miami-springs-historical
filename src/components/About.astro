@@ -90,6 +90,18 @@ const slides = [
           </p>
         </div>
       </div>
+
+      <div class="museum-teaser">
+        <div class="museum-teaser-image-wrap">
+          <img src="/museum-exterior.jpg" alt="Miami Springs Historical Society Museum at 501 East Drive" class="museum-teaser-image" />
+        </div>
+        <div class="museum-teaser-text">
+          <h3 class="museum-teaser-heading">Our Museum</h3>
+          <div class="divider" style="margin: 0 0 1.25rem;"></div>
+          <p>Our museum features three rooms of exhibits spanning Miami Springs aviation history, the city's founding and growth, and the remarkable story of the Miami Battle Creek Sanitarium. Interactive multimedia, artifacts, memorabilia, and a small gift shop — all free to visit.</p>
+          <a href="/museum" class="museum-teaser-link">Explore the Museum →</a>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -217,6 +229,65 @@ const slides = [
 
   .info-card a {
     color: var(--color-primary);
+  }
+
+  /* ── Museum teaser ───────────────────────────────────── */
+
+  .museum-teaser {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-secondary);
+  }
+
+  .museum-teaser-image-wrap {
+    overflow: hidden;
+  }
+
+  .museum-teaser-image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .museum-teaser-heading {
+    font-family: var(--font-display);
+    font-size: 1.375rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .museum-teaser-text p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .museum-teaser-link {
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+
+  .museum-teaser-link:hover {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .museum-teaser {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
   }
 
   /* ── History panels ─────────────────────────────────── */
