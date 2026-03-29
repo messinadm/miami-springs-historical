@@ -1,4 +1,6 @@
 ---
+const { pathname } = Astro.url;
+const isMuseum = pathname.startsWith('/museum');
 ---
 
 <nav>
@@ -9,7 +11,7 @@
     </button>
     <ul class="nav-links">
       <li><a href="/#about">About</a></li>
-      <li><a href="/museum">Museum</a></li>
+      <li><a href="/museum" aria-current={isMuseum ? 'page' : undefined}>Museum</a></li>
       <li><a href="/#history">History</a></li>
       <li><a href="/#events">Events</a></li>
       <li><a href="/#connect">Connect</a></li>
