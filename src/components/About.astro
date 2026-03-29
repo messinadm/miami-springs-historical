@@ -362,8 +362,8 @@ const slides = [
     padding: 1.5rem 3rem;
   }
 
-  .history-panel--dark  .panel-text { background: rgba(42, 26, 14, 0.82); }
-  .history-panel--light .panel-text { background: rgba(250, 246, 240, 0.88); }
+  .history-panel--dark  .panel-text { background: var(--color-overlay-dark); }
+  .history-panel--light .panel-text { background: var(--color-overlay-light); }
 
   .panel-text--seal {
     overflow: hidden;
@@ -397,7 +397,7 @@ const slides = [
   }
 
   .history-panel--portrait .panel-title { color: var(--color-bg); }
-  .history-panel--portrait p { color: rgba(250, 246, 240, 0.92); font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.75rem; }
+  .history-panel--portrait p { color: var(--color-panel-text-light); font-size: 0.9375rem; line-height: 1.7; margin-bottom: 0.75rem; }
   .history-panel--portrait p:last-child { margin-bottom: 0; }
   .history-panel--portrait strong { color: var(--color-secondary); }
   .history-panel--portrait .panel-counter { left: 4.5rem; right: unset; }
@@ -443,7 +443,7 @@ const slides = [
 
   .panel-text p:last-child { margin-bottom: 0; }
 
-  .history-panel--dark  .panel-text p { color: rgba(250, 246, 240, 0.92); }
+  .history-panel--dark  .panel-text p { color: var(--color-panel-text-light); }
   .history-panel--light .panel-text p { color: var(--color-text); }
 
   .history-panel--dark  .panel-text strong { color: var(--color-secondary); }
@@ -467,8 +467,8 @@ const slides = [
     letter-spacing: 0.12em;
   }
 
-  .history-panel--dark  .panel-counter { color: rgba(250, 246, 240, 0.7); }
-  .history-panel--light .panel-counter { color: rgba(42, 26, 14, 0.6); }
+  .history-panel--dark  .panel-counter { color: var(--color-panel-counter-light); }
+  .history-panel--light .panel-counter { color: var(--color-panel-counter-dark); }
 
   /* ── Mobile ─────────────────────────────────────────── */
 
