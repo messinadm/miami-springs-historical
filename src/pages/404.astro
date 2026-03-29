@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
   title="Page Not Found — Miami Springs Historical Society"
   description="This page doesn't exist, much like the many lots sold during the 1920s land boom that were never developed."
 >
-  <main class="not-found">
+  <main id="main-content" class="not-found">
     <div class="image-wrap">
       <img
         src="/circle-park-1926.jpg"
@@ -86,7 +86,7 @@ import Layout from '../layouts/Layout.astro';
   h1 {
     font-family: var(--font-display);
     font-size: clamp(2rem, 6vw, 3.75rem);
-    color: #fff;
+    color: var(--color-white);
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 1.5rem;
@@ -106,7 +106,7 @@ import Layout from '../layouts/Layout.astro';
     display: inline-block;
     padding: 0.75rem 2rem;
     background-color: var(--color-primary);
-    color: #fff;
+    color: var(--color-white);
     text-decoration: none;
     font-family: var(--font-body);
     font-size: 0.8125rem;
@@ -119,7 +119,7 @@ import Layout from '../layouts/Layout.astro';
   .btn:hover {
     background-color: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
-    color: #fff;
+    color: var(--color-white);
   }
 
   .photo-credit {
