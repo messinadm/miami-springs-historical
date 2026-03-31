@@ -21,7 +21,7 @@ const base = isEs ? '/es' : '';
       <li><a href={`${base}/#connect`}>{t('nav.connect')}</a></li>
       <li><a href={`${base}/#board`}>{t('nav.board')}</a></li>
       <li class="nav-lang">
-        <a href={isEs ? '/' : '/es'} aria-label="Switch language">{t('nav.lang_switch')}</a>
+        <a href={isEs ? '/' : '/es'} aria-label="Switch language" id="lang-switch">{t('nav.lang_switch')}</a>
       </li>
     </ul>
   </div>
@@ -42,6 +42,14 @@ const base = isEs ? '/es' : '';
       links.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
     });
+  });
+
+  // Store explicit language preference so the worker respects the user's choice
+  document.getElementById('lang-switch')?.addEventListener('click', () => {
+    const isEs = window.location.pathname.startsWith('/es');
+    // Switching to English — set cookie so auto-redirect doesn't fire again
+    const lang = isEs ? 'en' : 'es';
+    document.cookie = `lang=${lang}; path=/; max-age=31536000; SameSite=Lax`;
   });
 </script>
 
