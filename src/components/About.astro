@@ -477,17 +477,12 @@ const slides = [
   /* ── Mobile ─────────────────────────────────────────── */
 
   @media (max-width: 768px) {
-    .history-wrap {
-      background-color: var(--color-text);
-    }
-
     .history-panel {
       aspect-ratio: unset;
       overflow: visible;
       display: flex;
       flex-direction: column;
       background: none;
-      margin-bottom: 3px;
     }
 
     .panel-image {
@@ -497,7 +492,6 @@ const slides = [
       height: 55vw;
       object-fit: cover;
       animation: none !important;
-      margin-top: 3px;
     }
 
     .panel-text,
@@ -510,7 +504,7 @@ const slides = [
       width: 100% !important;
       backdrop-filter: none !important;
       -webkit-backdrop-filter: none !important;
-      padding: 2.5rem 1.5rem 1.75rem !important;
+      padding: 1.75rem 1.5rem !important;
     }
 
     .history-panel--dark  .panel-text { background: var(--color-text); }
