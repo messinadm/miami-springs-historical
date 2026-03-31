@@ -1,18 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { useTranslations } from '../i18n/utils';
-const t = useTranslations(Astro.currentLocale);
+import Layout from '../../layouts/Layout.astro';
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations('es');
 ---
 
 <Layout
-  title="Page Not Found — Miami Springs Historical Society"
-  description="This page doesn't exist, much like the many lots sold during the 1920s land boom that were never developed."
+  title="Página No Encontrada — Miami Springs Historical Society"
+  description="Esta página no existe, al igual que los muchos lotes vendidos durante el auge inmobiliario de la década de 1920 que nunca fueron desarrollados."
+  lang="es"
 >
   <main id="main-content" class="not-found">
     <div class="image-wrap">
       <img
         src="/circle-park-1926.jpg"
-        alt="Cars entering Country Club Estates, Miami Springs, February 1926"
+        alt="Autos entrando a Country Club Estates, Miami Springs, febrero de 1926"
         class="bg-image"
       />
       <div class="overlay"></div>
@@ -22,7 +23,7 @@ const t = useTranslations(Astro.currentLocale);
       <p class="eyebrow">{t('not_found.eyebrow')}</p>
       <h1>{t('not_found.heading')}</h1>
       <p class="body">{t('not_found.body')}</p>
-      <a href="/" class="btn">{t('not_found.cta')}</a>
+      <a href="/es" class="btn">{t('not_found.cta')}</a>
       <p class="photo-credit">
         {t('not_found.photo_credit')}
         <a href="https://www.floridamemory.com/items/show/165449" target="_blank" rel="noopener noreferrer">State Archives of Florida, Florida Memory.</a> Public Domain.

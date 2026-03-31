@@ -1,18 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/Footer.astro';
-import { resourceSections } from '../data/resources';
-import { useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/Footer.astro';
+import { resourceSections } from '../../data/resources';
+import { useTranslations } from '../../i18n/utils';
 const t = useTranslations(Astro.currentLocale);
 ---
 
 <Layout
   title={t('resources.meta_title')}
   description={t('resources.meta_description')}
+  lang="es"
 >
   <div class="page-wrap">
     <header class="page-header">
-      <a href="/" class="back-link">{t('resources.back')}</a>
+      <a href="/es" class="back-link">{t('resources.back')}</a>
       <h1 class="page-title">{t('resources.heading')}</h1>
       <p class="page-intro">{t('resources.intro')}</p>
     </header>

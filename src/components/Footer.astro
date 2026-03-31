@@ -2,6 +2,7 @@
 import generalSettings from '../data/general.json';
 import { useTranslations } from '../i18n/utils';
 const t = useTranslations(Astro.currentLocale);
+const base = Astro.currentLocale === 'es' ? '/es' : '';
 ---
 
 <footer class="footer">
@@ -32,7 +33,7 @@ const t = useTranslations(Astro.currentLocale);
     <p class="footer-links">
       <a href="https://www.miamisprings-fl.gov/" target="_blank" rel="noopener noreferrer">{t('footer.link_city')}</a>
       <span aria-hidden="true">·</span>
-      <a href="/resources">{t('footer.link_resources')}</a>
+      <a href={`${base}/resources`}>{t('footer.link_resources')}</a>
     </p>
     <p class="footer-copy">&copy; {new Date().getFullYear()} Miami Springs Historical Society</p>
   </div>

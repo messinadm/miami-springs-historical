@@ -18,6 +18,7 @@
   },
   "about": {
     "heading": "About the Society",
+    "body": "The Miami Springs Historical Society preserves and shares the rich history of one of Florida's most distinctive communities, founded by aviation pioneer Glenn Hammond Curtiss during the 1920s Florida land boom. Our museum at 501 East Drive chronicles the city's remarkable story — from Glenn Curtiss's Pueblo Revival vision to a centennial celebration. All are welcome through our open doors.",
     "teaser_heading": "Our Museum",
     "teaser_body": "Our museum features three rooms of exhibits spanning Miami Springs aviation history, the city's founding and growth, and the remarkable story of the Miami Battle Creek Sanitarium. Interactive multimedia, artifacts, memorabilia, and a small gift shop — all free to visit.",
     "teaser_link": "Explore the Museum →",
@@ -95,5 +96,27 @@
     "satellite_3_body": "Large model vintage aircraft on display in City Hall.",
     "satellite_closing": "Questions about visiting?",
     "satellite_contact": "Contact us."
+  },
+  "resources": {
+    "meta_title": "Recursos y Referencias — Miami Springs Historical Society",
+    "meta_description": "Recursos externos seleccionados para investigar la historia de Miami Springs, Florida — archivos, sitios históricos y referencias autorizadas.",
+    "back": "← Volver al inicio",
+    "heading": "Recursos y Referencias",
+    "intro": "Un índice seleccionado de fuentes autorizadas para investigar la historia de Miami Springs, Florida.",
+    "section_the_city": "La Ciudad",
+    "section_historic_sites": "Sitios Históricos",
+    "section_archives": "Archivos y Fuentes Primarias",
+    "section_people": "Personas",
+    "section_architecture": "Arquitectura",
+    "section_aviation": "Aviación y Eastern Airlines",
+    "section_hotel_sanitarium": "Hotel Country Club y Sanatorio Miami Battle Creek",
+    "section_reading": "Lecturas"
+  },
+  "not_found": {
+    "eyebrow": "404 — Lote No Encontrado",
+    "heading": "Esta página nunca fue desarrollada.",
+    "body": "Durante el auge inmobiliario de la Florida en la década de 1920, miles de lotes en Country Club Estates fueron vendidos a compradores ansiosos, muchos de los cuales nunca fueron construidos. Esta página parece ser uno de ellos.",
+    "cta": "Volver a la Sociedad",
+    "photo_credit": "\"Autos entrando a Country Club Estates, Miami Springs,\" 24 de feb. de 1926. Fishbaugh, W. A."
   }
 }

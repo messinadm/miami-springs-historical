@@ -2,6 +2,7 @@
 import generalSettings from '../data/general.json';
 import { useTranslations } from '../i18n/utils';
 const t = useTranslations(Astro.currentLocale);
+const base = Astro.currentLocale === 'es' ? '/es' : '';
 
 const slides = [
   {
@@ -61,7 +62,7 @@ const slides = [
     <div class="about-top">
       <h2 class="section-heading"><a href="#about">{t('about.heading')}</a></h2>
       <div class="divider"></div>
-      <p class="about-body">{generalSettings.about}</p>
+      <p class="about-body">{t('about.body')}</p>
       <div class="info-cards">
         <div class="info-card">
           <h3>{t('about.info_visit')}</h3>
@@ -89,7 +90,7 @@ const slides = [
           <h3 class="museum-teaser-heading">{t('about.teaser_heading')}</h3>
           <div class="divider divider--left"></div>
           <p>{t('about.teaser_body')}</p>
-          <a href="/museum" class="museum-teaser-link">{t('about.teaser_link')}</a>
+          <a href={`${base}/museum`} class="museum-teaser-link">{t('about.teaser_link')}</a>
         </div>
       </div>
     </div>
