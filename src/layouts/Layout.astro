@@ -2,16 +2,18 @@
 interface Props {
   title?: string;
   description?: string;
+  lang?: string;
 }
 
 const {
   title = 'Miami Springs Historical Society',
   description = 'Preserving the history of Miami Springs, Florida — founded by aviation pioneer Glenn Curtiss. Celebrating our centennial — 100 years of Miami Springs.',
+  lang = Astro.currentLocale ?? 'en',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

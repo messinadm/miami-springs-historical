@@ -1,5 +1,8 @@
 ---
 import generalSettings from '../data/general.json';
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations(Astro.currentLocale);
+
 ---
 
 <section class="hero">
@@ -12,18 +15,18 @@ import generalSettings from '../data/general.json';
     <div class="hero-overlay"></div>
   </div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Miami Springs · Est. 1926</p>
-    <h1 class="hero-title">Miami Springs<br />Historical Society</h1>
-    <p class="hero-tagline">{generalSettings.tagline}</p>
+    <p class="hero-eyebrow">{t('hero.eyebrow')}</p>
+    <h1 class="hero-title">{t('hero.title_line1')}<br />{t('hero.title_line2')}</h1>
+    <p class="hero-tagline">{t('hero.tagline')}</p>
     <div class="hero-cta">
-      <a href="#about" class="btn-primary">Discover Our Story</a>
+      <a href="#about" class="btn-primary">{t('hero.cta_primary')}</a>
       <a
         href={generalSettings.facebook_url}
         target="_blank"
         rel="noopener noreferrer"
         class="btn-secondary"
       >
-        Follow on Facebook
+        {t('hero.cta_secondary')}
       </a>
     </div>
   </div>

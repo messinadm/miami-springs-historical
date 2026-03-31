@@ -1,5 +1,7 @@
 ---
 import generalSettings from '../data/general.json';
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <footer class="footer">
@@ -26,13 +28,11 @@ import generalSettings from '../data/general.json';
         </svg>
       </a>
     </div>
-    <p class="footer-attribution">
-      Hero photo: Wikimedia Commons, CC BY 2.0. Historical photo: Fishbaugh, W.A., State Archives of Florida. Public Domain.
-    </p>
+    <p class="footer-attribution">{t('footer.attribution')}</p>
     <p class="footer-links">
-      <a href="https://www.miamisprings-fl.gov/" target="_blank" rel="noopener noreferrer">City of Miami Springs</a>
+      <a href="https://www.miamisprings-fl.gov/" target="_blank" rel="noopener noreferrer">{t('footer.link_city')}</a>
       <span aria-hidden="true">·</span>
-      <a href="/resources">Resources & References</a>
+      <a href="/resources">{t('footer.link_resources')}</a>
     </p>
     <p class="footer-copy">&copy; {new Date().getFullYear()} Miami Springs Historical Society</p>
   </div>

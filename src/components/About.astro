@@ -1,10 +1,12 @@
 ---
 import generalSettings from '../data/general.json';
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations(Astro.currentLocale);
 
 const slides = [
   {
     id: 'founding',
-    title: 'A City Born from Vision',
+    title: t('about.slide_1_title'),
     image: '/glenn-curtiss-portrait.jpg',
     imageAlt: 'Portrait of Glenn Hammond Curtiss, aviation pioneer and founder of Miami Springs',
     credit: 'Harris & Ewing. Library of Congress, Prints & Photographs Division. Public Domain.',
@@ -12,28 +14,22 @@ const slides = [
     panel: 'right',
     theme: 'dark',
     layout: 'portrait',
-    paragraphs: [
-      'Miami Springs owes its existence to <strong>Glenn Hammond Curtiss</strong> and <strong>James Bright</strong>, who during the 1920s Florida land boom developed Country Club Estates — one of Florida\'s first planned communities, alongside Coral Gables and Opa-locka.',
-      'Curtiss laid out the Circle and Pueblo Revival architecture. Country Club Estates was incorporated in <strong>1926</strong> and later renamed Miami Springs.',
-    ],
+    paragraphs: [t('about.slide_1_p1'), t('about.slide_1_p2')],
   },
   {
     id: 'architecture',
-    title: 'Architecture of the Southwest',
+    title: t('about.slide_2_title'),
     image: '/curtiss-mansion-1927.jpg',
     imageAlt: 'The Curtiss Mansion, circa 1927',
     credit: 'Fishbaugh, W.A. (William Arthur). State Archives of Florida, Florida Memory. Public Domain.',
     sepia: false,
     panel: 'left',
     theme: 'light',
-    paragraphs: [
-      'Curtiss chose the <strong>Pueblo Revival style</strong> as the architectural theme for Miami Springs — a novelty in 1920s South Florida, drawing on the adobe traditions of the American Southwest.',
-      'Thick stucco walls, flat roofs, rounded corners, and decorative vigas gave the city a look unlike anywhere else in Miami-Dade County. The <a href="https://curtissmansion.com/" target="_blank" rel="noopener noreferrer"><strong>Curtiss Mansion</strong></a> is listed on the National Register of Historic Places.',
-    ],
+    paragraphs: [t('about.slide_2_p1'), t('about.slide_2_p2')],
   },
   {
     id: 'eastern',
-    title: 'Home to Eastern Airlines',
+    title: t('about.slide_3_title'),
     image: '/eastern-airlines-constellation.jpg',
     imageAlt: 'Eastern Airlines Super-C Constellation over Miami Beach',
     credit: 'Wikimedia Commons. Public Domain.',
@@ -42,14 +38,11 @@ const slides = [
     theme: 'dark',
     panelStyle: 'bottom-bar',
     imagePosition: '50% 0%',
-    paragraphs: [
-      'When Eastern Air Lines relocated its operations to Miami\'s 36th Street Airport in 1935, it needed homes for hundreds of employees. <strong>Glenn Curtiss Properties</strong> offered special pricing and financing on Miami Springs homes to Eastern\'s workforce.',
-      'For decades, the streets of Miami Springs were home to the pilots, mechanics, and crew who built commercial aviation between New York and Florida. The proximity to 36th Street Airport and targeted financing offers made Miami Springs the de facto hometown of Eastern\'s workforce.',
-    ],
+    paragraphs: [t('about.slide_3_p1'), t('about.slide_3_p2')],
   },
   {
     id: 'centennial',
-    title: 'One Hundred Years — 1926 to 2026',
+    title: t('about.slide_4_title'),
     image: '/curtiss-memorial-circle.jpg',
     imageAlt: 'Glenn H. Curtiss Memorial Circle, Miami Springs, Florida',
     credit: 'Eisenthesky Productions released to public domain per file information., CC BY-SA 4.0, via Wikimedia Commons',
@@ -57,10 +50,7 @@ const slides = [
     sepia: false,
     panel: 'left',
     theme: 'light',
-    paragraphs: [
-      'In 2026, Miami Springs marks <strong>one hundred years</strong> since its incorporation — a century of growth, resilience, and community in one of Florida\'s most distinctive cities.',
-      '<strong>We invite you to be part of the centennial.</strong> Visit our museum at 501 East Drive, follow us on Facebook, and explore <a href="https://www.100miamisprings.com/" target="_blank" rel="noopener noreferrer">100miamisprings.com</a> — the official centennial site.',
-    ],
+    paragraphs: [t('about.slide_4_p1'), t('about.slide_4_p2')],
   },
 ];
 ---
@@ -69,22 +59,22 @@ const slides = [
   <div class="container">
 
     <div class="about-top">
-      <h2 class="section-heading"><a href="#about">About the Society</a></h2>
+      <h2 class="section-heading"><a href="#about">{t('about.heading')}</a></h2>
       <div class="divider"></div>
       <p class="about-body">{generalSettings.about}</p>
       <div class="info-cards">
         <div class="info-card">
-          <h3>Visit Us</h3>
+          <h3>{t('about.info_visit')}</h3>
           <p>501 East Drive<br />Miami Springs, FL 33166</p>
         </div>
         <div class="info-card">
-          <h3>Museum Hours</h3>
+          <h3>{t('about.info_hours')}</h3>
           <p>{generalSettings.hours}</p>
         </div>
         <div class="info-card">
-          <h3>Contact</h3>
+          <h3>{t('about.info_contact')}</h3>
           <p>
-            <a href={`mailto:${generalSettings.email}`}>Email Us</a><br />
+            <a href={`mailto:${generalSettings.email}`}>{t('about.info_email')}</a><br />
             <a href={`tel:${generalSettings.phone}`}>{generalSettings.phone}</a><br />
             {generalSettings.po_box}
           </p>
@@ -96,10 +86,10 @@ const slides = [
           <img src="/museum-exterior.jpg" alt="Miami Springs Historical Society Museum at 501 East Drive" class="museum-teaser-image" />
         </div>
         <div class="museum-teaser-text">
-          <h3 class="museum-teaser-heading">Our Museum</h3>
+          <h3 class="museum-teaser-heading">{t('about.teaser_heading')}</h3>
           <div class="divider divider--left"></div>
-          <p>Our museum features three rooms of exhibits spanning Miami Springs aviation history, the city's founding and growth, and the remarkable story of the Miami Battle Creek Sanitarium. Interactive multimedia, artifacts, memorabilia, and a small gift shop — all free to visit.</p>
-          <a href="/museum" class="museum-teaser-link">Explore the Museum →</a>
+          <p>{t('about.teaser_body')}</p>
+          <a href="/museum" class="museum-teaser-link">{t('about.teaser_link')}</a>
         </div>
       </div>
     </div>
@@ -108,7 +98,7 @@ const slides = [
 
   <div class="history-wrap" id="history">
     <div class="container">
-      <h2 class="history-heading section-heading"><a href="#history">A History of Miami Springs</a></h2>
+      <h2 class="history-heading section-heading"><a href="#history">{t('about.history_heading')}</a></h2>
       <div class="divider"></div>
     </div>
     {slides.map((slide, i) => (

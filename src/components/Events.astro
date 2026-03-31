@@ -57,11 +57,14 @@ const formatDateRange = (start: Date, end: Date) => {
   const year = start.toLocaleDateString('en-US', { year: 'numeric', timeZone: 'America/New_York' });
   return `${startStr}–${endStr}, ${year}`;
 };
+
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <section id="events" class="events-section">
   <div class="container">
-    <h2 class="section-heading"><a href="#events">Events</a></h2>
+    <h2 class="section-heading"><a href="#events">{t('events.heading')}</a></h2>
     <div class="divider"></div>
 
     {rendered.length > 0 ? (
@@ -95,9 +98,7 @@ const formatDateRange = (start: Date, end: Date) => {
         ))}
       </ul>
     ) : (
-      <p class="no-events">
-        No events scheduled at this time. Follow us on Facebook for the latest announcements.
-      </p>
+      <p class="no-events">{t('events.none')}</p>
     )}
   </div>
 </section>

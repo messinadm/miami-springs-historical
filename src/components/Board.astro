@@ -1,19 +1,19 @@
 ---
 import { getCollection } from 'astro:content';
+import { useTranslations } from '../i18n/utils';
 
 const members = await getCollection('board');
 const sorted = members
   .filter(m => m.data.name !== 'TBD')
   .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <section id="board" class="board-section">
   <div class="container">
-    <h2 class="section-heading"><a href="#board">Board of Directors</a></h2>
+    <h2 class="section-heading"><a href="#board">{t('board.heading')}</a></h2>
     <div class="divider"></div>
-    <p class="election-notice">
-      Board elections are held each April.
-    </p>
+    <p class="election-notice">{t('board.elections')}</p>
     <ul class="board-list">
       {sorted.map((member) => (
         <li class="board-member">
