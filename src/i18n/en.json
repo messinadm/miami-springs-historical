@@ -48,6 +48,12 @@
     "heading": "Board of Directors",
     "elections": "Board elections are held each April."
   },
+  "connect": {
+    "heading": "Connect With Us",
+    "intro": "Follow our Facebook page for announcements, photos, and community updates.",
+    "body": "We share stories, photographs, and announcements about Miami Springs history and upcoming events on our Facebook page. Like and follow us to stay connected with our community.",
+    "link": "Visit our Facebook Page →"
+  },
   "footer": {
     "hours": "Saturdays, 12:00 PM – 4:00 PM",
     "attribution": "Hero photo: Wikimedia Commons, CC BY 2.0. Historical photo: Fishbaugh, W.A., State Archives of Florida. Public Domain.",

@@ -1,5 +1,7 @@
 ---
 import generalSettings from '../data/general.json';
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations(Astro.currentLocale);
 
 const fbUrl = generalSettings.facebook_url;
 const encodedUrl = encodeURIComponent(fbUrl);
@@ -7,11 +9,9 @@ const encodedUrl = encodeURIComponent(fbUrl);
 
 <section id="connect" class="fb-section">
   <div class="container">
-    <h2 class="section-title"><a href="#connect">Connect With Us</a></h2>
+    <h2 class="section-title"><a href="#connect">{t('connect.heading')}</a></h2>
     <div class="divider"></div>
-    <p class="fb-intro">
-      Follow our Facebook page for announcements, photos, and community updates.
-    </p>
+    <p class="fb-intro">{t('connect.intro')}</p>
     <div class="fb-layout">
       <div class="fb-embed-wrap">
         <iframe
@@ -28,12 +28,9 @@ const encodedUrl = encodeURIComponent(fbUrl);
       </div>
       <div class="fb-side">
         <h3>Miami Springs Historical Society</h3>
-        <p>
-          We share stories, photographs, and announcements about Miami Springs history and upcoming
-          events on our Facebook page. Like and follow us to stay connected with our community.
-        </p>
+        <p>{t('connect.body')}</p>
         <a href={fbUrl} target="_blank" rel="noopener noreferrer" class="fb-link">
-          Visit our Facebook Page &rarr;
+          {t('connect.link')}
         </a>
       </div>
     </div>
