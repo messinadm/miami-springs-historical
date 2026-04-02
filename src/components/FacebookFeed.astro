@@ -5,6 +5,7 @@ const t = useTranslations(Astro.currentLocale);
 
 const fbUrl = generalSettings.facebook_url;
 const encodedUrl = encodeURIComponent(fbUrl);
+const fbLocale = Astro.currentLocale === 'es' ? 'es_LA' : 'en_US';
 ---
 
 <section id="connect" class="fb-section">
@@ -15,7 +16,7 @@ const encodedUrl = encodeURIComponent(fbUrl);
     <div class="fb-layout">
       <div class="fb-embed-wrap">
         <iframe
-          src={`https://www.facebook.com/plugins/page.php?href=${encodedUrl}&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&app_id=1241743530894906`}
+          src={`https://www.facebook.com/plugins/page.php?href=${encodedUrl}&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&app_id=1241743530894906&locale=${fbLocale}`}
           width="500"
           height="600"
           style="border:none;overflow:hidden;max-width:100%;width:100%"
