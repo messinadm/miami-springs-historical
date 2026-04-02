@@ -1,32 +1,53 @@
 # Deployment Guide
 
 This site is an [Astro](https://astro.build) static site deployed to **Cloudflare Workers**
-via a direct GitHub integration. Every push to the `main` branch triggers an automatic
-build and deploy — no manual steps required after initial setup.
+via GitHub Actions. Every push to the `main` branch triggers an automatic build and deploy —
+no manual steps required after initial setup.
 
 ---
 
 ## How it works
 
 ```
-Edit files → git commit → git push to GitHub → Cloudflare builds → site is live
+Push to main → GitHub Actions builds → wrangler deploys to Cloudflare → cache purged → site is live
 ```
 
-Cloudflare pulls the code from GitHub, runs `npm run build`, then deploys the
-contents of the `dist/` folder as a static Worker using `wrangler.jsonc`.
+The build runs `npm run build`, producing a `dist/` folder of static assets. A thin Cloudflare
+Worker (`worker.ts`) serves those assets at the edge. Custom 404 handling is configured in
+`wrangler.jsonc`.
 
 ---
 
-## Repository
+## CI/CD workflows
 
-**GitHub:** https://github.com/messinadm/miami-springs-historical
-**Branch deployed:** `main`
+### CI — `.github/workflows/ci.yml`
+Runs on every pull request to `main`. Performs:
+1. Astro type check (`npx astro check`)
+2. Production build (`npm run build`)
+
+Fails fast if the build is broken before anything reaches `main`.
+
+### Deploy — `.github/workflows/deploy.yml`
+Runs on every push to `main`. Performs:
+1. Production build
+2. `npx wrangler deploy` — pushes static assets + Worker to Cloudflare
+3. Full cache purge via Cloudflare API
+
+### Required GitHub secrets
+
+| Secret | Purpose |
+|---|---|
+| `CLOUDFLARE_API_TOKEN` | Authenticates wrangler and cache purge API calls |
+| `CLOUDFLARE_ACCOUNT_ID` | Identifies the Cloudflare account for wrangler |
+| `CLOUDFLARE_ZONE_ID` | Identifies the DNS zone for cache purge |
+
+Set these in the repo under **Settings → Secrets and variables → Actions**.
 
 ---
 
 ## One-time Cloudflare setup
 
-These steps only need to be done once. After that, deploys are fully automatic.
+These steps only need to be done once.
 
 ### 1. Log in to Cloudflare
 
@@ -40,12 +61,10 @@ Go to https://dash.cloudflare.com and log in.
 4. Select the repository: `messinadm/miami-springs-historical`
 5. Click **Begin setup**
 
-> **Note:** Choose **Workers**, not Pages. The repo includes a `wrangler.jsonc` that
-> configures static asset serving via the Workers platform (the current recommended approach).
+> **Note:** Choose **Workers**, not Pages. The repo uses `wrangler.jsonc` to configure
+> static asset serving via the Workers platform.
 
 ### 3. Configure the build
-
-On the build configuration screen, set:
 
 | Setting | Value |
 |---|---|
@@ -55,9 +74,7 @@ On the build configuration screen, set:
 | Build output directory | `dist` |
 | Root directory | *(leave blank)* |
 
-> **Note:** The deploy command fields are required — the dashboard will error if left blank.
-
-### 4. Set Node version (required for Astro 5)
+### 4. Set Node version
 
 Expand **Environment variables** and add:
 
@@ -65,29 +82,39 @@ Expand **Environment variables** and add:
 |---|---|
 | `NODE_VERSION` | `22` |
 
-> The `.node-version` file in the repo also signals this, but setting it as an
-> environment variable ensures compatibility with all Cloudflare build environments.
+> The `.node-version` file in the repo also signals this, but setting it explicitly
+> ensures compatibility across all Cloudflare build environments.
 
-### 5. API token
+### 5. Deploy
 
-Cloudflare automatically creates an API token for the build environment — no manual
-token creation is needed.
-
-### 6. Deploy
-
-Click **Save and Deploy**. Cloudflare will run the first build. It takes about a minute.
+Click **Save and Deploy**. The first build takes about a minute.
 
 ---
 
-## Custom domain (optional)
+## Custom domain
 
-After the initial deploy succeeds:
+The live site is at **https://miamispringshistoricalsociety.com**.
+
+To configure a custom domain after the initial deploy:
 
 1. In your Workers application, go to **Settings → Domains & Routes**
 2. Click **Add** → **Custom domain**
-3. Enter your domain (e.g. `miamispringshistoricalsociety.org`)
-4. Follow the DNS instructions — if your domain is also on Cloudflare, it will be
-   configured automatically
+3. Enter `miamispringshistoricalsociety.com`
+4. If the domain is on Cloudflare, DNS is configured automatically
+
+---
+
+## Caching
+
+The `public/_headers` file disables HTML caching at the Cloudflare edge:
+
+```
+/*
+  Cache-Control: no-store
+```
+
+This ensures content changes (events, board members) appear immediately after deploy without
+requiring a manual cache purge. The deploy workflow also does a full cache purge as a belt-and-suspenders measure.
 
 ---
 
@@ -97,59 +124,28 @@ All content is stored as files in this repository:
 
 | Content | Location |
 |---|---|
-| Site settings (tagline, hours, email, phone, Facebook URL) | `src/data/general.json` |
+| Site settings (email, phone, Facebook URL) | `src/data/general.json` |
+| Museum hours | `src/i18n/en.json` → `footer.hours` |
 | Events | `src/content/events/` — one `.md` file per event |
-| Board members | `src/content/board/` — one `.md` file per member |
+| Board members | `src/content/board/` — one `.md file` per member |
+| Resources page links | `src/data/resources.ts` |
 | Images | `public/` |
-| Page components | `src/components/` |
 
 To update content:
 1. Edit the relevant file
 2. `git add` and `git commit`
 3. `git push origin main`
-4. Cloudflare automatically rebuilds and deploys (takes ~1 minute)
-
-### Event file format
-
-```markdown
----
-title: "Spring Meeting"
-date: 2026-03-14
-location: "Curtiss Mansion, 500 Deer Run Drive"
----
-
-Description of the event goes here.
-```
-
-Filename convention: `YYYY-MM-DD-slug.md` (e.g. `2026-03-14-spring-meeting.md`)
-
-### Board member file format
-
-```markdown
----
-name: "Jane Smith"
-role: "President"
-order: 1
----
-
-Optional bio text.
-```
-
-The `order` field controls display order on the site. Lower numbers appear first.
+4. Cloudflare automatically rebuilds and deploys (~1 minute)
 
 ---
 
 ## Local development
 
 ```bash
-# Install dependencies (first time only)
-npm install
-
-# Start local dev server at http://localhost:4321
-npm run dev
-
-# Build the site locally to verify before pushing
-npm run build
+npm install          # first time only
+npm run dev          # dev server at http://localhost:4321
+npm run build        # production build to dist/
+npx astro check      # TypeScript type check
 ```
 
 ---
@@ -158,25 +154,31 @@ npm run build
 
 ```
 miami-springs-historical/
-├── public/                  # Static files copied as-is
-│   ├── admin/               # Decap CMS admin panel (not currently in use)
-│   ├── curtiss-mansion-1927.jpg
-│   └── curtiss-mansion-entrance.jpg
+├── public/                  # Static files served as-is
+│   └── _headers             # Edge caching headers
 ├── src/
-│   ├── components/          # Astro components (Nav, Hero, About, Events, Board, Footer)
+│   ├── components/          # Astro components (Nav, Hero, About, Events, FacebookFeed, Board, Footer)
 │   ├── content/
+│   │   ├── config.ts        # Zod schema for content collections
 │   │   ├── board/           # Board member markdown files
 │   │   └── events/          # Event markdown files
 │   ├── data/
-│   │   └── general.json     # Site-wide settings
+│   │   ├── general.json     # Site-wide settings
+│   │   └── resources.ts     # Resources page link data
 │   ├── layouts/
-│   │   └── Layout.astro     # Base HTML layout
+│   │   └── Layout.astro     # Base HTML layout with SEO and structured data
 │   └── pages/
-│       └── index.astro      # Main page
-├── astro.config.mjs         # Astro configuration
-├── wrangler.jsonc           # Cloudflare Workers configuration
-├── package.json
-└── .node-version            # Pins Node 22 for Cloudflare builds
+│       ├── index.astro      # Home page
+│       ├── museum.astro     # Museum page
+│       ├── resources.astro  # Resources & references page
+│       ├── 404.astro        # Custom 404 page
+│       └── rss.xml.ts       # RSS feed
+├── worker.ts                # Cloudflare Worker entry point
+├── wrangler.jsonc           # Cloudflare Workers config (assets, 404 handling)
+├── astro.config.mjs         # Astro config (sitemap, i18n routing, output)
+├── .github/workflows/       # CI and deploy workflows
+├── .node-version            # Pins Node 22
+└── package.json
 ```
 
 ---
@@ -187,5 +189,6 @@ miami-springs-historical/
 |---|---|
 | [Astro 5](https://astro.build) | Static site framework |
 | [Cloudflare Workers](https://workers.cloudflare.com) | Hosting and CDN |
-| GitHub | Source code and version control |
+| [GitHub Actions](https://github.com/features/actions) | CI and automated deployment |
 | Markdown | Content authoring (events, board members) |
+| TypeScript + Zod | Schema validation for content collections |
