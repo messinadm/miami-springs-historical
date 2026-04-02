@@ -10,6 +10,14 @@ const {
   description = 'Preserving the history of Miami Springs, Florida — founded by aviation pioneer Glenn Curtiss. Celebrating our centennial — 100 years of Miami Springs.',
   lang = Astro.currentLocale ?? 'en',
 } = Astro.props;
+
+const site = 'https://miamispringshistoricalsociety.com';
+const pathname = Astro.url.pathname;
+const isEs = pathname.startsWith('/es');
+const enPath = isEs ? (pathname.replace(/^\/es/, '') || '/') : pathname;
+const esPath = isEs ? pathname : ('/es' + (pathname === '/' ? '' : pathname));
+const enUrl = site + enPath;
+const esUrl = site + esPath;
 ---
 
 <!doctype html>
@@ -27,6 +35,9 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#8b4513" />
     <link rel="canonical" href={Astro.url.href} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="es" href={esUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Miami Springs Historical Society" />
     <meta property="og:title" content={title} />

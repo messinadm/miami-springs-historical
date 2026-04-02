@@ -5,8 +5,8 @@ const t = useTranslations(Astro.currentLocale);
 ---
 
 <Layout
-  title="Page Not Found — Miami Springs Historical Society"
-  description="This page doesn't exist, much like the many lots sold during the 1920s land boom that were never developed."
+  title={t('not_found.meta_title')}
+  description={t('not_found.meta_description')}
 >
   <main id="main-content" class="not-found">
     <div class="image-wrap">

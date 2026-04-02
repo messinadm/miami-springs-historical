@@ -10,7 +10,7 @@ const base = isEs ? '/es' : '';
 <nav>
   <div class="nav-inner">
     <a href={isEs ? '/es' : '/'} class="nav-logo">MSHS</a>
-    <button class="hamburger" aria-label="Open menu" aria-expanded="false">
+    <button class="hamburger" aria-label={t('nav.open_menu')} aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
