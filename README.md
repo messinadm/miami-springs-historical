@@ -67,15 +67,59 @@ Set `name: "TBD"` for vacant seats — they are automatically hidden from the si
 ### Images
 Drop files into `public/`. Reference them in components as `/filename.jpg`.
 
+## Branch structure
+
+| Branch | Purpose |
+|---|---|
+| `main` | Production — English-only site |
+| `español` | Bilingual feature branch — merges into `main` once Spanish translations are verified by a native speaker |
+
+Content and feature changes go on `main`. i18n wiring and translation changes go on `español`, which is kept rebased off `main`.
+
+## Internationalization
+
+The site is fully bilingual (English / Spanish). Spanish pages live under the `/es/` prefix.
+
+### How it works
+
+- Translation strings are stored in `src/i18n/en.json` and `src/i18n/es.json`
+- The `useTranslations(locale)` helper in `src/i18n/utils.ts` looks up keys with dot notation and falls back to English if a key is missing
+- All components use `const t = useTranslations(Astro.currentLocale)` to get locale-appropriate strings
+- Astro's i18n routing (`astro.config.mjs`) handles the `/es/` prefix — the default locale (English) has no prefix
+- A Cloudflare Worker (`worker.ts`) automatically redirects Spanish-preferring browsers to `/es` on first visit, respecting a `lang` cookie for explicit user preference
+
+### Adding or updating translations
+
+Edit `src/i18n/es.json` on the `ai-translated` branch. Every key in `en.json` should have a corresponding key in `es.json`. The `useTranslations` helper falls back to English for any missing key.
+
+### Spanish pages
+
+| English | Spanish |
+|---|---|
+| `/` | `/es` |
+| `/museum` | `/es/museum` |
+| `/resources` | `/es/resources` |
+| `/*` (404) | `/es/404` |
+
+## Internationalization
+
+The site is fully bilingual (English / Spanish). Spanish pages live under the `/es/` prefix.
+
+Translation strings are stored in `src/i18n/en.json` and `src/i18n/es.json`. All components use `const t = useTranslations(Astro.currentLocale)` to get locale-appropriate strings, with automatic fallback to English for any missing key.
+
+A Cloudflare Worker (`worker.ts`) automatically redirects Spanish-preferring browsers to `/es` on first visit, based on the `Accept-Language` header. A `lang` cookie persists the user's explicit choice when they switch languages manually.
+
+To update translations, edit `src/i18n/es.json`. Every key in `en.json` should have a corresponding key in `es.json`.
+
 ## Pages
 
-| URL | Description |
-|---|---|
-| `/` | Home — hero, about, history slideshow, events, connect, board, footer |
-| `/museum` | Museum exhibits, visit info, satellite locations |
-| `/resources` | Curated external references for Miami Springs history research |
-| `/rss.xml` | RSS feed of upcoming events |
-| `/*` (no match) | Custom 404 page with 1920s land boom theme |
+| English | Spanish | Description |
+|---|---|---|
+| `/` | `/es` | Home — hero, about, history slideshow, events, connect, board, footer |
+| `/museum` | `/es/museum` | Museum exhibits, visit info, satellite locations |
+| `/resources` | `/es/resources` | Curated external references for Miami Springs history research |
+| `/rss.xml` | — | RSS feed of upcoming events |
+| `/*` (no match) | `/es/*` | Custom 404 page with 1920s land boom theme |
 
 ## Project structure
 
@@ -98,15 +142,24 @@ miami-springs-historical/
 │   ├── data/
 │   │   ├── general.json     # Site-wide settings (email, phone, Facebook URL)
 │   │   └── resources.ts     # Curated links data for the resources page
+│   ├── i18n/
+│   │   ├── en.json          # English translation strings
+│   │   ├── es.json          # Spanish translation strings
+│   │   └── utils.ts         # useTranslations() helper with English fallback
 │   ├── layouts/
 │   │   └── Layout.astro     # Base HTML, SEO meta, structured data, global styles
 │   └── pages/
-│       ├── index.astro      # Home page
-│       ├── museum.astro     # Museum page
-│       ├── resources.astro  # Resources & references page
-│       ├── 404.astro        # Custom 404 page
-│       └── rss.xml.ts       # RSS feed generator
-├── worker.ts                # Cloudflare Worker entry point (static asset serving)
+│       ├── index.astro      # Home page (English)
+│       ├── museum.astro     # Museum page (English)
+│       ├── resources.astro  # Resources & references page (English)
+│       ├── 404.astro        # Custom 404 page (English)
+│       ├── rss.xml.ts       # RSS feed generator
+│       └── es/              # Spanish equivalents of all pages
+│           ├── index.astro
+│           ├── museum.astro
+│           ├── resources.astro
+│           └── 404.astro
+├── worker.ts                # Cloudflare Worker — static assets + language detection/redirect
 ├── wrangler.jsonc           # Cloudflare Workers configuration
 ├── astro.config.mjs         # Astro configuration (sitemap, output settings)
 ├── .github/

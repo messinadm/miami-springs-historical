@@ -12,9 +12,19 @@ no manual steps required after initial setup.
 Push to main → GitHub Actions builds → wrangler deploys to Cloudflare → cache purged → site is live
 ```
 
-The build runs `npm run build`, producing a `dist/` folder of static assets. A thin Cloudflare
-Worker (`worker.ts`) serves those assets at the edge. Custom 404 handling is configured in
-`wrangler.jsonc`.
+The build runs `npm run build`, producing a `dist/` folder of static assets. The Cloudflare
+Worker (`worker.ts`) serves those assets at the edge and handles automatic language detection
+for the bilingual site. Custom 404 handling is configured in `wrangler.jsonc`.
+
+### Language detection (Worker middleware)
+
+On each request, `worker.ts` checks:
+1. A `lang` cookie set by the user's explicit language choice in the nav
+2. The `Accept-Language` request header
+
+If Spanish is preferred and the visitor is on an English URL (no `/es/` prefix), they are
+redirected to the Spanish equivalent. The cookie takes priority — once a user manually switches
+language, the redirect does not override their choice.
 
 ---
 
@@ -165,14 +175,19 @@ miami-springs-historical/
 │   ├── data/
 │   │   ├── general.json     # Site-wide settings
 │   │   └── resources.ts     # Resources page link data
+│   ├── i18n/
+│   │   ├── en.json          # English strings
+│   │   ├── es.json          # Spanish strings
+│   │   └── utils.ts         # useTranslations() helper
 │   ├── layouts/
 │   │   └── Layout.astro     # Base HTML layout with SEO and structured data
 │   └── pages/
-│       ├── index.astro      # Home page
-│       ├── museum.astro     # Museum page
-│       ├── resources.astro  # Resources & references page
-│       ├── 404.astro        # Custom 404 page
-│       └── rss.xml.ts       # RSS feed
+│       ├── index.astro      # Home page (English)
+│       ├── museum.astro     # Museum page (English)
+│       ├── resources.astro  # Resources & references page (English)
+│       ├── 404.astro        # Custom 404 page (English)
+│       ├── rss.xml.ts       # RSS feed
+│       └── es/              # Spanish equivalents of all pages
 ├── worker.ts                # Cloudflare Worker entry point
 ├── wrangler.jsonc           # Cloudflare Workers config (assets, 404 handling)
 ├── astro.config.mjs         # Astro config (sitemap, i18n routing, output)
