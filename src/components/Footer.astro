@@ -10,7 +10,7 @@ const base = Astro.currentLocale === 'es' ? '/es' : '';
     <p class="footer-name">Miami Springs Historical Society</p>
     <p class="footer-address">501 East Drive, Miami Springs, FL 33166</p>
     <p class="footer-address">{generalSettings.po_box}</p>
-    <p class="footer-hours">{generalSettings.hours}</p>
+    <p class="footer-hours">{t('footer.hours')}</p>
     <div class="footer-icons">
       <a href={generalSettings.facebook_url} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
