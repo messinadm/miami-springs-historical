@@ -36,7 +36,7 @@ const rendered = await Promise.all(
 );
 
 const formatDate = (date: Date) =>
-  date.toLocaleDateString('en-US', {
+  date.toLocaleDateString(dateLocale, {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -45,21 +45,22 @@ const formatDate = (date: Date) =>
   });
 
 const formatMonth = (date: Date) =>
-  date.toLocaleDateString('en-US', { month: 'short', timeZone: 'America/New_York' });
+  date.toLocaleDateString(dateLocale, { month: 'short', timeZone: 'America/New_York' });
 
 const formatDay = (date: Date) =>
-  date.toLocaleDateString('en-US', { day: '2-digit', timeZone: 'America/New_York' });
+  date.toLocaleDateString(dateLocale, { day: '2-digit', timeZone: 'America/New_York' });
 
 const formatDateRange = (start: Date, end: Date) => {
   const opts: Intl.DateTimeFormatOptions = { month: 'long', day: 'numeric', timeZone: 'America/New_York' };
-  const startStr = start.toLocaleDateString('en-US', opts);
-  const endStr = end.toLocaleDateString('en-US', { day: 'numeric', timeZone: 'America/New_York' });
-  const year = start.toLocaleDateString('en-US', { year: 'numeric', timeZone: 'America/New_York' });
+  const startStr = start.toLocaleDateString(dateLocale, opts);
+  const endStr = end.toLocaleDateString(dateLocale, { day: 'numeric', timeZone: 'America/New_York' });
+  const year = start.toLocaleDateString(dateLocale, { year: 'numeric', timeZone: 'America/New_York' });
   return `${startStr}–${endStr}, ${year}`;
 };
 
 import { useTranslations } from '../i18n/utils';
 const t = useTranslations(Astro.currentLocale);
+const dateLocale = Astro.currentLocale === 'es' ? 'es-ES' : 'en-US';
 ---
 
 <section id="events" class="events-section">
@@ -120,6 +121,7 @@ const t = useTranslations(Astro.currentLocale);
     return new Date(next.getFullYear(), next.getMonth(), 1 + daysUntilTuesday + 7, 16, 0, 0);
   }
 
+  const dateLocale = document.documentElement.lang === 'es' ? 'es-ES' : 'en-US';
   // Today's date in Eastern time as YYYY-MM-DD (en-CA locale gives this format)
   const todayET = new Date().toLocaleDateString('en-CA', { timeZone: 'America/New_York' });
   const cards = document.querySelectorAll<HTMLElement>('.event-card');
@@ -137,11 +139,11 @@ const t = useTranslations(Astro.currentLocale);
       const monthEl = card.querySelector('.event-month');
       const dayEl = card.querySelector('.event-day');
       const timeEl = card.querySelector('time');
-      if (monthEl) monthEl.textContent = next.toLocaleDateString('en-US', { month: 'short', timeZone: 'America/New_York' });
-      if (dayEl) dayEl.textContent = next.toLocaleDateString('en-US', { day: '2-digit', timeZone: 'America/New_York' });
+      if (monthEl) monthEl.textContent = next.toLocaleDateString(dateLocale, { month: 'short', timeZone: 'America/New_York' });
+      if (dayEl) dayEl.textContent = next.toLocaleDateString(dateLocale, { day: '2-digit', timeZone: 'America/New_York' });
       if (timeEl) {
         timeEl.dateTime = next.toISOString();
-        timeEl.textContent = next.toLocaleDateString('en-US', {
+        timeEl.textContent = next.toLocaleDateString(dateLocale, {
           weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
           timeZone: 'America/New_York',
         });
