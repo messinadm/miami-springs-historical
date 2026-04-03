@@ -31,20 +31,6 @@ export default {
       }
     }
 
-    const response = await env.ASSETS.fetch(request);
-
-    // Serve the Spanish 404 page for unmatched /es/* routes.
-    // not_found_handling:"404-page" always returns the English /404.html —
-    // intercept it here and swap in the Spanish page instead.
-    if (response.status === 404 && url.pathname.startsWith('/es/')) {
-      try {
-        const notFound = await env.ASSETS.fetch(new Request(`${url.origin}/es/404/`));
-        return new Response(notFound.body, { status: 404, headers: notFound.headers });
-      } catch {
-        return response; // fall back to English 404 if something goes wrong
-      }
-    }
-
-    return response;
+    return env.ASSETS.fetch(request);
   },
 };
