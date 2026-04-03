@@ -4,6 +4,10 @@ import { useTranslations } from '../i18n/utils';
 const t = useTranslations(Astro.currentLocale);
 ---
 
+<script is:inline>
+  if (location.pathname.startsWith('/es/')) location.replace('/es/404/');
+</script>
+
 <Layout
   title={t('not_found.meta_title')}
   description={t('not_found.meta_description')}
