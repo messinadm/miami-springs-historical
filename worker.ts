@@ -4,6 +4,7 @@ interface Env {
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    try {
     const url = new URL(request.url);
 
     // Only consider redirecting HTML pages, not assets or /es/ routes
@@ -32,5 +33,9 @@ export default {
     }
 
     return env.ASSETS.fetch(request);
+    } catch (e: unknown) {
+      const msg = e instanceof Error ? `${e.name}: ${e.message}\n${e.stack}` : String(e);
+      return new Response(msg, { status: 500, headers: { 'Content-Type': 'text/plain' } });
+    }
   },
 };
