@@ -77,6 +77,21 @@ const esUrl = site + esPath;
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
+    {!isEs && <script is:inline>
+      (function () {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var c = cookies[i].trim();
+          if (c === 'lang=en') return;      // user explicitly chose English
+          if (c.startsWith('lang=')) break; // any other explicit choice — stop
+        }
+        var lang = (navigator.language || navigator.userLanguage || '').split('-')[0].toLowerCase();
+        if (lang === 'es') {
+          var p = location.pathname;
+          location.replace('/es' + (p === '/' ? '' : p));
+        }
+      })();
+    </script>}
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
