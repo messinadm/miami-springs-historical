@@ -33,15 +33,12 @@ export default {
 
     const response = await env.ASSETS.fetch(request);
 
-    // Serve the Spanish 404 page for unmatched /es/* routes
-    if (response.status === 404 && url.pathname.startsWith('/es/') && !url.pathname.startsWith('/es/404')) {
-      const spanish404 = await env.ASSETS.fetch(
-        new Request(new URL('/es/404/', url.origin).toString())
-      );
-      return new Response(spanish404.body, {
-        status: 404,
-        headers: spanish404.headers,
-      });
+    if (response.status === 404) {
+      const notFoundUrl = url.pathname.startsWith('/es/')
+        ? `${url.origin}/es/404/`
+        : `${url.origin}/404.html`;
+      const notFound = await env.ASSETS.fetch(new Request(notFoundUrl));
+      return new Response(notFound.body, { status: 404, headers: notFound.headers });
     }
 
     return response;
