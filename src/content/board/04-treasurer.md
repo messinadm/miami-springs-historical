@@ -1,5 +1,5 @@
 ---
 name: "TBD"
 role: "Treasurer"
-order: 4
+order: 5
 ---

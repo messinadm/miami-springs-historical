@@ -1,5 +1,5 @@
 ---
 name: "Esther Flores"
-role: "Corresponding Secretary"
+role: "Secretary"
 order: 6
 ---

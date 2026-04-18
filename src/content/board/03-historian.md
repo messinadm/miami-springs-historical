@@ -1,5 +1,5 @@
 ---
 name: "Ken Wilde"
 role: "Historian"
-order: 2.5
+order: 4
 ---
