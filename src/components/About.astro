@@ -56,11 +56,11 @@ const slides = [
 ];
 ---
 
-<section id="about" class="about-section">
+<section id="about" class="about-section" aria-labelledby="about-heading">
   <div class="container">
 
     <div class="about-top">
-      <h2 class="section-heading"><a href="#about">{t('about.heading')}</a></h2>
+      <h2 id="about-heading" class="section-heading"><a href="#about">{t('about.heading')}</a></h2>
       <div class="divider"></div>
       <p class="about-body">{t('about.body')}</p>
       <div class="info-cards">
@@ -429,6 +429,10 @@ const slides = [
     height: 2px;
     background-color: var(--color-accent);
     margin-bottom: 1.25rem;
+  }
+
+  .history-panel--dark .panel-divider {
+    background-color: var(--color-eyebrow);
   }
 
   .panel-text p {

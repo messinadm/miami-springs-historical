@@ -9,9 +9,9 @@ const sorted = members
 const t = useTranslations(Astro.currentLocale);
 ---
 
-<section id="board" class="board-section">
+<section id="board" class="board-section" aria-labelledby="board-heading">
   <div class="container">
-    <h2 class="section-heading"><a href="#board">{t('board.heading')}</a></h2>
+    <h2 id="board-heading" class="section-heading"><a href="#board">{t('board.heading')}</a></h2>
     <div class="divider"></div>
     <p class="election-notice">{t('board.elections')}</p>
     <ul class="board-list">

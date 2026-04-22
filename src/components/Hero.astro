@@ -5,7 +5,7 @@ const t = useTranslations(Astro.currentLocale);
 
 ---
 
-<section class="hero">
+<section class="hero" aria-labelledby="hero-heading">
   <div class="hero-image-wrap">
     <img
       src="/curtiss-mansion-entrance.jpg"
@@ -16,7 +16,7 @@ const t = useTranslations(Astro.currentLocale);
   </div>
   <div class="hero-content">
     <p class="hero-eyebrow">{t('hero.eyebrow')}</p>
-    <h1 class="hero-title">{t('hero.title_line1')}<br />{t('hero.title_line2')}</h1>
+    <h1 id="hero-heading" class="hero-title">{t('hero.title_line1')}<br />{t('hero.title_line2')}</h1>
     <p class="hero-tagline">{t('hero.tagline')}</p>
     <div class="hero-cta">
       <a href="#about" class="btn-primary">{t('hero.cta_primary')}</a>
@@ -139,13 +139,13 @@ const t = useTranslations(Astro.currentLocale);
     font-size: 0.8125rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    border: 2px solid rgba(255, 255, 255, 0.55);
+    border: 2px solid var(--color-btn-ghost-border);
     transition: border-color 0.2s, background-color 0.2s;
   }
 
   .btn-secondary:hover {
     border-color: var(--color-white);
-    background-color: rgba(255, 255, 255, 0.08);
+    background-color: var(--color-btn-ghost-hover);
     color: var(--color-white);
   }
   @media (max-width: 768px) {

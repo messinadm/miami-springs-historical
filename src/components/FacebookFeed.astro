@@ -8,9 +8,9 @@ const encodedUrl = encodeURIComponent(fbUrl);
 const fbLocale = Astro.currentLocale === 'es' ? 'es_LA' : 'en_US';
 ---
 
-<section id="connect" class="fb-section">
+<section id="connect" class="fb-section" aria-labelledby="connect-heading">
   <div class="container">
-    <h2 class="section-title"><a href="#connect">{t('connect.heading')}</a></h2>
+    <h2 id="connect-heading" class="section-title"><a href="#connect">{t('connect.heading')}</a></h2>
     <div class="divider"></div>
     <p class="fb-intro">{t('connect.intro')}</p>
     <div class="fb-layout">
@@ -105,8 +105,8 @@ const fbLocale = Astro.currentLocale === 'es' ? 'es_LA' : 'en_US';
   .fb-link {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    background-color: #1877f2;
-    color: #fff;
+    background-color: var(--color-facebook);
+    color: var(--color-white);
     text-decoration: none;
     font-family: var(--font-body);
     font-size: 0.875rem;
@@ -115,8 +115,8 @@ const fbLocale = Astro.currentLocale === 'es' ? 'es_LA' : 'en_US';
   }
 
   .fb-link:hover {
-    background-color: #0f5cc9;
-    color: #fff;
+    background-color: var(--color-facebook-dark);
+    color: var(--color-white);
   }
 
   @media (max-width: 820px) {
