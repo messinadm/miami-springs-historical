@@ -7,13 +7,20 @@ const t = useTranslations(Astro.currentLocale);
 const base = isEs ? '/es' : '';
 ---
 
-<nav>
+<nav aria-label={t('nav.aria_label')}>
   <div class="nav-inner">
     <a href={isEs ? '/es' : '/'} class="nav-logo">MSHS</a>
-    <button class="hamburger" aria-label={t('nav.open_menu')} aria-expanded="false">
+    <button
+      class="hamburger"
+      aria-label={t('nav.open_menu')}
+      aria-expanded="false"
+      aria-controls="nav-menu"
+      data-open-label={t('nav.open_menu')}
+      data-close-label={t('nav.close_menu')}
+    >
       <span></span><span></span><span></span>
     </button>
-    <ul class="nav-links">
+    <ul id="nav-menu" class="nav-links">
       <li><a href={`${base}/#about`}>{t('nav.about')}</a></li>
       <li><a href={`${base}/museum`} aria-current={isMuseum ? 'page' : undefined}>{t('nav.museum')}</a></li>
       <li><a href={`${base}/#history`}>{t('nav.history')}</a></li>
@@ -34,6 +41,7 @@ const base = isEs ? '/es' : '';
   btn.addEventListener('click', () => {
     const open = links.classList.toggle('open');
     btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? (btn.dataset.closeLabel ?? '') : (btn.dataset.openLabel ?? ''));
   });
 
   // Close menu when a link is clicked
@@ -41,6 +49,7 @@ const base = isEs ? '/es' : '';
     a.addEventListener('click', () => {
       links.classList.remove('open');
       btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', btn.dataset.openLabel ?? '');
     });
   });
 
@@ -108,7 +117,7 @@ const base = isEs ? '/es' : '';
   }
 
   .nav-lang a {
-    color: var(--color-accent) !important;
+    color: var(--color-secondary) !important;
   }
 
   .nav-lang a:hover {

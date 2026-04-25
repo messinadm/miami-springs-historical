@@ -30,6 +30,12 @@ All colors are defined as CSS custom properties in `src/layouts/Layout.astro`. *
 | `--color-btn-ghost-hover` | `rgba(255,255,255,0.08)` | Ghost button hover background |
 | `--color-facebook` | `#1877f2` | Facebook brand blue |
 | `--color-facebook-dark` | `#0f5cc9` | Facebook brand blue hover |
+| `--color-overlay-gradient-start` | `rgba(42,26,14,0.6)` | Photo overlay gradient top |
+| `--color-overlay-gradient-mid` | `rgba(42,26,14,0.75)` | Photo overlay gradient middle |
+| `--color-overlay-gradient-end` | `rgba(42,26,14,0.88)` | Photo overlay gradient bottom |
+| `--color-photo-credit` | `rgba(255,255,255,0.5)` | Photo credit text on dark photo |
+| `--color-photo-credit-link` | `rgba(255,255,255,0.6)` | Photo credit link on dark photo |
+| `--color-photo-credit-link-hover` | `rgba(255,255,255,0.9)` | Photo credit link hover on dark photo |
 
 ### Contrast rules (WCAG 2.1 AA)
 

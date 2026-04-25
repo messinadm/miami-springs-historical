@@ -23,7 +23,7 @@ const t = useTranslations('es');
       <p class="eyebrow">{t('not_found.eyebrow')}</p>
       <h1>{t('not_found.heading')}</h1>
       <p class="body">{t('not_found.body')}</p>
-      <a href="/es" class="btn">{t('not_found.cta')}</a>
+      <a href="/es" class="btn-primary">{t('not_found.cta')}</a>
       <p class="photo-credit">
         {t('not_found.photo_credit')}
         <a href="https://www.floridamemory.com/items/show/165449" target="_blank" rel="noopener noreferrer">State Archives of Florida, Florida Memory.</a> Public Domain.
@@ -59,9 +59,9 @@ const t = useTranslations('es');
     inset: 0;
     background: linear-gradient(
       to bottom,
-      rgba(42, 26, 14, 0.6) 0%,
-      rgba(42, 26, 14, 0.75) 60%,
-      rgba(42, 26, 14, 0.88) 100%
+      var(--color-overlay-gradient-start) 0%,
+      var(--color-overlay-gradient-mid) 60%,
+      var(--color-overlay-gradient-end) 100%
     );
   }
 
@@ -78,7 +78,7 @@ const t = useTranslations('es');
     font-size: 0.8125rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--color-secondary);
+    color: var(--color-eyebrow);
     margin-bottom: 1.25rem;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
   }
@@ -96,13 +96,13 @@ const t = useTranslations('es');
   .body {
     font-family: var(--font-body);
     font-size: clamp(0.9375rem, 2vw, 1.125rem);
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--color-panel-text-light);
     line-height: 1.75;
     margin-bottom: 2.5rem;
     text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
   }
 
-  .btn {
+  .btn-primary {
     display: inline-block;
     padding: 0.75rem 2rem;
     background-color: var(--color-primary);
@@ -116,7 +116,7 @@ const t = useTranslations('es');
     transition: background-color 0.2s, border-color 0.2s;
   }
 
-  .btn:hover {
+  .btn-primary:hover {
     background-color: var(--color-primary-dark);
     border-color: var(--color-primary-dark);
     color: var(--color-white);
@@ -125,16 +125,16 @@ const t = useTranslations('es');
   .photo-credit {
     margin-top: 3rem;
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.5);
+    color: var(--color-photo-credit);
     font-style: italic;
     line-height: 1.5;
   }
 
   .photo-credit a {
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--color-photo-credit-link);
   }
 
   .photo-credit a:hover {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-photo-credit-link-hover);
   }
 </style>

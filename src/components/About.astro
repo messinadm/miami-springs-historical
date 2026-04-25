@@ -97,9 +97,9 @@ const slides = [
 
   </div>
 
-  <div class="history-wrap" id="history">
+  <section class="history-wrap" id="history" aria-labelledby="history-heading">
     <div class="container">
-      <h2 class="history-heading section-heading"><a href="#history">{t('about.history_heading')}</a></h2>
+      <h2 id="history-heading" class="history-heading section-heading"><a href="#history">{t('about.history_heading')}</a></h2>
       <div class="divider"></div>
     </div>
     {slides.map((slide, i) => (
@@ -139,7 +139,7 @@ const slides = [
         <span class="panel-counter" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
       </div>
     ))}
-  </div>
+  </section>
 
 </section>
 

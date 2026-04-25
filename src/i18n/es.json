@@ -1,4 +1,7 @@
 {
+  "layout": {
+    "skip_to_content": "Ir al contenido principal"
+  },
   "nav": {
     "about": "Sobre nosotros",
     "museum": "Museo",
@@ -7,7 +10,9 @@
     "connect": "Contacto",
     "board": "Directiva",
     "lang_switch": "English",
-    "open_menu": "Abrir menú"
+    "open_menu": "Abrir menú",
+    "close_menu": "Cerrar menú",
+    "aria_label": "Navegación principal"
   },
   "hero": {
     "image_alt": "Las puertas de entrada abiertas de la Mansión Curtiss, Miami Springs",
@@ -55,7 +60,8 @@
     "heading": "Conecta con nosotros",
     "intro": "Síguenos en Facebook para anuncios, fotos y noticias de la comunidad.",
     "body": "Compartimos historias, fotografías y anuncios sobre la historia de Miami Springs y los próximos eventos en nuestra página de Facebook. Dale me gusta y síguenos para mantenerte conectado con nuestra comunidad.",
-    "link": "Visita nuestra página de Facebook →"
+    "link": "Visita nuestra página de Facebook →",
+    "iframe_title": "Página de Facebook de la Sociedad Histórica de Miami Springs"
   },
   "footer": {
     "hours": "Sábados, 12:00 PM – 4:00 PM",

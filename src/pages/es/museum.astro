@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import generalSettings from '../../data/general.json';
 import { useTranslations } from '../../i18n/utils';
@@ -11,8 +12,9 @@ const t = useTranslations(Astro.currentLocale);
   description={t('museum.meta_description')}
   lang="es"
 >
+  <Nav />
   <div class="page-wrap">
-    <header class="page-header">
+    <header class="page-header" role="banner">
       <a href="/es" class="back-link">{t('museum.back')}</a>
       <h1 class="page-title">{t('museum.heading')}</h1>
       <p class="page-intro">{t('museum.intro')}</p>
@@ -173,8 +175,8 @@ const t = useTranslations(Astro.currentLocale);
   .visit-card { background-color: var(--color-bg-alt); border-left: 3px solid var(--color-primary); padding: 1.25rem 1.5rem; }
   .visit-card h3 { font-family: var(--font-display); font-size: 1rem; color: var(--color-primary); margin-bottom: 0.4rem; }
   .visit-card p { font-size: 0.9375rem; color: var(--color-text-muted); line-height: 1.6; }
-  .section-heading { font-family: var(--font-display); font-size: clamp(1.25rem, 3vw, 1.75rem); color: var(--color-primary); margin-bottom: 1rem; }
-  .divider { width: 60px; height: 3px; background-color: var(--color-accent); margin-bottom: 2.5rem; }
+  .section-heading { font-family: var(--font-display); font-size: clamp(1.25rem, 3vw, 1.75rem); color: var(--color-primary); margin-bottom: 1rem; text-align: center; }
+  .divider { width: 60px; height: 3px; background-color: var(--color-accent); margin: 0 auto 2.5rem; }
   .exhibits-section { margin-bottom: 4rem; }
   .exhibit { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--color-secondary); }
   .exhibit:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }

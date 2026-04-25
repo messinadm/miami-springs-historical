@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import generalSettings from '../data/general.json';
 import { useTranslations } from '../i18n/utils';
@@ -10,8 +11,9 @@ const t = useTranslations(Astro.currentLocale);
   title={t('museum.meta_title')}
   description={t('museum.meta_description')}
 >
+  <Nav />
   <div class="page-wrap">
-    <header class="page-header">
+    <header class="page-header" role="banner">
       <a href="/" class="back-link">{t('museum.back')}</a>
       <h1 class="page-title">{t('museum.heading')}</h1>
       <p class="page-intro">{t('museum.intro')}</p>
@@ -236,13 +238,14 @@ const t = useTranslations(Astro.currentLocale);
     font-size: clamp(1.25rem, 3vw, 1.75rem);
     color: var(--color-primary);
     margin-bottom: 1rem;
+    text-align: center;
   }
 
   .divider {
     width: 60px;
     height: 3px;
     background-color: var(--color-accent);
-    margin-bottom: 2.5rem;
+    margin: 0 auto 2.5rem;
   }
 
   /* ── Exhibits ─────────────────────────────────────────── */
