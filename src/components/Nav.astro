@@ -1,4 +1,5 @@
 ---
+import generalSettings from '../data/general.json';
 import { useTranslations } from '../i18n/utils';
 const { pathname } = Astro.url;
 const isEs = pathname.startsWith('/es');
@@ -27,6 +28,9 @@ const base = isEs ? '/es' : '';
       <li><a href={`${base}/#events`}>{t('nav.events')}</a></li>
       <li><a href={`${base}/#connect`}>{t('nav.connect')}</a></li>
       <li><a href={`${base}/#board`}>{t('nav.board')}</a></li>
+      <li class="nav-donate">
+        <a href={generalSettings.donate_url} target="_blank" rel="noopener noreferrer" aria-label={`${t('nav.donate')} (opens in new tab)`}>{t('nav.donate')}</a>
+      </li>
       <li class="nav-lang">
         <a href={isEs ? '/' : '/es'} aria-label="Switch language" id="lang-switch">{t('nav.lang_switch')}</a>
       </li>
@@ -114,6 +118,19 @@ const base = isEs ? '/es' : '';
 
   .nav-links a:hover {
     color: var(--color-white);
+  }
+
+  .nav-donate a {
+    background-color: var(--color-accent);
+    color: var(--color-white) !important;
+    padding: 0.3rem 0.875rem;
+    letter-spacing: 0.08em;
+    transition: background-color 0.2s !important;
+  }
+
+  .nav-donate a:hover {
+    background-color: #1e4220 !important;
+    color: var(--color-white) !important;
   }
 
   .nav-lang a {

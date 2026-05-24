@@ -31,6 +31,15 @@ const t = useTranslations(Astro.currentLocale);
       >
         {t('hero.cta_secondary')}
       </a>
+      <a
+        href={generalSettings.donate_url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-donate"
+        aria-label={`${t('hero.cta_donate')} (opens in new tab)`}
+      >
+        {t('hero.cta_donate')}
+      </a>
     </div>
   </div>
 </section>
@@ -151,6 +160,26 @@ const t = useTranslations(Astro.currentLocale);
     background-color: var(--color-btn-ghost-hover);
     color: var(--color-white);
   }
+  .btn-donate {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 2px solid var(--color-accent);
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  .btn-donate:hover {
+    background-color: #1e4220;
+    border-color: #1e4220;
+    color: var(--color-white);
+  }
+
   @media (max-width: 768px) {
     .hero {
       min-height: 75vh;

@@ -9,6 +9,7 @@
     "events": "Events",
     "connect": "Connect",
     "board": "Board",
+    "donate": "Donate",
     "lang_switch": "Español",
     "open_menu": "Open menu",
     "close_menu": "Close menu",
@@ -22,7 +23,8 @@
     "title_line2": "Historical Society",
     "tagline": "Celebrating Our Centennial — 100 Years of Miami Springs",
     "cta_primary": "Discover Our Story",
-    "cta_secondary": "Follow on Facebook"
+    "cta_secondary": "Follow on Facebook",
+    "cta_donate": "Donate Now"
   },
   "about": {
     "heading": "About the Society",
@@ -65,6 +67,7 @@
   },
   "footer": {
     "hours": "Saturdays, 12:00 PM – 4:00 PM",
+    "donate": "Donate to Support the Museum",
     "attribution": "Hero photo: Wikimedia Commons, CC BY 2.0. Historical photo: Fishbaugh, W.A., State Archives of Florida. Public Domain.",
     "link_city": "City of Miami Springs",
     "link_resources": "Resources & References"
@@ -99,6 +102,7 @@
     "gift_heading": "Gift Shop",
     "gift_body": "Browse our gift shop for unique historical gifts and keepsakes — all proceeds support the museum. The Miami Springs Historical Society is a 501(c)(3) nonprofit, so your purchases and donations are tax-deductible.",
     "donate_heading": "Donate Artifacts",
+    "gift_donate_cta": "Donate to the Society →",
     "donate_body": "Interested in donating artifacts, photographs, or memorabilia to the museum?",
     "donate_contact": "Contact us",
     "donate_suffix": "— we'd love to hear from you.",

@@ -9,6 +9,7 @@
     "events": "Eventos",
     "connect": "Contacto",
     "board": "Directiva",
+    "donate": "Donar",
     "lang_switch": "English",
     "open_menu": "Abrir menú",
     "close_menu": "Cerrar menú",
@@ -22,7 +23,8 @@
     "title_line2": "Sociedad Histórica",
     "tagline": "Celebrando nuestro centenario — 100 años de Miami Springs",
     "cta_primary": "Descubre nuestra historia",
-    "cta_secondary": "Síguenos en Facebook"
+    "cta_secondary": "Síguenos en Facebook",
+    "cta_donate": "Donar ahora"
   },
   "about": {
     "heading": "Sobre la Sociedad",
@@ -65,6 +67,7 @@
   },
   "footer": {
     "hours": "Sábados, 12:00 PM – 4:00 PM",
+    "donate": "Apoya al Museo",
     "attribution": "Foto principal: Wikimedia Commons, CC BY 2.0. Foto histórica: Fishbaugh, W.A., Archivos del Estado de Florida. Dominio público.",
     "link_city": "Ciudad de Miami Springs",
     "link_resources": "Recursos y Referencias"
@@ -99,6 +102,7 @@
     "gift_heading": "Tienda de Regalos",
     "gift_body": "Explora nuestra tienda de regalos con artículos históricos únicos y recuerdos — todas las ganancias apoyan al museo. La Sociedad Histórica de Miami Springs es una organización sin fines de lucro 501(c)(3), por lo que tus compras y donaciones son deducibles de impuestos.",
     "donate_heading": "Donar Artefactos",
+    "gift_donate_cta": "Donar a la Sociedad →",
     "donate_body": "¿Te interesa donar artefactos, fotografías o recuerdos al museo?",
     "donate_contact": "Contáctanos",
     "donate_suffix": "— nos encantaría saber de ti.",
