@@ -49,11 +49,13 @@ const esUrl = site + esPath;
     <meta property="og:image" content="https://miamispringshistoricalsociety.com/curtiss-mansion-entrance.jpg" />
     <meta property="og:image:alt" content={t('hero.og_image_alt')} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content="https://miamispringshistoricalsociety.com/curtiss-mansion-entrance.jpg" />
     <title>{title}</title>
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
+      "@type": ["Museum", "LocalBusiness"],
       "name": "Miami Springs Historical Society",
       "description": description,
       "url": "https://miamispringshistoricalsociety.com",

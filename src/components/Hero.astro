@@ -11,6 +11,8 @@ const t = useTranslations(Astro.currentLocale);
       src="/curtiss-mansion-entrance.jpg"
       alt={t('hero.image_alt')}
       class="hero-image"
+      loading="eager"
+      fetchpriority="high"
     />
     <div class="hero-overlay"></div>
   </div>

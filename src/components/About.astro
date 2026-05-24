@@ -76,7 +76,7 @@ const slides = [
           <h3>{t('about.info_contact')}</h3>
           <p>
             <a href={`mailto:${generalSettings.email}`}>{t('about.info_email')}</a><br />
-            <a href={`tel:${generalSettings.phone}`}>{generalSettings.phone}</a><br />
+            <a href={`tel:${generalSettings.phone.replace(/\D/g, '').replace(/^(\d{10})$/, '+1$1')}`}>{generalSettings.phone}</a><br />
             {generalSettings.po_box}
           </p>
         </div>
