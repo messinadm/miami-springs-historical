@@ -193,16 +193,14 @@ const t = useTranslations(Astro.currentLocale);
   .exhibit-image--offset { object-position: center 12.5%; }
   .photo-credit { font-size: 0.75rem; font-style: italic; color: var(--color-text-muted); margin-top: 0.5rem; }
   .bottom-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
-  .gift-section, .donate-section { margin-bottom: 0; }
-  .gift-section p, .donate-section p { font-size: 1rem; color: var(--color-text-muted); line-height: 1.7; max-width: 480px; }
-  .gift-section, .donate-section { text-align: center; }
-  .gift-section p, .donate-section p { margin: 0 auto; }
-  .donate-cta { display: inline-block; margin-top: 1.25rem; padding: 0.625rem 1.75rem 0.625rem 1.5rem; background-color: var(--color-accent); color: var(--color-white); font-family: var(--font-body); font-size: 0.875rem; letter-spacing: 0.08em; text-decoration: none; transition: background-color 0.2s; }
-  .donate-cta:hover { background-color: #1e4220; color: var(--color-white); }
+  .gift-section, .donate-section { margin-bottom: 0; text-align: center; }
+  .gift-section p, .donate-section p { font-size: 1rem; color: var(--color-text-muted); line-height: 1.7; max-width: 480px; margin: 0 auto; }
+  .donate-cta { display: inline-block; margin-top: 1.25rem; padding: 0.625rem 1.5rem; background-color: var(--color-accent); color: var(--color-white); font-family: var(--font-body); font-size: 0.875rem; letter-spacing: 0.08em; text-decoration: none; transition: background-color 0.2s; }
+  .donate-cta:hover { background-color: var(--color-accent-dark); color: var(--color-white); }
   .donate-section a { color: var(--color-primary); }
   .satellite-section { margin-bottom: 4rem; }
-  .satellite-intro { font-size: 1rem; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 2rem; }
-  .satellite-closing { font-size: 1rem; color: var(--color-text-muted); margin-top: 2rem; }
+  .satellite-intro { font-size: 1rem; color: var(--color-text-muted); line-height: 1.7; margin-bottom: 2rem; text-align: center; }
+  .satellite-closing { font-size: 1rem; color: var(--color-text-muted); margin-top: 2rem; text-align: center; }
   .satellite-closing a { color: var(--color-primary); }
   .satellite-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
   .satellite-card { background-color: var(--color-bg-alt); border-left: 3px solid var(--color-primary); overflow: hidden; }
