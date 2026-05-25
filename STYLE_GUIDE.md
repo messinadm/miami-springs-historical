@@ -156,7 +156,7 @@ This site targets **WCAG 2.1 AA**.
 
 All user-facing strings go in `src/i18n/en.json` (English) and `src/i18n/es.json` (Spanish). Every key in `en.json` must have a matching key in `es.json`.
 
-**Allowed exceptions for hardcoded strings:** proper nouns (org name, place names), addresses, email addresses, phone numbers, photo credits.
+**Allowed exceptions for hardcoded strings:** proper nouns (org name, place names), addresses, email addresses, phone numbers, photo credits, board member role titles (President, Vice President, etc. — intentionally left in English on both locales).
 
 ---
 
