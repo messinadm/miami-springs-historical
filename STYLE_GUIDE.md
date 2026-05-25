@@ -34,6 +34,8 @@ All colors are defined as CSS custom properties in `src/layouts/Layout.astro`. *
 | `--color-overlay-gradient-start` | `rgba(42,26,14,0.6)` | Photo overlay gradient top |
 | `--color-overlay-gradient-mid` | `rgba(42,26,14,0.75)` | Photo overlay gradient middle |
 | `--color-overlay-gradient-end` | `rgba(42,26,14,0.88)` | Photo overlay gradient bottom |
+| `--color-banner-overlay-start` | `rgba(42,26,14,0.35)` | Shorter banner overlay gradient top (lighter) |
+| `--color-banner-overlay-mid` | `rgba(42,26,14,0.72)` | Shorter banner overlay gradient middle |
 | `--color-photo-credit` | `rgba(255,255,255,0.5)` | Photo credit text on dark photo |
 | `--color-photo-credit-link` | `rgba(255,255,255,0.6)` | Photo credit link on dark photo |
 | `--color-photo-credit-link-hover` | `rgba(255,255,255,0.9)` | Photo credit link hover on dark photo |
@@ -105,6 +107,8 @@ Every section uses this pattern:
 
 Use `.divider--left` for left-aligned dividers (shorter bottom margin: `1.25rem`).
 On **dark panel backgrounds**, use `--color-eyebrow` for the divider instead of `--color-accent`.
+
+**Exception — list/directory pages** (`resources.astro`): Use left-aligned `display: inline-block` headings with `border-bottom: 2px solid var(--color-accent)` instead of the centered + divider pattern. This suits grouped link lists better than a decorative divider bar.
 
 ### Buttons
 
