@@ -1,0 +1,340 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import generalSettings from '../data/general.json';
+import { useTranslations } from '../i18n/utils';
+const t = useTranslations(Astro.currentLocale);
+---
+
+<Layout
+  title={t('thank_you.meta_title')}
+  description={t('thank_you.meta_description')}
+  noindex={true}
+>
+  <Nav />
+
+  <div class="page-wrap">
+
+    <!-- Banner -->
+    <div class="banner" role="img" aria-label="Glenn H. Curtiss Memorial Circle, Miami Springs">
+      <img
+        src="/curtiss-memorial-circle.jpg"
+        alt="Glenn H. Curtiss Memorial Circle, the heart of Miami Springs"
+        class="banner-img"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <p class="banner-eyebrow">{t('thank_you.eyebrow')}</p>
+        <h1 class="banner-heading">{t('thank_you.heading')}</h1>
+        <p class="banner-sub">{t('thank_you.subheading')}</p>
+      </div>
+      <p class="photo-credit">{t('thank_you.photo_credit')}</p>
+    </div>
+
+    <main id="main-content" class="page-main">
+
+      <!-- Impact -->
+      <section class="impact-section" aria-labelledby="impact-heading">
+        <h2 id="impact-heading" class="section-heading">{t('thank_you.impact_heading')}</h2>
+        <div class="divider"></div>
+        <p class="impact-body">{t('thank_you.impact_body')}</p>
+      </section>
+
+      <!-- Tax acknowledgment -->
+      <section class="tax-section" aria-labelledby="tax-heading">
+        <h2 id="tax-heading" class="section-heading">{t('thank_you.tax_heading')}</h2>
+        <div class="divider"></div>
+        <div class="tax-card">
+          <div class="tax-seal" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+              <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.491 4.491 0 01-3.497-1.307 4.491 4.491 0 01-1.307-3.497A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <div class="tax-body">
+            <p class="tax-org">Miami Springs Historical Society</p>
+            {generalSettings.ein && (
+              <p class="tax-ein">{t('thank_you.tax_ein_label')} {generalSettings.ein}</p>
+            )}
+            <p>{t('thank_you.tax_501c3')}</p>
+            <p class="tax-highlight">{t('thank_you.tax_no_goods')}</p>
+            <p class="tax-receipt-note">{t('thank_you.tax_receipt')}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Action links -->
+      <section class="next-section" aria-label="Next steps">
+        <div class="next-links">
+          <a href="/museum" class="next-card">
+            <span class="next-label">{t('thank_you.museum_cta')}</span>
+          </a>
+          <a href={generalSettings.facebook_url} target="_blank" rel="noopener noreferrer" class="next-card next-card--fb">
+            <span class="next-label">{t('thank_you.facebook_cta')}</span>
+          </a>
+          <a href="/" class="next-card next-card--home">
+            <span class="next-label">{t('thank_you.home_cta')}</span>
+          </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <Footer />
+</Layout>
+
+<style>
+  .page-wrap {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Banner ───────────────────────────────────────────── */
+
+  .banner {
+    position: relative;
+    height: clamp(320px, 45vh, 520px);
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+
+  .banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(42, 26, 14, 0.35) 0%,
+      rgba(42, 26, 14, 0.72) 70%,
+      rgba(42, 26, 14, 0.88) 100%
+    );
+  }
+
+  .banner-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 2rem 2.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .banner-eyebrow {
+    font-family: var(--font-body);
+    font-size: clamp(0.75rem, 1.5vw, 0.8125rem);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-eyebrow);
+    margin-bottom: 0.75rem;
+  }
+
+  .banner-heading {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--color-white);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 0.875rem;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  }
+
+  .banner-sub {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(0.9375rem, 2vw, 1.1875rem);
+    color: var(--color-white);
+    max-width: 640px;
+    opacity: 0.92;
+  }
+
+  .photo-credit {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 1rem;
+    font-size: 0.6875rem;
+    font-style: italic;
+    color: var(--color-photo-credit);
+    z-index: 2;
+  }
+
+  /* ── Main content ─────────────────────────────────────── */
+
+  .page-main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4rem 2rem 3rem;
+    flex: 1;
+  }
+
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.625rem);
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-accent);
+    margin: 0 auto 2rem;
+  }
+
+  /* ── Impact ───────────────────────────────────────────── */
+
+  .impact-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .impact-body {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    text-align: center;
+    max-width: 660px;
+    margin: 0 auto;
+  }
+
+  /* ── Tax card ─────────────────────────────────────────── */
+
+  .tax-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .tax-card {
+    display: flex;
+    gap: 1.75rem;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-secondary);
+    border-left: 4px solid var(--color-accent);
+    padding: 2rem 2rem 2rem 1.75rem;
+    align-items: flex-start;
+  }
+
+  .tax-seal {
+    flex-shrink: 0;
+    color: var(--color-accent);
+    margin-top: 0.125rem;
+  }
+
+  .tax-org {
+    font-family: var(--font-display);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+  }
+
+  .tax-ein {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.875rem;
+    font-family: var(--font-body);
+    letter-spacing: 0.03em;
+  }
+
+  .tax-body p {
+    font-size: 0.9375rem;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .tax-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .tax-highlight {
+    font-weight: 600;
+    color: var(--color-text) !important;
+  }
+
+  .tax-receipt-note {
+    font-size: 0.875rem !important;
+    font-style: italic;
+    border-top: 1px solid var(--color-secondary);
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ── Action links ─────────────────────────────────────── */
+
+  .next-section {
+    margin-bottom: 1rem;
+  }
+
+  .next-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .next-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 1rem;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-secondary);
+    border-top: 3px solid var(--color-primary);
+    text-decoration: none;
+    text-align: center;
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+
+  .next-card:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-bg);
+  }
+
+  .next-card--fb {
+    border-top-color: var(--color-facebook);
+  }
+
+  .next-card--home {
+    border-top-color: var(--color-accent);
+  }
+
+  .next-label {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    color: var(--color-primary);
+    text-transform: uppercase;
+  }
+
+  .next-card--fb .next-label {
+    color: var(--color-facebook);
+  }
+
+  .next-card--home .next-label {
+    color: var(--color-accent);
+  }
+
+  /* ── Mobile ───────────────────────────────────────────── */
+
+  @media (max-width: 600px) {
+    .next-links {
+      grid-template-columns: 1fr;
+    }
+
+    .tax-card {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+</style>

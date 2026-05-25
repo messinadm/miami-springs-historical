@@ -132,6 +132,25 @@
     "section_hotel_sanitarium": "Hotel Country Club y Sanatorio Miami Battle Creek",
     "section_reading": "Lecturas"
   },
+  "thank_you": {
+    "meta_title": "Gracias — Sociedad Histórica de Miami Springs",
+    "meta_description": "Gracias por tu generosa donación a la Sociedad Histórica de Miami Springs, una organización sin fines de lucro 501(c)(3) dedicada a preservar la historia de Miami Springs.",
+    "back": "← Volver al inicio",
+    "eyebrow": "Tu generosidad marca la diferencia",
+    "heading": "Gracias por tu apoyo",
+    "subheading": "Tu donación ayuda a preservar la historia de Miami Springs — desde la visión Pueblo Revival de Glenn Curtiss hasta nuestro centenario y más allá.",
+    "impact_heading": "En qué se usa tu donación",
+    "impact_body": "Las donaciones a la Sociedad Histórica de Miami Springs financian nuestras exhibiciones, la preservación de archivos, programas educativos y el alcance comunitario. Cada dólar va directamente a mantener viva nuestra historia y accesible — sin costo — para todos los que cruzan nuestras puertas.",
+    "tax_heading": "Reconocimiento Fiscal",
+    "tax_501c3": "La Sociedad Histórica de Miami Springs está reconocida como organización exenta de impuestos bajo la Sección 501(c)(3) del Código de Rentas Internas. Tu contribución es deducible de impuestos en la medida en que lo permita la ley.",
+    "tax_no_goods": "No se proporcionaron bienes ni servicios a cambio de tu contribución.",
+    "tax_receipt": "Recibirás un recibo de pago de Square. Para contribuciones de $250 o más, comunícate con nosotros para solicitar un reconocimiento escrito formal para tus registros fiscales.",
+    "tax_ein_label": "EIN:",
+    "museum_cta": "Explora el Museo →",
+    "facebook_cta": "Síguenos en Facebook →",
+    "home_cta": "Volver a la Sociedad →",
+    "photo_credit": "Círculo Memorial Glenn H. Curtiss — Wikimedia Commons, CC BY-SA 4.0"
+  },
   "not_found": {
     "meta_title": "Página No Encontrada — Sociedad Histórica de Miami Springs",
     "meta_description": "Esta página no existe, al igual que los muchos lotes vendidos durante el auge inmobiliario de la década de 1920 que nunca fueron desarrollados.",

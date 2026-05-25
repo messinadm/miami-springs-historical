@@ -132,6 +132,25 @@
     "section_hotel_sanitarium": "Hotel Country Club & Miami Battle Creek Sanitarium",
     "section_reading": "Reading"
   },
+  "thank_you": {
+    "meta_title": "Thank You — Miami Springs Historical Society",
+    "meta_description": "Thank you for your generous donation to the Miami Springs Historical Society, a 501(c)(3) nonprofit organization dedicated to preserving the history of Miami Springs.",
+    "back": "← Back to Home",
+    "eyebrow": "Your generosity makes a difference",
+    "heading": "Thank You for Your Support",
+    "subheading": "Your gift helps preserve the story of Miami Springs — from Glenn Curtiss's Pueblo Revival vision to our centennial and beyond.",
+    "impact_heading": "What Your Gift Supports",
+    "impact_body": "Donations to the Miami Springs Historical Society fund our museum exhibits, archival preservation, educational programs, and community outreach. Every dollar goes directly to keeping our history alive and accessible — free of charge — for everyone who walks through our doors.",
+    "tax_heading": "Tax Acknowledgment",
+    "tax_501c3": "The Miami Springs Historical Society is recognized as a tax-exempt organization under Section 501(c)(3) of the Internal Revenue Code. Your contribution is tax-deductible to the full extent permitted by law.",
+    "tax_no_goods": "No goods or services were provided in exchange for your contribution.",
+    "tax_receipt": "You will receive a payment receipt from Square. For contributions of $250 or more, please contact us to request a formal written acknowledgment for your tax records.",
+    "tax_ein_label": "EIN:",
+    "museum_cta": "Explore the Museum →",
+    "facebook_cta": "Follow Us on Facebook →",
+    "home_cta": "Return to the Society →",
+    "photo_credit": "Glenn H. Curtiss Memorial Circle — Wikimedia Commons, CC BY-SA 4.0"
+  },
   "not_found": {
     "meta_title": "Page Not Found — Miami Springs Historical Society",
     "meta_description": "This page doesn't exist, much like the many lots sold during the 1920s land boom that were never developed.",

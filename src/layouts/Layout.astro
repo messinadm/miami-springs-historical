@@ -3,12 +3,14 @@ interface Props {
   title?: string;
   description?: string;
   lang?: string;
+  noindex?: boolean;
 }
 
 const {
   title = 'Miami Springs Historical Society',
   description = 'Preserving the history of Miami Springs, Florida — founded by aviation pioneer Glenn Curtiss. Celebrating our centennial — 100 years of Miami Springs.',
   lang = Astro.currentLocale ?? 'en',
+  noindex = false,
 } = Astro.props;
 
 import { useTranslations } from '../i18n/utils';
@@ -37,6 +39,7 @@ const esUrl = site + esPath;
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#8b4513" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={Astro.url.href} />
     <link rel="alternate" hreflang="en" href={enUrl} />
     <link rel="alternate" hreflang="es" href={esUrl} />
