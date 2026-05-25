@@ -195,8 +195,8 @@ const t = useTranslations(Astro.currentLocale);
   .bottom-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
   .gift-section, .donate-section { margin-bottom: 0; }
   .gift-section p, .donate-section p { font-size: 1rem; color: var(--color-text-muted); line-height: 1.7; max-width: 480px; }
-  .gift-section { text-align: center; }
-  .gift-section p { margin: 0 auto; }
+  .gift-section, .donate-section { text-align: center; }
+  .gift-section p, .donate-section p { margin: 0 auto; }
   .donate-cta { display: inline-block; margin-top: 1.25rem; padding: 0.625rem 1.75rem 0.625rem 1.5rem; background-color: var(--color-accent); color: var(--color-white); font-family: var(--font-body); font-size: 0.875rem; letter-spacing: 0.08em; text-decoration: none; transition: background-color 0.2s; }
   .donate-cta:hover { background-color: #1e4220; color: var(--color-white); }
   .donate-section a { color: var(--color-primary); }
