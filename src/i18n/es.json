@@ -56,7 +56,8 @@
   },
   "board": {
     "heading": "Junta Directiva",
-    "elections": "Las elecciones de la junta se realizan cada abril."
+    "elections": "Las elecciones de la junta se realizan cada abril.",
+    "photo_alt_prefix": "Fotografía de"
   },
   "connect": {
     "heading": "Conecta con nosotros",
@@ -70,7 +71,10 @@
     "donate": "Donar ahora",
     "attribution": "Foto principal: Wikimedia Commons, CC BY 2.0. Foto histórica: Fishbaugh, W.A., Archivos del Estado de Florida. Dominio público.",
     "link_city": "Ciudad de Miami Springs",
-    "link_resources": "Recursos y Referencias"
+    "link_resources": "Recursos y Referencias",
+    "aria_facebook": "Síguenos en Facebook (se abre en nueva pestaña)",
+    "aria_email": "Envíanos un correo electrónico",
+    "aria_rss": "Canal RSS"
   },
   "museum": {
     "meta_title": "Museo — Sociedad Histórica de Miami Springs",

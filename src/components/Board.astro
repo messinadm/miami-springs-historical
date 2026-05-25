@@ -20,7 +20,7 @@ const t = useTranslations(Astro.currentLocale);
           {member.data.photo && (
             <img
               src={member.data.photo}
-              alt={`Portrait of ${member.data.name}`}
+              alt={`${t('board.photo_alt_prefix')} ${member.data.name}`}
               class="board-photo"
               width="64"
               height="64"

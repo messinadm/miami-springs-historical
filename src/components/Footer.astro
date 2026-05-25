@@ -13,18 +13,18 @@ const base = Astro.currentLocale === 'es' ? '/es' : '';
     <p class="footer-hours">{t('footer.hours')}</p>
     <p class="footer-address"><a href={`tel:${generalSettings.phone.replace(/\D/g, '').replace(/^(\d{10})$/, '+1$1')}`}>{generalSettings.phone}</a></p>
     <div class="footer-icons">
-      <a href={generalSettings.facebook_url} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+      <a href={generalSettings.facebook_url} target="_blank" rel="noopener noreferrer" aria-label={t('footer.aria_facebook')}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
         </svg>
       </a>
-      <a href={`mailto:${generalSettings.email}`} aria-label="Email us">
+      <a href={`mailto:${generalSettings.email}`} aria-label={t('footer.aria_email')}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z"/>
           <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z"/>
         </svg>
       </a>
-      <a href="/rss.xml" aria-label="RSS Feed">
+      <a href="/rss.xml" aria-label={t('footer.aria_rss')}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
         </svg>

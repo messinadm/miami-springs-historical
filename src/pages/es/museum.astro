@@ -14,13 +14,13 @@ const t = useTranslations(Astro.currentLocale);
 >
   <Nav />
   <div class="page-wrap">
-    <header class="page-header" role="banner">
-      <a href="/es" class="back-link">{t('museum.back')}</a>
-      <h1 class="page-title">{t('museum.heading')}</h1>
-      <p class="page-intro">{t('museum.intro')}</p>
-    </header>
-
     <main id="main-content" class="page-main">
+
+      <header class="page-header">
+        <a href="/es" class="back-link">{t('museum.back')}</a>
+        <h1 class="page-title">{t('museum.heading')}</h1>
+        <p class="page-intro">{t('museum.intro')}</p>
+      </header>
 
       <!-- Visit Info -->
       <section class="visit-section" aria-labelledby="visit-heading">
