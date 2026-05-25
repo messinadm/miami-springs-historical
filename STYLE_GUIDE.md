@@ -9,7 +9,8 @@ All colors are defined as CSS custom properties in `src/layouts/Layout.astro`. *
 | `--color-primary` | `#8b4513` | Main brown — headings, buttons, links |
 | `--color-primary-dark` | `#6b3410` | Hover state for primary |
 | `--color-secondary` | `#d2b48c` | Tan — nav accents, decorative borders |
-| `--color-accent` | `#2c5f2d` | Forest green — dividers, hover links |
+| `--color-accent` | `#2c5f2d` | Forest green — dividers, hover links, donate buttons |
+| `--color-accent-dark` | `#1e4220` | Hover state for accent green elements |
 | `--color-eyebrow` | `#a8e6a9` | Light green — accent text on dark backgrounds |
 | `--color-bg` | `#faf6f0` | Off-white page background |
 | `--color-bg-alt` | `#e8d8c4` | Warm tan — alternate section backgrounds |
@@ -123,6 +124,14 @@ On **dark panel backgrounds**, use `--color-eyebrow` for the divider instead of 
 - Text: `--color-primary` / hover: `--color-accent`
 - `border-bottom: 2px solid --color-accent`
 - Font: `0.8125rem`, uppercase
+
+**Donate (accent green):**
+- Background: `--color-accent` / hover: `--color-accent-dark`
+- Text: `--color-white`
+- Border: `2px solid --color-accent`
+- Padding: `0.75rem 1.5rem`
+- Font: `--font-body`, `0.8125rem`, uppercase, `letter-spacing: 0.1em`
+- Use exclusively for donation/financial support CTAs to visually distinguish them from navigation actions. Do not use for general page navigation.
 
 ---
 
