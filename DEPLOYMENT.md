@@ -79,8 +79,8 @@ Go to https://dash.cloudflare.com and log in.
 | Setting | Value |
 |---|---|
 | Build command | `npm run build` |
-| Deploy command | `npx wrangler deploy` |
-| Non-production branch deploy command | `npx wrangler versions upload` |
+| Deploy command | `npx wrangler@4.100.0 deploy` |
+| Non-production branch deploy command | `npx wrangler@4.100.0 versions upload` |
 | Build output directory | `dist` |
 | Root directory | *(leave blank)* |
 
