@@ -1,5 +1,7 @@
+// The static-assets binding from wrangler.jsonc. Typed minimally to the one
+// method this worker uses, avoiding a dependency on @cloudflare/workers-types.
 interface Env {
-  ASSETS: Fetcher;
+  ASSETS: { fetch: (request: Request) => Promise<Response> };
 }
 
 export default {
