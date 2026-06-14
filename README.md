@@ -8,7 +8,7 @@ Static website for the [Miami Springs Historical Society](https://miamispringshi
 Edit files → git commit → git push to main → Cloudflare builds → site is live (~1 min)
 ```
 
-Content — events, board members, and site settings — is stored as plain files in this repo. No CMS login required. Change a file, push it, and the site updates automatically.
+Content — events, board members, and site settings — is stored as plain files in this repo. There is intentionally **no admin/CMS panel** — content is edited directly in the files (see [Updating content](#updating-content)). Change a file, push it, and the site updates automatically.
 
 ## Quick start (local development)
 
