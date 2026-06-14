@@ -1,0 +1,70 @@
+name: Dependency audit
+
+# Monthly npm audit. Stays green for the known, accepted advisories below and
+# fails only when a NEW advisory appears. A failed scheduled run triggers
+# GitHub's built-in email to the repo admin (and anyone watching Actions).
+on:
+  schedule:
+    - cron: '0 9 1 * *' # 09:00 UTC on the 1st of each month
+  workflow_dispatch: {} # allow manual runs from the Actions tab
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: npm audit (alert on new advisories)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Audit, ignoring known-accepted advisories
+        run: |
+          npm audit --json > audit.json || true
+          python3 - <<'PY'
+          import json, os, sys
+
+          # Advisories already reviewed and accepted (not reachable on this
+          # static, input-free site). Keep in sync with the security memo.
+          BASELINE = {
+              "GHSA-gv7w-rqvm-qjhr",  # esbuild registry RCE — dev/install-time only
+              "GHSA-g7r4-m6w7-qqqr",  # esbuild Windows dev-server read — dev-only
+              "GHSA-j687-52p2-xcff",  # Astro define:vars XSS — no untrusted define:vars
+              "GHSA-xr5h-phrj-8vxv",  # Astro Server Islands replay — output is static
+          }
+
+          data = json.load(open("audit.json"))
+          found = {}  # GHSA id -> (severity, title)
+          for info in data.get("vulnerabilities", {}).values():
+              for via in info.get("via", []):
+                  if isinstance(via, dict) and via.get("url", "").rsplit("/", 1)[-1].startswith("GHSA"):
+                      gid = via["url"].rsplit("/", 1)[-1]
+                      found[gid] = (via.get("severity"), via.get("title"))
+
+          new = {g: v for g, v in found.items() if g not in BASELINE}
+
+          def line(s):
+              print(s)
+              with open(os.environ.get("GITHUB_STEP_SUMMARY", os.devnull), "a") as f:
+                  f.write(s + "\n")
+
+          if new:
+              line("## ❌ New dependency advisory detected")
+              for gid, (sev, title) in sorted(new.items()):
+                  line(f"- **{sev}** `{gid}` — {title}")
+              line("\nReview, then either patch or add to the BASELINE in `.github/workflows/audit.yml`.")
+              sys.exit(1)
+
+          stale = BASELINE - set(found)
+          line("## ✅ No new advisories")
+          line(f"- Known/accepted still present: {sorted(BASELINE & set(found)) or 'none'}")
+          if stale:
+              line(f"- Baseline entries no longer reported (safe to remove): {sorted(stale)}")
+          PY
