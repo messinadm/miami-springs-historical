@@ -40,7 +40,7 @@ Fails fast if the build is broken before anything reaches `main`.
 ### Deploy — `.github/workflows/deploy.yml`
 Runs on every push to `main`. Performs:
 1. Production build
-2. `npx wrangler deploy` — pushes static assets + Worker to Cloudflare
+2. `npx wrangler@4.100.0 deploy` — pushes static assets + Worker to Cloudflare (version pinned so the deploy step never pulls an unverified wrangler release while the Cloudflare API token is in scope)
 3. Full cache purge via Cloudflare API
 
 ### Required GitHub secrets
