@@ -1,3 +1,5 @@
+import type { CollectionEntry } from 'astro:content';
+
 /**
  * Returns the next occurrence of the second Tuesday of a month at 4:00 PM local time.
  *
@@ -18,4 +20,15 @@ export function nextSecondTuesday(startAfter?: Date): Date {
   const next = new Date(after.getFullYear(), after.getMonth() + 1, 1);
   const daysUntilTuesday = (2 - next.getDay() + 7) % 7;
   return new Date(next.getFullYear(), next.getMonth(), 1 + daysUntilTuesday + 7, 16, 0, 0);
+}
+
+/**
+ * Resolves a recurring event to its next concrete occurrence date, leaving
+ * one-time events unchanged. Shared by the Events component and the RSS feed.
+ */
+export function resolveEventDate(event: CollectionEntry<'events'>): CollectionEntry<'events'> {
+  if (event.data.recurring === 'monthly-second-tuesday') {
+    return { ...event, data: { ...event.data, date: nextSecondTuesday(event.data.recurringStartAfter) } };
+  }
+  return event;
 }
