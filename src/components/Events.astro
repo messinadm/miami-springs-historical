@@ -1,16 +1,11 @@
 ---
 import { getCollection, render } from 'astro:content';
-import { nextSecondTuesday } from '../utils/events';
+import { resolveEventDate } from '../utils/events';
 
 const events = await getCollection('events');
 
 // Resolve recurring events to their next occurrence date
-const resolved = events.map(event => {
-  if (event.data.recurring === 'monthly-second-tuesday') {
-    return { ...event, data: { ...event.data, date: nextSecondTuesday(event.data.recurringStartAfter) } };
-  }
-  return event;
-});
+const resolved = events.map(resolveEventDate);
 
 // Filter out past one-time events at build time so they never reach the HTML.
 // Recurring events are always kept — their date is recalculated client-side.
