@@ -22,10 +22,11 @@ const events = defineCollection({
 const board = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/board' }),
   schema: z.object({
-    name: z.string(),
+    name: z.string().optional(),
     role: z.string(),
     photo: z.string().optional(),
     order: z.number().default(99),
+    vacant: z.boolean().default(false),
   }),
 });
 

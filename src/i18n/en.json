@@ -57,7 +57,8 @@
   "board": {
     "heading": "Board of Directors",
     "elections": "Board elections are held each April.",
-    "photo_alt_prefix": "Portrait of"
+    "photo_alt_prefix": "Portrait of",
+    "vacant": "Vacant"
   },
   "connect": {
     "heading": "Connect With Us",
@@ -80,8 +81,10 @@
     "meta_title": "Museum — Miami Springs Historical Society",
     "meta_description": "Visit the Miami Springs Historical Society Museum at 501 East Drive. Free admission. Exhibits on aviation history, the city's founding, the Miami Battle Creek Sanitarium, and more.",
     "back": "← Back to Home",
-    "heading": "Our Museum",
-    "intro": "Step inside three rooms of exhibits that tell the story of Miami Springs — from its aviation golden age to a century of community history. We invite you to explore.",
+    "heading": "Miami Springs Historical Museum",
+    "history_heading": "Our Story",
+    "history_1": "For more than three decades, the Miami Springs Historical Society has collected and cared for the artifacts, photographs, and stories that keep this city's past alive — work that began with a single purpose: preserving the home and legacy of Glenn Curtiss, the aviation pioneer who dreamed Miami Springs into being.",
+    "history_2": "The Museum has grown right alongside that mission — opening in the historic Clune Building, moving to a storefront on Westward Drive, and settling today at 501 East Drive, each home a step closer to the museum this community deserves. With every move the collection has deepened, and the Society's ambition along with it — to stand among the great cultural institutions of South Florida.",
     "visit_heading": "Visit the Museum",
     "visit_hours": "Hours",
     "visit_location": "Location",
