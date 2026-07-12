@@ -57,7 +57,8 @@
   "board": {
     "heading": "Board of Directors",
     "elections": "Board elections are held each April.",
-    "photo_alt_prefix": "Portrait of"
+    "photo_alt_prefix": "Portrait of",
+    "vacant": "Vacant"
   },
   "connect": {
     "heading": "Connect With Us",

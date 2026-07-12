@@ -57,7 +57,8 @@
   "board": {
     "heading": "Junta Directiva",
     "elections": "Las elecciones de la junta se realizan cada abril.",
-    "photo_alt_prefix": "Fotografía de"
+    "photo_alt_prefix": "Fotografía de",
+    "vacant": "Vacante"
   },
   "connect": {
     "heading": "Conecta con nosotros",
