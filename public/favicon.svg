@@ -1,37 +1,3 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <!-- Filled triangle (city boundary) -->
-  <polygon
-    points="16,16 112,112 16,112"
-    fill="#8b4513"
-    stroke="#8b4513"
-    stroke-width="1"
-    stroke-linejoin="round"
-  />
-
-  <!-- Triangle border -->
-  <polygon
-    points="16,16 112,112 16,112"
-    fill="none"
-    stroke="#d2b48c"
-    stroke-width="2"
-    stroke-linejoin="round"
-  />
-
-  <!-- Engine cowling (outer ring) -->
-  <circle cx="62" cy="85" r="16" fill="none" stroke="#d2b48c" stroke-width="2"/>
-
-  <!-- Green hub (behind spokes) -->
-  <circle cx="62" cy="85" r="8" fill="#2c5f2d"/>
-
-  <!-- 5 radial engine spokes — all from center -->
-  <g stroke="#d2b48c" stroke-width="2" stroke-linecap="round">
-    <line x1="62" y1="85"  x2="71" y2="76"/>  <!-- 315° → toward hypotenuse -->
-    <line x1="62" y1="85"  x2="74" y2="91"/>  <!-- 27°  -->
-    <line x1="62" y1="85"  x2="60" y2="98"/>  <!-- 99°  -->
-    <line x1="62" y1="85"  x2="49" y2="87"/>  <!-- 171° -->
-    <line x1="62" y1="85"  x2="56" y2="73"/>  <!-- 243° -->
-  </g>
-
-  <!-- Center dot (on top of spokes) -->
-  <circle cx="62" cy="85" r="2" fill="#d2b48c"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Miami Springs Historical Society thunderbird">
+  <path d="M 212.3 41.0 L 275.3 41.0 L 299.0 67.4 L 301.0 86.3 L 314.6 97.9 L 330.8 89.7 L 384.3 89.7 L 395.9 97.9 L 441.2 89.7 L 471.0 105.3 L 471.0 114.1 L 462.2 120.2 L 460.9 420.9 L 449.4 430.4 L 432.4 428.4 L 387.7 374.9 L 376.2 372.2 L 322.7 324.7 L 316.6 330.2 L 316.6 393.2 L 324.7 403.3 L 324.7 471.0 L 179.8 471.0 L 171.0 458.2 L 171.0 419.6 L 179.1 409.4 L 179.1 370.8 L 187.3 360.6 L 183.2 309.2 L 168.3 339.6 L 148.6 342.4 L 144.6 355.2 L 132.4 358.6 L 87.0 404.7 L 75.5 407.4 L 63.3 428.4 L 41.0 430.4 L 41.0 97.9 L 124.3 97.9 L 135.8 89.7 L 156.8 89.7 L 173.0 97.9 L 186.6 85.7 L 180.5 67.4 L 212.3 41.6 Z" fill="#B68A27"/>
 </svg>
