@@ -19,8 +19,15 @@ const t = useTranslations(Astro.currentLocale);
       <header class="page-header">
         <a href="/es" class="back-link">{t('museum.back')}</a>
         <h1 class="page-title">{t('museum.heading')}</h1>
-        <p class="page-intro">{t('museum.intro')}</p>
       </header>
+
+      <!-- Our Story -->
+      <section class="story-section" aria-labelledby="story-heading">
+        <h2 id="story-heading" class="section-heading">{t('museum.history_heading')}</h2>
+        <div class="divider"></div>
+        <p class="story-body">{t('museum.history_1')}</p>
+        <p class="story-body">{t('museum.history_2')}</p>
+      </section>
 
       <!-- Visit Info -->
       <section class="visit-section" aria-labelledby="visit-heading">
@@ -170,7 +177,9 @@ const t = useTranslations(Astro.currentLocale);
   .back-link { font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-muted); text-decoration: none; display: inline-block; margin-bottom: 1.5rem; }
   .back-link:hover { color: var(--color-primary); }
   .page-title { font-family: var(--font-display); font-size: clamp(1.75rem, 5vw, 2.75rem); color: var(--color-primary); margin-bottom: 0.75rem; }
-  .page-intro { font-size: 1rem; color: var(--color-text-muted); }
+  .story-section { margin-bottom: 3.5rem; }
+  .story-body { font-size: 1.0625rem; color: var(--color-text); line-height: 1.8; max-width: 660px; margin: 0 auto 1.25rem; text-align: center; }
+  .story-body:last-child { margin-bottom: 0; }
   .visit-section { margin-bottom: 3rem; }
   .visit-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
   .visit-card { background-color: var(--color-bg-alt); border-left: 3px solid var(--color-primary); padding: 1.25rem 1.5rem; }

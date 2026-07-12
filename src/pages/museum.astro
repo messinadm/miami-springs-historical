@@ -18,8 +18,15 @@ const t = useTranslations(Astro.currentLocale);
       <header class="page-header">
         <a href="/" class="back-link">{t('museum.back')}</a>
         <h1 class="page-title">{t('museum.heading')}</h1>
-        <p class="page-intro">{t('museum.intro')}</p>
       </header>
+
+      <!-- Our Story -->
+      <section class="story-section" aria-labelledby="story-heading">
+        <h2 id="story-heading" class="section-heading">{t('museum.history_heading')}</h2>
+        <div class="divider"></div>
+        <p class="story-body">{t('museum.history_1')}</p>
+        <p class="story-body">{t('museum.history_2')}</p>
+      </section>
 
       <!-- Visit Info -->
       <section class="visit-section" aria-labelledby="visit-heading">
@@ -197,9 +204,23 @@ const t = useTranslations(Astro.currentLocale);
     margin-bottom: 0.75rem;
   }
 
-  .page-intro {
-    font-size: 1rem;
-    color: var(--color-text-muted);
+  /* ── Our Story (mirrors About the Society lead) ───────── */
+
+  .story-section {
+    margin-bottom: 3.5rem;
+  }
+
+  .story-body {
+    font-size: 1.0625rem;
+    color: var(--color-text);
+    line-height: 1.8;
+    max-width: 660px;
+    margin: 0 auto 1.25rem;
+    text-align: center;
+  }
+
+  .story-body:last-child {
+    margin-bottom: 0;
   }
 
   /* ── Visit cards ──────────────────────────────────────── */
