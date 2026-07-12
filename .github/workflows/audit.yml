@@ -34,10 +34,10 @@ jobs:
           # Advisories already reviewed and accepted (not reachable on this
           # static, input-free site). Keep in sync with the security memo.
           BASELINE = {
-              "GHSA-gv7w-rqvm-qjhr",  # esbuild registry RCE — dev/install-time only
               "GHSA-g7r4-m6w7-qqqr",  # esbuild Windows dev-server read — dev-only
-              "GHSA-j687-52p2-xcff",  # Astro define:vars XSS — no untrusted define:vars
-              "GHSA-xr5h-phrj-8vxv",  # Astro Server Islands replay — output is static
+              "GHSA-48c2-rrv3-qjmp",  # yaml stack-overflow — dev-only (yaml@2.7.1 pinned in
+                                      # yaml-language-server via @astrojs/check); prod path
+                                      # astro→vite uses patched yaml@2.9.0; static, no untrusted YAML
           }
 
           data = json.load(open("audit.json"))
